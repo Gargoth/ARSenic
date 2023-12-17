@@ -80,6 +80,9 @@ crashlytics-build.properties
 # Windows Meta
 *:Zone.Identifier
 
+# Build Directory
+builds/
+
 # Vuforia Package due to filesize
 Packages/com.ptc.vuforia.engine-10.19.3.tgz
 
