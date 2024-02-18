@@ -88,3 +88,6 @@ Packages/com.ptc.vuforia.engine*
 
 # Miscellaneous
 debug.log
+.vscode/extensions.json
+.vscode/launch.json
+.vscode/settings.json
