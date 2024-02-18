@@ -373,6 +373,7 @@ GameObject:
   m_Component:
   - component: {fileID: 469019527}
   - component: {fileID: 469019528}
+  - component: {fileID: 469019529}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: GameController
@@ -405,6 +406,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d8a4d5ae4aa3944f95c89565146cf02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &469019529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469019526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00cb973e0e6b24341827d9c8271aaf36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &608438099
@@ -621,7 +634,6 @@ GameObject:
   - component: {fileID: 818223076}
   - component: {fileID: 818223075}
   - component: {fileID: 818223074}
-  - component: {fileID: 818223077}
   m_Layer: 5
   m_Name: AR Camera Button
   m_TagString: Untagged
@@ -693,16 +705,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 818223077}
+      - m_Target: {fileID: 469019529}
         m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
         m_MethodName: MoveToScene
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Camera Button Pressed
+          m_StringArgument: AR Camera
           m_BoolArgument: 0
         m_CallState: 1
 --- !u!114 &818223075
@@ -743,18 +755,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 818223072}
   m_CullTransparentMesh: 1
---- !u!114 &818223077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 818223072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00cb973e0e6b24341827d9c8271aaf36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &939848008
 GameObject:
   m_ObjectHideFlags: 0
@@ -1021,7 +1021,6 @@ GameObject:
   - component: {fileID: 1230540002}
   - component: {fileID: 1230540001}
   - component: {fileID: 1230540000}
-  - component: {fileID: 1230540003}
   m_Layer: 5
   m_Name: Settings Button
   m_TagString: Untagged
@@ -1093,16 +1092,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1230540003}
+      - m_Target: {fileID: 469019529}
         m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
         m_MethodName: MoveToScene
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 2
           m_FloatArgument: 0
-          m_StringArgument: Settings Button Pressed
+          m_StringArgument: Settings
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1230540001
@@ -1143,18 +1142,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1230539998}
   m_CullTransparentMesh: 1
---- !u!114 &1230540003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1230539998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00cb973e0e6b24341827d9c8271aaf36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1699701883
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,7 +1154,6 @@ GameObject:
   - component: {fileID: 1699701887}
   - component: {fileID: 1699701886}
   - component: {fileID: 1699701885}
-  - component: {fileID: 1699701888}
   m_Layer: 5
   m_Name: Analytics Button
   m_TagString: Untagged
@@ -1239,16 +1225,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1699701888}
+      - m_Target: {fileID: 469019529}
         m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
         m_MethodName: MoveToScene
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
-          m_StringArgument: Analytics Button Pressed!
+          m_StringArgument: Analytics
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1699701886
@@ -1289,18 +1275,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1699701883}
   m_CullTransparentMesh: 1
---- !u!114 &1699701888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1699701883}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00cb973e0e6b24341827d9c8271aaf36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1706411252
 GameObject:
   m_ObjectHideFlags: 0
