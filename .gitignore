@@ -84,7 +84,7 @@ crashlytics-build.properties
 builds/
 
 # Vuforia Package due to filesize
-Packages/com.ptc.vuforia.engine-10.19.3.tgz
+Packages/com.ptc.vuforia.engine*
 
 # Miscellaneous
 debug.log
