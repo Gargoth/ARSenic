@@ -240,10 +240,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 310098839}
-        m_TargetAssemblyTypeName: GameManagerScript, Assembly-CSharp
-        m_MethodName: MoveToScene
-        m_Mode: 5
+      - m_Target: {fileID: 2001326127}
+        m_TargetAssemblyTypeName: SettingsSceneManagerScript, Assembly-CSharp
+        m_MethodName: HandleSignout
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -817,9 +817,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2001326125}
         m_TargetAssemblyTypeName: LoginSceneManagerScript, Assembly-CSharp
-        m_MethodName: SignUpWithFieldCredentials
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1037,64 +1037,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 273205721}
   m_CullTransparentMesh: 1
---- !u!1 &310098837
-GameObject:
+--- !u!1001 &287199707
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 310098840}
-  - component: {fileID: 310098839}
-  - component: {fileID: 310098838}
-  m_Layer: 0
-  m_Name: Game Manager
-  m_TagString: GameController
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &310098838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 310098837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00cb973e0e6b24341827d9c8271aaf36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &310098839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 310098837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d8a4d5ae4aa3944f95c89565146cf02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _persistent: 1
---- !u!4 &310098840
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 310098837}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -100, y: -100, z: -100}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6146433841353106768, guid: 3d236ed05360b37498ea6eaca79f49b3, type: 3}
+      propertyPath: m_Name
+      value: Service Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575513011280382094, guid: 3d236ed05360b37498ea6eaca79f49b3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575513011280382094, guid: 3d236ed05360b37498ea6eaca79f49b3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575513011280382094, guid: 3d236ed05360b37498ea6eaca79f49b3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575513011280382094, guid: 3d236ed05360b37498ea6eaca79f49b3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575513011280382094, guid: 3d236ed05360b37498ea6eaca79f49b3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575513011280382094, guid: 3d236ed05360b37498ea6eaca79f49b3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575513011280382094, guid: 3d236ed05360b37498ea6eaca79f49b3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575513011280382094, guid: 3d236ed05360b37498ea6eaca79f49b3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575513011280382094, guid: 3d236ed05360b37498ea6eaca79f49b3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575513011280382094, guid: 3d236ed05360b37498ea6eaca79f49b3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3d236ed05360b37498ea6eaca79f49b3, type: 3}
 --- !u!1 &310556178
 GameObject:
   m_ObjectHideFlags: 0
@@ -1872,7 +1871,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 310098839}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManagerScript, Assembly-CSharp
         m_MethodName: MoveToScene
         m_Mode: 5
@@ -2754,6 +2753,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 874617623}
   m_CullTransparentMesh: 1
+--- !u!1001 &901848905
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8016526086426960748, guid: 6ab7ec53bbccaad4ab8507296d62c286, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8016526086426960748, guid: 6ab7ec53bbccaad4ab8507296d62c286, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8016526086426960748, guid: 6ab7ec53bbccaad4ab8507296d62c286, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8016526086426960748, guid: 6ab7ec53bbccaad4ab8507296d62c286, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8016526086426960748, guid: 6ab7ec53bbccaad4ab8507296d62c286, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8016526086426960748, guid: 6ab7ec53bbccaad4ab8507296d62c286, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8016526086426960748, guid: 6ab7ec53bbccaad4ab8507296d62c286, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8016526086426960748, guid: 6ab7ec53bbccaad4ab8507296d62c286, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8016526086426960748, guid: 6ab7ec53bbccaad4ab8507296d62c286, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8016526086426960748, guid: 6ab7ec53bbccaad4ab8507296d62c286, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8924827812148535142, guid: 6ab7ec53bbccaad4ab8507296d62c286, type: 3}
+      propertyPath: m_Name
+      value: Game Manager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6ab7ec53bbccaad4ab8507296d62c286, type: 3}
 --- !u!1 &921163570
 GameObject:
   m_ObjectHideFlags: 0
@@ -5153,7 +5209,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 310098839}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManagerScript, Assembly-CSharp
         m_MethodName: MoveToScene
         m_Mode: 5
@@ -5684,6 +5740,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1992435932}
   m_CullTransparentMesh: 1
+--- !u!1 &2001326125
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001326126}
+  - component: {fileID: 2001326127}
+  m_Layer: 0
+  m_Name: Settings Scene Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001326126
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001326125}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -100, y: -100, z: -100}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2001326127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001326125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 439a1295ffdd92343b0ca86b89821643, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _persistent: 1
+  usernameField: {fileID: 101744637}
+  oldPasswordField: {fileID: 512835931}
+  newPasswordField: {fileID: 1458815987}
+  updateInspectorVarsBtn: 0
+  signOutBtn: 0
+  isAuthorized: 0
+  playerName: 
+  playerId: 
+  accessToken: 
 --- !u!1 &2031056232
 GameObject:
   m_ObjectHideFlags: 0
@@ -5767,7 +5877,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 310098839}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManagerScript, Assembly-CSharp
         m_MethodName: MoveToScene
         m_Mode: 5
@@ -5897,6 +6007,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1397903003}
+  - {fileID: 901848905}
+  - {fileID: 287199707}
+  - {fileID: 2001326126}
   - {fileID: 458322320}
   - {fileID: 1706347720}
-  - {fileID: 310098840}
