@@ -817,9 +817,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2001326125}
-        m_TargetAssemblyTypeName: LoginSceneManagerScript, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 2001326127}
+        m_TargetAssemblyTypeName: SettingsSceneManagerScript, Assembly-CSharp
+        m_MethodName: HandlePlayerUpdates
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

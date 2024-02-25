@@ -22,9 +22,10 @@ public class LoginSceneManagerScript : Singleton<LoginSceneManagerScript>
     void Awake()
     {
         _serviceManagerScript = ServiceManagerScript.Instance;
-        
+
         // Update log on fail
-        AuthenticationService.Instance.SignInFailed += (err) => {
+        AuthenticationService.Instance.SignInFailed += (err) =>
+        {
             Debug.LogError(err);
             UpdateLogField(err.Message);
         };
@@ -57,6 +58,27 @@ public class LoginSceneManagerScript : Singleton<LoginSceneManagerScript>
         Task signinTask = new Task(SignInWithFieldCredentials);
         UpdateLogField("Signing In...");
         signinTask.RunSynchronously(TaskScheduler.FromCurrentSynchronizationContext());
+    }
+
+    public void HandleAnonSignIn()
+    {
+        Task signinTask = new Task(SignInWithoutCredentials);
+        UpdateLogField("Signing In Anonymously...");
+        signinTask.RunSynchronously(TaskScheduler.FromCurrentSynchronizationContext());
+    }
+
+    async void SignInWithoutCredentials()
+    {
+        await _serviceManagerScript.SignInAnonymously()
+            .ContinueWith(_ =>
+            {
+                UpdateInspectorVars();
+                if (AuthenticationService.Instance.IsSignedIn)
+                {
+                    Debug.Log("Moving Scene to Camera");
+                    GameManagerScript.MoveToScene("SCamera");
+                }
+            });
     }
 
     async void SignUpWithFieldCredentials()
@@ -95,13 +117,12 @@ public class LoginSceneManagerScript : Singleton<LoginSceneManagerScript>
             });
     }
 
-    void UpdateInspectorVars()
+    async void UpdateInspectorVars()
     {
         isAuthorized = AuthenticationService.Instance.IsAuthorized;
         playerId = AuthenticationService.Instance.PlayerId;
         accessToken = AuthenticationService.Instance.AccessToken;
-        AuthenticationService.Instance.GetPlayerNameAsync()
-            .ContinueWith(antecedent => playerName = antecedent.Result);
+        playerName = await AuthenticationService.Instance.GetPlayerNameAsync();
     }
 
     void UpdateLogField(string value)

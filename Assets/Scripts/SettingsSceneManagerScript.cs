@@ -28,8 +28,9 @@ public class SettingsSceneManagerScript : Singleton<SettingsSceneManagerScript>
 
     async void UpdateFields()
     {
-        await AuthenticationService.Instance.GetPlayerNameAsync()
-            .ContinueWith(antecedent => { usernameField.text = antecedent.Result; });
+        Debug.Log("Updating fields");
+        usernameField.text = await AuthenticationService.Instance.GetPlayerNameAsync();
+        Debug.Log("Finished Updating fields");
     }
 
     public async Task UpdateName()
