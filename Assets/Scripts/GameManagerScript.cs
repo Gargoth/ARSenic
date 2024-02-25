@@ -29,6 +29,6 @@ public class GameManagerScript : Singleton<GameManagerScript>
     
     public static void MoveToScene(string sceneName) 
     {
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadSceneAsync(sceneName);
     }
 }

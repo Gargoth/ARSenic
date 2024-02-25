@@ -42,22 +42,12 @@ public class LoginSceneManagerScript : Singleton<LoginSceneManagerScript>
     {
         Task signupTask = new Task(SignUpWithFieldCredentials);
         signupTask.RunSynchronously();
-        if (AuthenticationService.Instance.IsSignedIn)
-        {
-            Debug.Log("Moving Scene to Camera");
-            GameManagerScript.MoveToScene("SCamera");
-        }
     }
 
     public void HandleSignIn()
     {
         Task signinTask = new Task(SignInWithFieldCredentials);
-        signinTask.RunSynchronously();
-        if (AuthenticationService.Instance.IsSignedIn)
-        {
-            Debug.Log("Moving Scene to Camera");
-            GameManagerScript.MoveToScene("SCamera");
-        }
+        signinTask.RunSynchronously(TaskScheduler.FromCurrentSynchronizationContext());
     }
 
     async void SignUpWithFieldCredentials()
@@ -70,7 +60,11 @@ public class LoginSceneManagerScript : Singleton<LoginSceneManagerScript>
             .ContinueWith(_ =>
             {
                 UpdateInspectorVars();
-                return;
+                if (AuthenticationService.Instance.IsSignedIn)
+                {
+                    Debug.Log("Moving Scene to Camera");
+                    GameManagerScript.MoveToScene("SCamera");
+                }
             });
     }
 
@@ -84,7 +78,11 @@ public class LoginSceneManagerScript : Singleton<LoginSceneManagerScript>
             .ContinueWith(_ =>
             {
                 UpdateInspectorVars();
-                return;
+                if (AuthenticationService.Instance.IsSignedIn)
+                {
+                    Debug.Log("Moving Scene to Camera");
+                    GameManagerScript.MoveToScene("SCamera");
+                }
             });
     }
 
