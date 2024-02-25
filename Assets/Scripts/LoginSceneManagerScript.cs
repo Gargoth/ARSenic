@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using TMPro;
 using Unity.Services.Authentication;
 using UnityEngine;
@@ -7,12 +8,11 @@ public class LoginSceneManagerScript : Singleton<LoginSceneManagerScript>
     [SerializeField] TMP_InputField usernameField;
     [SerializeField] TMP_InputField passwordField;
 
-    [Header("DEBUG")]
-    [Header("Buttons")]
-    [SerializeField] private bool updateInspectorVarsBtn;
+    [Header("DEBUG")] [Header("Buttons")] [SerializeField]
+    private bool updateInspectorVarsBtn;
+
     [SerializeField] private bool signOutBtn;
-    [Header("Values")]
-    [SerializeField] bool isAuthorized;
+    [Header("Values")] [SerializeField] bool isAuthorized;
     [SerializeField] string playerName;
     [SerializeField] string playerId;
     [SerializeField] string accessToken;
@@ -38,24 +38,54 @@ public class LoginSceneManagerScript : Singleton<LoginSceneManagerScript>
         }
     }
 
-    public void SignUpWithFieldCredentials()
+    public void HandleSignup()
+    {
+        Task signupTask = new Task(SignUpWithFieldCredentials);
+        signupTask.RunSynchronously();
+        if (AuthenticationService.Instance.IsSignedIn)
+        {
+            Debug.Log("Moving Scene to Camera");
+            GameManagerScript.MoveToScene("SCamera");
+        }
+    }
+
+    public void HandleSignIn()
+    {
+        Task signinTask = new Task(SignInWithFieldCredentials);
+        signinTask.RunSynchronously();
+        if (AuthenticationService.Instance.IsSignedIn)
+        {
+            Debug.Log("Moving Scene to Camera");
+            GameManagerScript.MoveToScene("SCamera");
+        }
+    }
+
+    async void SignUpWithFieldCredentials()
     {
         string username = usernameField.text;
         string password = passwordField.text;
         Debug.Log("Username: " + username + "\n" + "Password: " + password);
         Debug.Log("Signing Up");
-        _serviceManagerScript.SignUpWithUsernamePasswordAsync(username, password)
-            .ContinueWith(_ => UpdateInspectorVars());
+        await _serviceManagerScript.SignUpWithUsernamePasswordAsync(username, password)
+            .ContinueWith(_ =>
+            {
+                UpdateInspectorVars();
+                return;
+            });
     }
 
-    public void SignInWithFieldCredentials()
+    async void SignInWithFieldCredentials()
     {
         string username = usernameField.text;
         string password = passwordField.text;
         Debug.Log("Username: " + username + "\n" + "Password: " + password);
         Debug.Log("Signing In");
-        _serviceManagerScript.SignInWithUsernamePasswordAsync(username, password)
-            .ContinueWith(_ => UpdateInspectorVars());
+        await _serviceManagerScript.SignInWithUsernamePasswordAsync(username, password)
+            .ContinueWith(_ =>
+            {
+                UpdateInspectorVars();
+                return;
+            });
     }
 
     void UpdateInspectorVars()
