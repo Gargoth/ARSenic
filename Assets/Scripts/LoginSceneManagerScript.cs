@@ -7,6 +7,7 @@ public class LoginSceneManagerScript : Singleton<LoginSceneManagerScript>
 {
     [SerializeField] TMP_InputField usernameField;
     [SerializeField] TMP_InputField passwordField;
+    [SerializeField] TextMeshProUGUI logField;
 
     [Header("DEBUG")] [Header("Buttons")] [SerializeField]
     private bool updateInspectorVarsBtn;
@@ -21,6 +22,12 @@ public class LoginSceneManagerScript : Singleton<LoginSceneManagerScript>
     void Awake()
     {
         _serviceManagerScript = ServiceManagerScript.Instance;
+        
+        // Update log on fail
+        AuthenticationService.Instance.SignInFailed += (err) => {
+            Debug.LogError(err);
+            UpdateLogField(err.Message);
+        };
     }
 
     void Update()
@@ -41,12 +48,14 @@ public class LoginSceneManagerScript : Singleton<LoginSceneManagerScript>
     public void HandleSignup()
     {
         Task signupTask = new Task(SignUpWithFieldCredentials);
+        UpdateLogField("Signing Up...");
         signupTask.RunSynchronously();
     }
 
     public void HandleSignIn()
     {
         Task signinTask = new Task(SignInWithFieldCredentials);
+        UpdateLogField("Signing In...");
         signinTask.RunSynchronously(TaskScheduler.FromCurrentSynchronizationContext());
     }
 
@@ -93,5 +102,10 @@ public class LoginSceneManagerScript : Singleton<LoginSceneManagerScript>
         accessToken = AuthenticationService.Instance.AccessToken;
         AuthenticationService.Instance.GetPlayerNameAsync()
             .ContinueWith(antecedent => playerName = antecedent.Result);
+    }
+
+    void UpdateLogField(string value)
+    {
+        logField.text = value;
     }
 }
