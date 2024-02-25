@@ -1871,7 +1871,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 901848906}
         m_TargetAssemblyTypeName: GameManagerScript, Assembly-CSharp
         m_MethodName: MoveToScene
         m_Mode: 5
@@ -2810,6 +2810,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ab7ec53bbccaad4ab8507296d62c286, type: 3}
+--- !u!114 &901848906 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3712950776633605366, guid: 6ab7ec53bbccaad4ab8507296d62c286, type: 3}
+  m_PrefabInstance: {fileID: 901848905}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d8a4d5ae4aa3944f95c89565146cf02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &921163570
 GameObject:
   m_ObjectHideFlags: 0
@@ -5209,7 +5220,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 901848906}
         m_TargetAssemblyTypeName: GameManagerScript, Assembly-CSharp
         m_MethodName: MoveToScene
         m_Mode: 5
@@ -5877,7 +5888,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 901848906}
         m_TargetAssemblyTypeName: GameManagerScript, Assembly-CSharp
         m_MethodName: MoveToScene
         m_Mode: 5

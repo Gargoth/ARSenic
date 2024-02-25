@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Login.unity
     guid: ca36985c62dd7435ea8af2f426cc3e45
+  - enabled: 1
+    path: Assets/Scenes/GravityModule.unity
+    guid: a02be14140bb55a4faa3230ec7a888a4
   m_configObjects: {}
