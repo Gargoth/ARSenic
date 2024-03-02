@@ -20,6 +20,9 @@ public class SliderScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (_slider.value > 9 && _slider.value < 12)
+        {
+            _slider.value = 9.81f;
+        }
     }
 }
