@@ -1255,6 +1255,7 @@ GameObject:
   - component: {fileID: 738746531}
   - component: {fileID: 738746530}
   - component: {fileID: 738746529}
+  - component: {fileID: 738746533}
   m_Layer: 0
   m_Name: Plane Finder
   m_TagString: Untagged
@@ -1309,13 +1310,13 @@ MonoBehaviour:
   OnInteractiveHitTest:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 738746529}
-        m_TargetAssemblyTypeName: Vuforia.ContentPositioningBehaviour, Vuforia.Unity.Engine
-        m_MethodName: PositionContentAtPlaneAnchor
+      - m_Target: {fileID: 1788176757}
+        m_TargetAssemblyTypeName: GravityModuleManagerScript, Assembly-CSharp
+        m_MethodName: HandlePlaneFinderHit
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1369,6 +1370,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &738746533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738746528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5655fefac8dc4d4591fb798e00b9edb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &760262689
 GameObject:
   m_ObjectHideFlags: 0
@@ -4138,6 +4151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _persistent: 1
   objectContainer: {fileID: 1838400435}
+  _contentPositioningBehaviour: {fileID: 738746529}
 --- !u!1 &1804817256
 GameObject:
   m_ObjectHideFlags: 0
@@ -4273,6 +4287,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: cace0b4260176de46b5ca288f5d42e32, type: 3}
       propertyPath: m_Name
       value: SM_Primitive_Cone_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: cace0b4260176de46b5ca288f5d42e32, type: 3}
+      propertyPath: m_TagString
+      value: Toothbrush
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cace0b4260176de46b5ca288f5d42e32, type: 3}
       propertyPath: m_LocalScale.x
