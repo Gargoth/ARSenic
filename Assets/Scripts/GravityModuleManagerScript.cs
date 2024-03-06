@@ -12,6 +12,7 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
     [SerializeField] private ContentPositioningBehaviour _contentPositioningBehaviour;
     [SerializeField] private List<GameObject> spawnPrefabs;
     [SerializeField] private TextMeshProUGUI _debugText;
+    [SerializeField] private float gravityForce;
 
     void Update()
     {
@@ -62,8 +63,8 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
                 if (touch.phase != TouchPhase.Began) continue;
                 if (spawnPrefabs.Count == 0) continue;
                 GameObject prefabObject = spawnPrefabs[Random.Range(0, spawnPrefabs.Count - 1)];
-
                 GameObject newObject = Instantiate(prefabObject, objectContainer.transform.position + Vector3.up, Random.rotation);
+                newObject.GetComponent<GravModObject>().gravityForce = gravityForce;
                 newObject.SetActive(true);
             }
         }
@@ -78,6 +79,22 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
     public void SetActiveObjectContainer(bool value)
     {
         objectContainer.SetActive(value);
+    }
+
+    public void UpdateGravity(Single sliderValue)
+    {
+        float x = 0;
+        float y = 9.81f;
+        float z = 274;
+        float A = (x*z - Mathf.Pow(y,2)) / (x - 2*y + z);
+        float B = Mathf.Pow((y-x),2) / (x - 2 * y + z);
+        float C = 2 * Mathf.Log((z-y) / (y-x));
+        gravityForce = (A + B * Mathf.Exp(C * sliderValue));
+        GameObject[] spawnedObjects = GameObject.FindGameObjectsWithTag("Toothbrush");
+        foreach (GameObject obj in spawnedObjects)
+        {
+            obj.GetComponent<GravModObject>().gravityForce = gravityForce;
+        }
     }
 
     public void changeDebugText(string val)

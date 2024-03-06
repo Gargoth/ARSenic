@@ -12,7 +12,7 @@ public class SliderScript : MonoBehaviour
     private float x = 0;
     private float y = 9.81f;
     private float z = 274;
-    private float sliderText;
+    public float gravityForce;
 
     // Start is called before the first frame update
     void Start()
@@ -23,8 +23,8 @@ public class SliderScript : MonoBehaviour
             float B = Mathf.Pow((y-x),2) / (x - 2 * y + z);
             float C = 2 * Mathf.Log((z-y) / (y-x));
 
-            sliderText = (A + B * Mathf.Exp(C * v));
-            _sliderText.text = sliderText.ToString("0.00") + "m/s²";
+            gravityForce = (A + B * Mathf.Exp(C * v));
+            _sliderText.text = gravityForce.ToString("0.00") + "m/s²";
         });
     }
 
@@ -36,28 +36,27 @@ public class SliderScript : MonoBehaviour
         float C = 2 * Mathf.Log((z - y) / (y - x));
 
         // Mars
-        if (sliderText > 1 && sliderText < 5)
+        if (gravityForce > 1 && gravityForce < 5)
         {
             _slider.value = Mathf.Log((3.7f - A) / B) / C;
         }
 
         // Earth
-        if (sliderText > 8 && sliderText < 17)
+        if (gravityForce > 8 && gravityForce < 17)
         {
             _slider.value = 0.5f;
         }
 
         // Jupiter
-        else if (sliderText > 20 && sliderText < 40)
+        else if (gravityForce > 20 && gravityForce < 40)
         {
             _slider.value = Mathf.Log((24.8f - A) / B) / C;
         }
 
         // Sun
-        else if (sliderText > 200 && sliderText < 274)
+        else if (gravityForce > 200 && gravityForce < 274)
         {
             _slider.value = 1;
         }
-
     }
 }
