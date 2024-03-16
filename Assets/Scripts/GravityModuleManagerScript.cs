@@ -13,6 +13,7 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
     [SerializeField] private ContentPositioningBehaviour _contentPositioningBehaviour;
     [SerializeField] private List<GameObject> spawnPrefabs;
     [SerializeField] private TextMeshProUGUI _debugText;
+    [SerializeField] private RectTransform removePanel;
     [SerializeField] private float gravityForce;
 
     void Update()
@@ -30,9 +31,12 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
                 {
                     changeDebugText("Raycast hit " + hit.collider.name);
                     if (!hit.collider.CompareTag("Toothbrush")) continue;
-                    Rigidbody rb = hit.collider.GetComponent<Rigidbody>();
-                    rb.AddForce(Vector3.up * 200);
-                    changeDebugText("Added force to " + hit.collider.name);
+                    removePanel.gameObject.SetActive(true);
+                    removePanel.anchoredPosition3D = (Vector2)Camera.main.WorldToScreenPoint(hit.point);
+                    changeDebugText(Camera.main.WorldToScreenPoint(hit.point).ToString());
+                    
+                    // TODO: Remove panel on tap outside of ui
+                    // TODO: Spawn panel to the left if the object is too far right
                 }
             }
         }
@@ -64,7 +68,8 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
                 if (touch.phase != TouchPhase.Began) continue;
                 if (spawnPrefabs.Count == 0) continue;
                 GameObject prefabObject = spawnPrefabs[Random.Range(0, spawnPrefabs.Count - 1)];
-                GameObject newObject = Instantiate(prefabObject, objectContainer.transform.position + Vector3.up, Random.rotation);
+                GameObject newObject = Instantiate(prefabObject, objectContainer.transform.position + Vector3.up,
+                    Random.rotation);
                 newObject.GetComponent<GravModObject>().gravityForce = gravityForce;
                 newObject.SetActive(true);
             }
