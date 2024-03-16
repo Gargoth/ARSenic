@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AirResistance2;
 using TMPro;
 using UnityEngine;
 using Vuforia;
@@ -94,6 +95,15 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
         foreach (GameObject obj in spawnedObjects)
         {
             obj.GetComponent<GravModObject>().gravityForce = gravityForce;
+        }
+    }
+
+    public void UpdateAirResistance(bool isEnabled)
+    {
+        GameObject[] spawnedObjects = GameObject.FindGameObjectsWithTag("Toothbrush");
+        foreach (GameObject obj in spawnedObjects)
+        {
+            obj.GetComponent<AirResistance>().enabled = isEnabled;
         }
     }
 
