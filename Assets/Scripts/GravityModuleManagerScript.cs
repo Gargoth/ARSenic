@@ -15,26 +15,38 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
     [SerializeField] private TextMeshProUGUI _debugText;
     [SerializeField] private RectTransform removePanel;
     [SerializeField] private float gravityForce;
+    private RaycastHit hit;
 
     void Update()
     {
         if (Input.touchCount == 1) {
-            for (int i = 0; i < Input.touchCount; i++)
+           for (int i = 0; i < Input.touchCount; i++)
             {
                 if (!objectContainer.activeInHierarchy) continue;
                 Touch touch = Input.GetTouch(0);
                 if (touch.phase != TouchPhase.Began) continue;
                 Ray ray = Camera.main.ScreenPointToRay(touch.position);
-                RaycastHit hit;
                 changeDebugText("Raycast initialized");
+
+                // remove previously selected item
+                if (hit.collider != null)
+                {
+                    hit.collider.GetComponent<Highlight>()?.ToggleHighlight(false);
+                }
+                
                 if (Physics.Raycast(ray, out hit))
                 {
                     changeDebugText("Raycast hit " + hit.collider.name);
+
                     if (!hit.collider.CompareTag("Toothbrush")) continue;
+
+                    // highlight selected item
+                    hit.collider.GetComponent<Highlight>()?.ToggleHighlight(true);
+
                     removePanel.gameObject.SetActive(true);
                     removePanel.anchoredPosition3D = (Vector2)Camera.main.WorldToScreenPoint(hit.point);
                     changeDebugText(Camera.main.WorldToScreenPoint(hit.point).ToString());
-                    
+
                     // TODO: Remove panel on tap outside of ui
                     // TODO: Spawn panel to the left if the object is too far right
                 }

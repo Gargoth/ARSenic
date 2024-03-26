@@ -91,3 +91,6 @@ debug.log
 .vscode/extensions.json
 .vscode/launch.json
 .vscode/settings.json
+Packages/com.ptc.vuforia.engine-10.21.3.tgz.meta
+Packages/AddVuforiaEnginePackage.cs.meta
+Packages/AddVuforiaEnginePackage.cs
