@@ -13,6 +13,14 @@ public class SliderScript : MonoBehaviour
     private float y = 9.81f;
     private float z = 274;
     public float gravityForce;
+    
+    // Sprites
+    public Sprite moon;
+    public Sprite mars;
+    public Sprite earth;
+    public Sprite jupiter;
+    public Sprite sun;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -35,28 +43,83 @@ public class SliderScript : MonoBehaviour
         float B = Mathf.Pow((y - x), 2) / (x - 2 * y + z);
         float C = 2 * Mathf.Log((z - y) / (y - x));
 
+        // Moon
+        if (gravityForce == 0)
+        {
+            // Find the slider handle and change its image
+            Transform handleTransform = _slider.transform.Find("Handle Slide Area").Find("Handle");
+            if (handleTransform != null)
+            {
+                Image handleImage = handleTransform.GetComponent<Image>();
+                if (handleImage != null)
+                {
+                    handleImage.sprite = moon;
+                }
+            }
+        }
+        
         // Mars
-        if (gravityForce > 1 && gravityForce < 5)
+        else if (gravityForce > 1 && gravityForce < 5)
         {
             _slider.value = Mathf.Log((3.7f - A) / B) / C;
+            // Find the slider handle and change its image
+            Transform handleTransform = _slider.transform.Find("Handle Slide Area").Find("Handle");
+            if (handleTransform != null)
+            {
+                Image handleImage = handleTransform.GetComponent<Image>();
+                if (handleImage != null)
+                {
+                    handleImage.sprite = mars;
+                }
+            }
         }
 
         // Earth
-        if (gravityForce > 8 && gravityForce < 17)
+        else if (gravityForce > 8 && gravityForce < 17)
         {
             _slider.value = 0.5f;
+            // Find the slider handle and change its image
+            Transform handleTransform = _slider.transform.Find("Handle Slide Area").Find("Handle");
+            if (handleTransform != null)
+            {
+                Image handleImage = handleTransform.GetComponent<Image>();
+                if (handleImage != null)
+                {
+                    handleImage.sprite = earth;
+                }
+            }
         }
 
         // Jupiter
         else if (gravityForce > 20 && gravityForce < 40)
         {
             _slider.value = Mathf.Log((24.8f - A) / B) / C;
+            // Find the slider handle and change its image
+            Transform handleTransform = _slider.transform.Find("Handle Slide Area").Find("Handle");
+            if (handleTransform != null)
+            {
+                Image handleImage = handleTransform.GetComponent<Image>();
+                if (handleImage != null)
+                {
+                    handleImage.sprite = jupiter;
+                }
+            }
         }
 
         // Sun
         else if (gravityForce > 200 && gravityForce < 274)
         {
             _slider.value = 1;
+            // Find the slider handle and change its image
+            Transform handleTransform = _slider.transform.Find("Handle Slide Area").Find("Handle");
+            if (handleTransform != null)
+            {
+                Image handleImage = handleTransform.GetComponent<Image>();
+                if (handleImage != null)
+                {
+                    handleImage.sprite = sun;
+                }
+            }
         }
     }
 }
