@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using AirResistance2;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using Vuforia;
 using Random = UnityEngine.Random;
 
@@ -127,5 +129,14 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
     public void changeDebugText(string val)
     {
         _debugText.text = val;
+    }
+
+    public static void ClearItems()
+    {
+        GameObject[] items = GameObject.FindGameObjectsWithTag("Toothbrush");
+        foreach (GameObject item in items)
+        {
+            Destroy(item);
+        }
     }
 }
