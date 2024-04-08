@@ -15,7 +15,6 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
     [SerializeField] private ContentPositioningBehaviour _contentPositioningBehaviour;
     [SerializeField] private List<GameObject> spawnPrefabs;
     [SerializeField] private TextMeshProUGUI _debugText;
-    [SerializeField] private RectTransform removePanel;
     [SerializeField] private float gravityForce;
     private RaycastHit hit;
 
@@ -23,70 +22,24 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
     {
         if (Input.touchCount == 1) {
            for (int i = 0; i < Input.touchCount; i++)
-            {
-                if (!objectContainer.activeInHierarchy) continue;
-                Touch touch = Input.GetTouch(0);
-                if (touch.phase != TouchPhase.Began) continue;
-                Ray ray = Camera.main.ScreenPointToRay(touch.position);
-                changeDebugText("Raycast initialized");
-
-                // remove previously selected item
-                if (hit.collider != null)
-                {
-                    hit.collider.GetComponent<Highlight>()?.ToggleHighlight(false);
-                }
+           {
+               if (!objectContainer.activeInHierarchy) continue;
+               Touch touch = Input.GetTouch(0);
+               if (touch.phase != TouchPhase.Began) continue;
+               Ray ray = Camera.main.ScreenPointToRay(touch.position);
+               changeDebugText("Raycast initialized");
                 
-                if (Physics.Raycast(ray, out hit))
-                {
-                    changeDebugText("Raycast hit " + hit.collider.name);
+               if (Physics.Raycast(ray, out hit))
+               {
+                   changeDebugText("Raycast hit " + hit.collider.name);
 
-                    if (!hit.collider.CompareTag("Toothbrush")) continue;
+                   if (!hit.collider.CompareTag("Toothbrush")) continue;
 
-                    // highlight selected item
-                    hit.collider.GetComponent<Highlight>()?.ToggleHighlight(true);
-
-                    removePanel.gameObject.SetActive(true);
-                    removePanel.anchoredPosition3D = (Vector2)Camera.main.WorldToScreenPoint(hit.point);
-                    changeDebugText(Camera.main.WorldToScreenPoint(hit.point).ToString());
-
-                    // TODO: Remove panel on tap outside of ui
-                    // TODO: Spawn panel to the left if the object is too far right
-                }
-            }
-        }
-        else if (Input.touchCount == 2)
-        {
-            for (int i = 0; i < Input.touchCount; i++)
-            {
-                if (!objectContainer.activeInHierarchy) continue;
-                Touch touch = Input.GetTouch(i);
-                if (touch.phase != TouchPhase.Began) continue;
-                Ray ray = Camera.main.ScreenPointToRay(touch.position);
-                RaycastHit hit;
-                changeDebugText("Raycast initialized");
-                if (Physics.Raycast(ray, out hit))
-                {
-                    changeDebugText("Raycast hit " + hit.collider.name);
-                    if (!hit.collider.CompareTag("Toothbrush")) continue;
-                    changeDebugText("Deleted " + hit.collider.name);
-                    Destroy(hit.collider.gameObject);
-                }
-            }
-        }
-        else if (Input.touchCount == 3)
-        {
-            for (int i = 0; i < Input.touchCount; i++)
-            {
-                if (!objectContainer.activeInHierarchy) continue;
-                Touch touch = Input.GetTouch(i);
-                if (touch.phase != TouchPhase.Began) continue;
-                if (spawnPrefabs.Count == 0) continue;
-                GameObject prefabObject = spawnPrefabs[Random.Range(0, spawnPrefabs.Count - 1)];
-                GameObject newObject = Instantiate(prefabObject, objectContainer.transform.position + Vector3.up,
-                    Random.rotation);
-                newObject.GetComponent<GravModObject>().gravityForce = gravityForce;
-                newObject.SetActive(true);
-            }
+                   changeDebugText(Camera.main.WorldToScreenPoint(hit.point).ToString());
+                   hit.collider.GetComponent<Rigidbody>().AddForce(Vector3.up * 75);
+                   changeDebugText("Applied force to " + hit.collider.name);
+               }
+           }
         }
     }
 
@@ -138,5 +91,19 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
         {
             Destroy(item);
         }
+    }
+
+    public void SpawnPrefab(int prefabNum)
+    {
+        changeDebugText("Try spawn prefab " + prefabNum + " out of " + spawnPrefabs.Count + " prefabs");
+        if (prefabNum < 0 || prefabNum >= spawnPrefabs.Count) return;
+        changeDebugText("Attempt to spawn prefab " + prefabNum);
+        GameObject prefabObject = spawnPrefabs[prefabNum];
+        GameObject newObject = Instantiate(prefabObject, objectContainer.transform.position + Vector3.up,
+            Random.rotation);
+        newObject.GetComponent<GravModObject>().gravityForce = gravityForce;
+        changeDebugText("Prefab spawned");
+        newObject.SetActive(true);
+        changeDebugText("Prefab spawned DONE");
     }
 }

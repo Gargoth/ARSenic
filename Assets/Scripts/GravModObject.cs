@@ -6,6 +6,7 @@ using UnityEngine;
 public class GravModObject : MonoBehaviour
 {
     public float gravityForce;
+    public float floatForce;
 
     Rigidbody _rb;
 
@@ -16,6 +17,6 @@ public class GravModObject : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rb.AddForce(Vector3.down * gravityForce);
+        _rb.AddForce(Vector3.down * (gravityForce - floatForce), ForceMode.Acceleration);
     }
 }
