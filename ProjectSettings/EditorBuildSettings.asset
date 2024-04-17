@@ -12,14 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Home.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/SAnalytics.unity
-    guid: ec0113aec75ab40f4b7b26fa31332e33
-  - enabled: 1
     path: Assets/Scenes/Settings.unity
     guid: 8b68757e67001424d899f77d98d556df
-  - enabled: 1
-    path: Assets/Scenes/Login.unity
-    guid: ca36985c62dd7435ea8af2f426cc3e45
   - enabled: 1
     path: Assets/Scenes/GravityModule.unity
     guid: a02be14140bb55a4faa3230ec7a888a4

@@ -76,7 +76,7 @@ public class LoginSceneManagerScript : Singleton<LoginSceneManagerScript>
                 if (AuthenticationService.Instance.IsSignedIn)
                 {
                     Debug.Log("Moving Scene to Camera");
-                    GameManagerScript.MoveToScene("SCamera");
+                    GameManagerScript.MoveToScene("Home");
                 }
             });
     }
@@ -94,7 +94,7 @@ public class LoginSceneManagerScript : Singleton<LoginSceneManagerScript>
                 if (AuthenticationService.Instance.IsSignedIn)
                 {
                     Debug.Log("Moving Scene to Camera");
-                    GameManagerScript.MoveToScene("SCamera");
+                    GameManagerScript.MoveToScene("Home");
                 }
             });
     }
