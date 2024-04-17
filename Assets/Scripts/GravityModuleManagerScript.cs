@@ -1,11 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using AirResistance2;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 using Vuforia;
 using Random = UnityEngine.Random;
 
@@ -16,7 +13,13 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
     [SerializeField] private List<GameObject> spawnPrefabs;
     [SerializeField] private TextMeshProUGUI _debugText;
     [SerializeField] private float gravityForce;
+    private bool isAirResOn;
     private RaycastHit hit;
+
+    private void Start()
+    {
+        isAirResOn = true;
+    }
 
     void Update()
     {
@@ -27,17 +30,17 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
                Touch touch = Input.GetTouch(0);
                if (touch.phase != TouchPhase.Began) continue;
                Ray ray = Camera.main.ScreenPointToRay(touch.position);
-               changeDebugText("Raycast initialized");
-                
-               if (Physics.Raycast(ray, out hit))
+               // ChangeDebugText("Raycast initialized");
+               int mask = ~(1 << 2);
+               if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
                {
-                   changeDebugText("Raycast hit " + hit.collider.name);
+                   // ChangeDebugText("Raycast hit " + hit.collider.name);
 
                    if (!hit.collider.CompareTag("Toothbrush")) continue;
 
-                   changeDebugText(Camera.main.WorldToScreenPoint(hit.point).ToString());
-                   hit.collider.GetComponent<Rigidbody>().AddForce(Vector3.up * 75);
-                   changeDebugText("Applied force to " + hit.collider.name);
+                   // ChangeDebugText(Camera.main.WorldToScreenPoint(hit.point).ToString());
+                   hit.collider.GetComponent<Rigidbody>().AddForce(Vector3.up * 125);
+                   // ChangeDebugText("Applied force to " + hit.collider.name);
                }
            }
         }
@@ -63,23 +66,20 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
         float B = Mathf.Pow((y-x),2) / (x - 2 * y + z);
         float C = 2 * Mathf.Log((z-y) / (y-x));
         gravityForce = (A + B * Mathf.Exp(C * sliderValue));
-        GameObject[] spawnedObjects = GameObject.FindGameObjectsWithTag("Toothbrush");
-        foreach (GameObject obj in spawnedObjects)
-        {
-            obj.GetComponent<GravModObject>().gravityForce = gravityForce;
-        }
+        Physics.gravity = Vector3.down * (gravityForce);
     }
 
     public void UpdateAirResistance(bool isEnabled)
     {
+        isAirResOn = isEnabled;
         GameObject[] spawnedObjects = GameObject.FindGameObjectsWithTag("Toothbrush");
         foreach (GameObject obj in spawnedObjects)
         {
-            obj.GetComponent<AirResistance>().enabled = isEnabled;
+            obj.GetComponent<AirResistance>().enabled = isAirResOn;
         }
     }
 
-    public void changeDebugText(string val)
+    public void ChangeDebugText(string val)
     {
         _debugText.text = val;
     }
@@ -95,15 +95,15 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
 
     public void SpawnPrefab(int prefabNum)
     {
-        changeDebugText("Try spawn prefab " + prefabNum + " out of " + spawnPrefabs.Count + " prefabs");
+        // ChangeDebugText("Try spawn prefab " + prefabNum + " out of " + spawnPrefabs.Count + " prefabs");
         if (prefabNum < 0 || prefabNum >= spawnPrefabs.Count) return;
-        changeDebugText("Attempt to spawn prefab " + prefabNum);
+        // ChangeDebugText("Attempt to spawn prefab " + prefabNum);
         GameObject prefabObject = spawnPrefabs[prefabNum];
-        GameObject newObject = Instantiate(prefabObject, objectContainer.transform.position + Vector3.up,
+        GameObject newObject = Instantiate(prefabObject, objectContainer.transform.position + Vector3.up*0.25f,
             Random.rotation);
-        newObject.GetComponent<GravModObject>().gravityForce = gravityForce;
-        changeDebugText("Prefab spawned");
+        // ChangeDebugText("Prefab spawned");
         newObject.SetActive(true);
-        changeDebugText("Prefab spawned DONE");
+        // ChangeDebugText("Prefab spawned DONE");
+        newObject.GetComponent<AirResistance>().enabled = isAirResOn;
     }
 }
