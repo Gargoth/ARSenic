@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2259abb5766d4142be1b125146b51ad, type: 3}
   m_Name: AirResistanceDefaults
   m_EditorClassIdentifier: 
-  defaultAirDensity: 1.225
-  defaultDensityVariation: 0.5
+  defaultAirDensity: 8
+  defaultDensityVariation: 1
