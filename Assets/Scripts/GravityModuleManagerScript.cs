@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using AirResistance2;
 using TMPro;
 using UnityEngine;
-using Vuforia;
 using Random = UnityEngine.Random;
 
 public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
 {
     [SerializeField] private GameObject objectContainer;
-    [SerializeField] private ContentPositioningBehaviour _contentPositioningBehaviour;
     [SerializeField] private List<GameObject> spawnPrefabs;
     [SerializeField] private TextMeshProUGUI _debugText;
     [SerializeField] private float gravityForce;
@@ -44,17 +42,6 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
                }
            }
         }
-    }
-
-    public void HandlePlaneFinderHit(HitTestResult hitTestResult)
-    {
-        if (!objectContainer.activeInHierarchy)
-            _contentPositioningBehaviour.PositionContentAtPlaneAnchor(hitTestResult);
-    }
-
-    public void SetActiveObjectContainer(bool value)
-    {
-        objectContainer.SetActive(value);
     }
 
     public void UpdateGravity(Single sliderValue)
