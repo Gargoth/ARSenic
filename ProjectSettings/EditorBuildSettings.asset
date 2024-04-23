@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GravityModule.unity
     guid: a02be14140bb55a4faa3230ec7a888a4
+  - enabled: 1
+    path: Assets/Scenes/Level Select.unity
+    guid: 7980987fc7dd544af98882df37a020fe
+  - enabled: 1
+    path: Assets/Scenes/FrictionModule.unity
+    guid: 13d30fa2c112542b7838929452a2c624
   m_configObjects: {}
