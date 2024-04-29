@@ -1987,8 +1987,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1118047545}
-  - {fileID: 2005534256}
   - {fileID: 720731584}
+  - {fileID: 2005534256}
   m_Father: {fileID: 1409556295}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2229,6 +2229,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  pushButtonObj: {fileID: 0}
+  fillMaskObj: {fileID: 0}
 --- !u!4 &1342941454
 Transform:
   m_ObjectHideFlags: 0
@@ -3762,7 +3764,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 21c4f7293a58d4d69aa2b2abffb31546, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ffe3974e78912a543b3caf1f08c4a403, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
