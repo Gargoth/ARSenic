@@ -1,0 +1,1340 @@
+fileFormatVersion: 2
+guid: 6493d014d889aea43a8e0a9a8a0dde55
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: GUI3_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1209
+        width: 258
+        height: 207
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3.5742188, y: -103.28359}
+        - {x: 10.722656, y: -103.28359}
+        - {x: 10.722656, y: -93.27707}
+        - {x: 7.8632812, y: -90.41806}
+        - {x: 3.5742188, y: -91.847565}
+      - - {x: 10.722656, y: -103.28359}
+        - {x: 17.871094, y: -103.28359}
+        - {x: 17.871094, y: -93.27707}
+        - {x: 15.011719, y: -90.41806}
+        - {x: 10.722656, y: -91.847565}
+      - - {x: 47.89453, y: -68.97552}
+        - {x: 47.89453, y: -73.26403}
+        - {x: 50.753906, y: -76.12303}
+        - {x: 72.19922, y: -76.12303}
+        - {x: 75.05859, y: -78.98204}
+        - {x: 76.48828, y: -78.98204}
+        - {x: 79.34766, y: -76.12303}
+        - {x: 79.34766, y: -67.54602}
+        - {x: 76.48828, y: -64.68701}
+        - {x: 50.753906, y: -64.68701}
+        - {x: 53.61328, y: -60.398502}
+        - {x: 55.04297, y: -60.398502}
+        - {x: 60.76172, y: -54.680492}
+        - {x: 60.76172, y: -51.821487}
+        - {x: 66.48047, y: -47.532978}
+        - {x: 67.91016, y: -44.673973}
+        - {x: 70.76953, y: -43.24447}
+        - {x: 70.76953, y: -37.52646}
+        - {x: 75.05859, y: -30.378942}
+        - {x: 76.48828, y: -27.519938}
+        - {x: 82.20703, y: -27.519938}
+        - {x: 85.06641, y: -24.66093}
+        - {x: 87.92578, y: -27.519938}
+        - {x: 90.78516, y: -27.519938}
+        - {x: 96.50391, y: -20.372423}
+        - {x: 96.50391, y: -16.083914}
+        - {x: 93.64453, y: -13.224908}
+        - {x: 93.64453, y: 1.0701205}
+        - {x: 90.78516, y: 3.929126}
+        - {x: 89.35547, y: 3.929126}
+        - {x: 86.49609, y: 8.217635}
+        - {x: 82.20703, y: 9.647138}
+        - {x: 73.62891, y: 11.07664}
+        - {x: 72.19922, y: 9.647138}
+        - {x: 66.48047, y: 9.647138}
+        - {x: 66.48047, y: 15.3651495}
+        - {x: 70.76953, y: 16.794651}
+        - {x: 70.76953, y: 35.37819}
+        - {x: 65.05078, y: 39.6667}
+        - {x: 65.05078, y: 45.38471}
+        - {x: 62.191406, y: 48.243713}
+        - {x: 62.191406, y: 52.532223}
+        - {x: 53.61328, y: 63.968246}
+        - {x: 53.61328, y: 68.25675}
+        - {x: 50.753906, y: 71.11576}
+        - {x: 47.89453, y: 71.11576}
+        - {x: 43.60547, y: 75.40427}
+        - {x: 45.035156, y: 78.263275}
+        - {x: 45.035156, y: 86.840294}
+        - {x: 42.17578, y: 89.699295}
+        - {x: 33.597656, y: 89.699295}
+        - {x: 29.308594, y: 85.41079}
+        - {x: 20.730469, y: 89.699295}
+        - {x: 9.292969, y: 91.1288}
+        - {x: 7.8632812, y: 92.558304}
+        - {x: -9.292969, y: 92.558304}
+        - {x: -10.722656, y: 91.1288}
+        - {x: -16.441406, y: 91.1288}
+        - {x: -17.871094, y: 89.699295}
+        - {x: -20.730469, y: 89.699295}
+        - {x: -25.019531, y: 86.840294}
+        - {x: -29.308594, y: 86.840294}
+        - {x: -36.45703, y: 81.122284}
+        - {x: -42.17578, y: 79.69278}
+        - {x: -53.61328, y: 66.827255}
+        - {x: -53.61328, y: 65.39775}
+        - {x: -59.33203, y: 59.679737}
+        - {x: -59.33203, y: 58.250237}
+        - {x: -63.621094, y: 52.532223}
+        - {x: -63.621094, y: 48.243713}
+        - {x: -66.48047, y: 43.955208}
+        - {x: -67.91016, y: 29.660177}
+        - {x: -69.33984, y: 29.660177}
+        - {x: -72.19922, y: 28.230675}
+        - {x: -72.19922, y: 18.224155}
+        - {x: -67.91016, y: 13.935646}
+        - {x: -66.48047, y: 6.7881317}
+        - {x: -65.05078, y: 5.358629}
+        - {x: -63.621094, y: -1.7888854}
+        - {x: -59.33203, y: -11.795405}
+        - {x: -55.04297, y: -14.654411}
+        - {x: -55.04297, y: -16.083914}
+        - {x: -40.746094, y: -30.378942}
+        - {x: -39.316406, y: -30.378942}
+        - {x: -35.027344, y: -36.096954}
+        - {x: -32.16797, y: -36.096954}
+        - {x: -30.738281, y: -37.52646}
+        - {x: -30.738281, y: -44.673973}
+        - {x: -43.60547, y: -44.673973}
+        - {x: -46.464844, y: -46.103474}
+        - {x: -47.89453, y: -50.391983}
+        - {x: -47.89453, y: -84.70005}
+        - {x: -42.17578, y: -90.41806}
+        - {x: 42.17578, y: -90.41806}
+        - {x: 45.035156, y: -88.98856}
+        - {x: 46.464844, y: -84.70005}
+        - {x: 46.464844, y: -67.54602}
+      - - {x: 95.07422, y: -38.95596}
+        - {x: 90.78516, y: -40.385464}
+        - {x: 90.78516, y: -51.821487}
+        - {x: 93.64453, y: -53.250988}
+        - {x: 102.22266, y: -53.250988}
+        - {x: 105.08203, y: -50.391983}
+        - {x: 105.08203, y: -41.814964}
+        - {x: 102.22266, y: -38.95596}
+      - - {x: 43.60547, y: -46.103474}
+        - {x: 40.746094, y: -43.24447}
+        - {x: 30.738281, y: -43.24447}
+        - {x: 30.738281, y: -37.52646}
+        - {x: 33.597656, y: -37.52646}
+        - {x: 42.17578, y: -31.808445}
+        - {x: 43.60547, y: -28.94944}
+        - {x: 47.89453, y: -27.519938}
+        - {x: 55.04297, y: -18.942919}
+        - {x: 55.04297, y: -17.513416}
+        - {x: 57.902344, y: -14.654411}
+        - {x: 57.902344, y: -13.224908}
+        - {x: 56.472656, y: -13.224908}
+        - {x: 57.902344, y: -17.513416}
+        - {x: 63.621094, y: -23.231428}
+        - {x: 63.621094, y: -26.090433}
+        - {x: 56.472656, y: -38.95596}
+        - {x: 49.32422, y: -47.532978}
+        - {x: 46.464844, y: -46.103474}
+      - - {x: -95.07422, y: -21.801926}
+        - {x: -97.93359, y: -24.66093}
+        - {x: -97.93359, y: -33.23795}
+        - {x: -95.07422, y: -36.096954}
+        - {x: -69.33984, y: -36.096954}
+        - {x: -66.48047, y: -33.23795}
+        - {x: -66.48047, y: -24.66093}
+        - {x: -69.33984, y: -21.801926}
+      - - {x: 117.94922, y: -13.224908}
+        - {x: 116.51953, y: -17.513416}
+        - {x: 116.51953, y: -27.519938}
+        - {x: 127.95703, y: -27.519938}
+        - {x: 129, y: -26.090433}
+        - {x: 129, y: -14.654411}
+        - {x: 127.95703, y: -13.224908}
+      - - {x: -110.80078, y: -4.647891}
+        - {x: -117.94922, y: -4.647891}
+        - {x: -119.37891, y: -3.218388}
+        - {x: -117.94922, y: -0.35938245}
+        - {x: -122.23828, y: 3.929126}
+        - {x: -125.09766, y: 2.4996233}
+        - {x: -126.52734, y: 3.929126}
+        - {x: -129, y: 3.929126}
+        - {x: -129, y: -10.365903}
+        - {x: -123.66797, y: -10.365903}
+        - {x: -123.66797, y: -16.083914}
+        - {x: -120.80859, y: -18.942919}
+        - {x: -112.23047, y: -18.942919}
+        - {x: -109.37109, y: -16.083914}
+        - {x: -109.37109, y: -8.936399}
+      - - {x: -85.06641, y: 12.506144}
+        - {x: -83.63672, y: 16.794651}
+        - {x: -86.49609, y: 19.653658}
+        - {x: -90.78516, y: 19.653658}
+        - {x: -92.21484, y: 21.08316}
+        - {x: -93.64453, y: 26.801172}
+        - {x: -96.50391, y: 29.660177}
+        - {x: -112.23047, y: 29.660177}
+        - {x: -115.08984, y: 26.801172}
+        - {x: -120.80859, y: 26.801172}
+        - {x: -123.66797, y: 23.942165}
+        - {x: -123.66797, y: 22.512663}
+        - {x: -119.37891, y: 18.224155}
+        - {x: -115.08984, y: 18.224155}
+        - {x: -112.23047, y: 15.3651495}
+        - {x: -109.37109, y: 15.3651495}
+        - {x: -109.37109, y: 9.647138}
+        - {x: -106.51172, y: 6.7881317}
+        - {x: -103.65234, y: 6.7881317}
+        - {x: -102.22266, y: 5.358629}
+        - {x: -96.50391, y: 5.358629}
+        - {x: -95.07422, y: 3.929126}
+        - {x: -87.92578, y: 3.929126}
+        - {x: -86.49609, y: 2.4996233}
+        - {x: -79.34766, y: 2.4996233}
+        - {x: -76.48828, y: 5.358629}
+        - {x: -76.48828, y: 8.217635}
+        - {x: -79.34766, y: 11.07664}
+      - - {x: 103.65234, y: 21.08316}
+        - {x: 99.36328, y: 19.653658}
+        - {x: 97.93359, y: 9.647138}
+        - {x: 102.22266, y: 3.929126}
+        - {x: 107.94141, y: 5.358629}
+        - {x: 113.66016, y: 12.506144}
+        - {x: 113.66016, y: 18.224155}
+        - {x: 110.80078, y: 21.08316}
+      - - {x: 102.22266, y: 32.519184}
+        - {x: 105.08203, y: 35.37819}
+        - {x: 106.51172, y: 43.955208}
+        - {x: 105.08203, y: 45.38471}
+        - {x: 105.08203, y: 48.243713}
+        - {x: 106.51172, y: 49.673218}
+        - {x: 110.80078, y: 49.673218}
+        - {x: 113.66016, y: 52.532223}
+        - {x: 113.66016, y: 55.391228}
+        - {x: 110.80078, y: 58.250237}
+        - {x: 107.94141, y: 58.250237}
+        - {x: 107.94141, y: 61.10924}
+        - {x: 105.08203, y: 63.968246}
+        - {x: 102.22266, y: 63.968246}
+        - {x: 99.36328, y: 61.10924}
+        - {x: 99.36328, y: 56.820732}
+        - {x: 97.93359, y: 55.391228}
+        - {x: 92.21484, y: 55.391228}
+        - {x: 89.35547, y: 53.961727}
+        - {x: 86.49609, y: 55.391228}
+        - {x: 82.20703, y: 51.102722}
+        - {x: 82.20703, y: 43.955208}
+        - {x: 83.63672, y: 42.525703}
+        - {x: 82.20703, y: 41.0962}
+        - {x: 82.20703, y: 36.807693}
+        - {x: 76.48828, y: 32.519184}
+        - {x: 73.62891, y: 31.08968}
+        - {x: 73.62891, y: 26.801172}
+        - {x: 76.48828, y: 23.942165}
+        - {x: 85.06641, y: 23.942165}
+        - {x: 87.92578, y: 26.801172}
+        - {x: 87.92578, y: 29.660177}
+        - {x: 93.64453, y: 32.519184}
+      - - {x: 125.09766, y: 26.801172}
+        - {x: 127.95703, y: 23.942165}
+        - {x: 129, y: 23.942165}
+        - {x: 129, y: 36.807693}
+        - {x: 125.09766, y: 35.37819}
+      - - {x: -79.34766, y: 55.391228}
+        - {x: -86.49609, y: 55.391228}
+        - {x: -89.35547, y: 52.532223}
+        - {x: -89.35547, y: 43.955208}
+        - {x: -86.49609, y: 41.0962}
+        - {x: -83.63672, y: 41.0962}
+        - {x: -83.63672, y: 39.6667}
+        - {x: -76.48828, y: 33.948685}
+        - {x: -72.19922, y: 35.37819}
+        - {x: -70.76953, y: 43.955208}
+        - {x: -75.05859, y: 49.673218}
+        - {x: -75.05859, y: 51.102722}
+      - - {x: -95.07422, y: 62.538742}
+        - {x: -102.22266, y: 62.538742}
+        - {x: -103.65234, y: 63.968246}
+        - {x: -129, y: 63.968246}
+        - {x: -129, y: 49.673218}
+        - {x: -103.65234, y: 49.673218}
+        - {x: -95.07422, y: 51.102722}
+        - {x: -92.21484, y: 53.961727}
+        - {x: -92.21484, y: 59.679737}
+      - - {x: 125.09766, y: 66.827255}
+        - {x: 125.09766, y: 62.538742}
+        - {x: 127.95703, y: 59.679737}
+        - {x: 129, y: 59.679737}
+        - {x: 129, y: 79.69278}
+        - {x: 127.95703, y: 81.122284}
+        - {x: 122.23828, y: 81.122284}
+        - {x: 122.23828, y: 86.840294}
+        - {x: 119.37891, y: 89.699295}
+        - {x: 113.66016, y: 89.699295}
+        - {x: 113.66016, y: 95.41731}
+        - {x: 110.80078, y: 98.27631}
+        - {x: 102.22266, y: 98.27631}
+        - {x: 99.36328, y: 95.41731}
+        - {x: 99.36328, y: 88.2698}
+        - {x: 102.22266, y: 85.41079}
+        - {x: 107.94141, y: 83.981285}
+        - {x: 107.94141, y: 79.69278}
+        - {x: 112.23047, y: 75.40427}
+        - {x: 116.51953, y: 75.40427}
+        - {x: 116.51953, y: 72.545265}
+        - {x: 110.80078, y: 72.545265}
+        - {x: 107.94141, y: 69.68626}
+        - {x: 109.37109, y: 66.827255}
+        - {x: 107.94141, y: 63.968246}
+        - {x: 113.66016, y: 58.250237}
+        - {x: 116.51953, y: 59.679737}
+        - {x: 117.94922, y: 58.250237}
+        - {x: 122.23828, y: 59.679737}
+        - {x: 122.23828, y: 66.827255}
+      - - {x: 85.06641, y: 81.122284}
+        - {x: 67.91016, y: 81.122284}
+        - {x: 65.05078, y: 78.263275}
+        - {x: 65.05078, y: 71.11576}
+        - {x: 67.91016, y: 65.39775}
+        - {x: 72.19922, y: 63.968246}
+        - {x: 76.48828, y: 63.968246}
+        - {x: 85.06641, y: 66.827255}
+        - {x: 87.92578, y: 69.68626}
+        - {x: 87.92578, y: 78.263275}
+      - - {x: -62.191406, y: 83.981285}
+        - {x: -57.902344, y: 88.2698}
+        - {x: -57.902344, y: 92.558304}
+        - {x: -53.61328, y: 92.558304}
+        - {x: -49.32422, y: 96.84681}
+        - {x: -49.32422, y: 103.5}
+        - {x: -50.753906, y: 103.5}
+        - {x: -62.191406, y: 103.5}
+        - {x: -63.621094, y: 103.5}
+        - {x: -63.621094, y: 98.27631}
+        - {x: -69.33984, y: 98.27631}
+        - {x: -72.19922, y: 95.41731}
+        - {x: -72.19922, y: 89.699295}
+        - {x: -83.63672, y: 89.699295}
+        - {x: -83.63672, y: 95.41731}
+        - {x: -86.49609, y: 98.27631}
+        - {x: -95.07422, y: 98.27631}
+        - {x: -97.93359, y: 95.41731}
+        - {x: -97.93359, y: 88.2698}
+        - {x: -93.64453, y: 83.981285}
+        - {x: -89.35547, y: 83.981285}
+        - {x: -89.35547, y: 79.69278}
+        - {x: -85.06641, y: 75.40427}
+        - {x: -70.76953, y: 75.40427}
+        - {x: -66.48047, y: 79.69278}
+        - {x: -66.48047, y: 83.981285}
+      - - {x: 85.06641, y: 101.13532}
+        - {x: 87.92578, y: 103.5}
+        - {x: 87.92578, y: 103.5}
+        - {x: 65.05078, y: 103.5}
+        - {x: 66.48047, y: 101.13532}
+        - {x: 73.62891, y: 101.13532}
+        - {x: 76.48828, y: 102.56483}
+        - {x: 77.91797, y: 101.13532}
+      physicsShape: []
+      tessellationDetail: 1
+      bones: []
+      spriteID: a2c278fdd60cfcb4384bbec50c72d2f0
+      internalID: -1414570816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_1
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 1209
+        width: 205
+        height: 207
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc3d5d0c149507c4290523c337eb2cd8
+      internalID: -758505695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_2
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 1209
+        width: 209
+        height: 207
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3b43f906cc717344b32b0a8d64f58c5
+      internalID: 1386696684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_3
+      rect:
+        serializedVersion: 2
+        x: 826
+        y: 1209
+        width: 206
+        height: 207
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18a177eecbdd0cc49a9fa75771fff55a
+      internalID: 693466067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_4
+      rect:
+        serializedVersion: 2
+        x: 1083
+        y: 1209
+        width: 307
+        height: 207
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9f62fee619f56f48b49a0792b1fa953
+      internalID: 1217561627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_5
+      rect:
+        serializedVersion: 2
+        x: 1435
+        y: 1209
+        width: 207
+        height: 207
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 298dc0a192c1801438d2cbb366a13501
+      internalID: -1778120334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_6
+      rect:
+        serializedVersion: 2
+        x: 1690
+        y: 1209
+        width: 208
+        height: 207
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee427244235605f44ac867be0ccabbff
+      internalID: 916414576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_7
+      rect:
+        serializedVersion: 2
+        x: 1951
+        y: 1209
+        width: 206
+        height: 207
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81219032fddaa594e958021f2932280d
+      internalID: -1498725517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_8
+      rect:
+        serializedVersion: 2
+        x: 2205
+        y: 1209
+        width: 209
+        height: 207
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eebc5a384805db648870656a62054d97
+      internalID: -857120932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_9
+      rect:
+        serializedVersion: 2
+        x: 2462
+        y: 1209
+        width: 212
+        height: 207
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9db4f34e2b74b26459f2c054d5af7c04
+      internalID: 881633307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_10
+      rect:
+        serializedVersion: 2
+        x: 2724
+        y: 1209
+        width: 204
+        height: 207
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 609b01df42d3ffe4aa71703d07c2e7bb
+      internalID: -646267304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 920
+        width: 262
+        height: 204
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5afb143fffbd3274f9ddadae71f78e55
+      internalID: -1600547886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_12
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 920
+        width: 160
+        height: 204
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d37b38bf5deef54dbd8f51a93db9c94
+      internalID: 368728759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_13
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 918
+        width: 185
+        height: 206
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73796ec86e0f3b143a2f2702b463adfe
+      internalID: 2139575977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_14
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 917
+        width: 210
+        height: 207
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f125749f4d6c8841995505b6550f63a
+      internalID: -957620438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_15
+      rect:
+        serializedVersion: 2
+        x: 986
+        y: 920
+        width: 204
+        height: 204
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7004d25bb44aa344fa759c38c04d10af
+      internalID: 680202623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_16
+      rect:
+        serializedVersion: 2
+        x: 1235
+        y: 920
+        width: 381
+        height: 204
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dcd5fa7ffbb8d64cb85c1f5ad5262e9
+      internalID: 1404351490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_17
+      rect:
+        serializedVersion: 2
+        x: 1660
+        y: 926
+        width: 402
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88016bbca66b9f84c8627cdc97220933
+      internalID: -362368153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_18
+      rect:
+        serializedVersion: 2
+        x: 2106
+        y: 927
+        width: 402
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9deb919e863d17e409c55a36d6fb5fb9
+      internalID: 855834024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_19
+      rect:
+        serializedVersion: 2
+        x: 2553
+        y: 917
+        width: 375
+        height: 207
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b6b788a8837da949aef702b3d1ef2a7
+      internalID: 410146500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 630
+        width: 204
+        height: 204
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc0dca62168c5a94ba47cd27fbb88b07
+      internalID: 306981208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_21
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 630
+        width: 205
+        height: 204
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c461061ee750dbf47989c4067c52db5c
+      internalID: -2085634930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_22
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 626
+        width: 205
+        height: 208
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bbbd2770f67f94489136d66ca9f6155
+      internalID: 1114712974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_23
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 628
+        width: 262
+        height: 206
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51b14c3489b9b4f4392c037b2f8c2c7c
+      internalID: 1020751324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_24
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 626
+        width: 269
+        height: 208
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c13db995bad886e4eb06c97c317f9424
+      internalID: 1271198578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_25
+      rect:
+        serializedVersion: 2
+        x: 1273
+        y: 630
+        width: 296
+        height: 204
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f13befa80a1a1e4b980901cdb8c391b
+      internalID: 339179142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_26
+      rect:
+        serializedVersion: 2
+        x: 1595
+        y: 626
+        width: 304
+        height: 208
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba611ec08a80a7f43bfdc7234068c90c
+      internalID: 512676044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_27
+      rect:
+        serializedVersion: 2
+        x: 1925
+        y: 626
+        width: 357
+        height: 208
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f814f392921dc741857573d5903363e
+      internalID: 1672046101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_28
+      rect:
+        serializedVersion: 2
+        x: 2310
+        y: 630
+        width: 387
+        height: 204
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8f736da0d2b54544a2892ce62c18879
+      internalID: -1517461852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_29
+      rect:
+        serializedVersion: 2
+        x: 2724
+        y: 630
+        width: 204
+        height: 204
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 647166631879660409b19754fb2bb2fe
+      internalID: 1501221256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 334
+        width: 206
+        height: 212
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8777cea5af5c3ab439feca0905d23bfd
+      internalID: -2127475963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_31
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 338
+        width: 185
+        height: 211
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4db9b8a4a607c6a468e3822d030be1a2
+      internalID: 1266268704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_32
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 337
+        width: 207
+        height: 212
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 838d50efdfd99534fbaee4292c871d4e
+      internalID: 1051415172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_33
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 338
+        width: 207
+        height: 211
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b26796bc15ebce244879579b0a820d12
+      internalID: 1121388378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_34
+      rect:
+        serializedVersion: 2
+        x: 1055
+        y: 334
+        width: 208
+        height: 211
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 186974d31a3b51a4dba6072fbd8c1731
+      internalID: -1187891626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_35
+      rect:
+        serializedVersion: 2
+        x: 1329
+        y: 337
+        width: 207
+        height: 212
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b521e9011e3572646bf4bedfc4d58f10
+      internalID: 1350646620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_36
+      rect:
+        serializedVersion: 2
+        x: 1601
+        y: 338
+        width: 205
+        height: 207
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a11426499c276e941931f3c7fa9f3827
+      internalID: 1788432089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_37
+      rect:
+        serializedVersion: 2
+        x: 1871
+        y: 338
+        width: 256
+        height: 207
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70e4614bbc9718a448404fa289cd102b
+      internalID: 2028583900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_38
+      rect:
+        serializedVersion: 2
+        x: 2191
+        y: 338
+        width: 343
+        height: 207
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb8357aa961e0fc449e8e28d5dc6a4d1
+      internalID: 1317507326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI3_39
+      rect:
+        serializedVersion: 2
+        x: 2596
+        y: 334
+        width: 332
+        height: 215
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdd7d5879b162f84090b6edb3d747f48
+      internalID: -1870814823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      GUI3_0: -1414570816
+      GUI3_1: -758505695
+      GUI3_10: -646267304
+      GUI3_11: -1600547886
+      GUI3_12: 368728759
+      GUI3_13: 2139575977
+      GUI3_14: -957620438
+      GUI3_15: 680202623
+      GUI3_16: 1404351490
+      GUI3_17: -362368153
+      GUI3_18: 855834024
+      GUI3_19: 410146500
+      GUI3_2: 1386696684
+      GUI3_20: 306981208
+      GUI3_21: -2085634930
+      GUI3_22: 1114712974
+      GUI3_23: 1020751324
+      GUI3_24: 1271198578
+      GUI3_25: 339179142
+      GUI3_26: 512676044
+      GUI3_27: 1672046101
+      GUI3_28: -1517461852
+      GUI3_29: 1501221256
+      GUI3_3: 693466067
+      GUI3_30: -2127475963
+      GUI3_31: 1266268704
+      GUI3_32: 1051415172
+      GUI3_33: 1121388378
+      GUI3_34: -1187891626
+      GUI3_35: 1350646620
+      GUI3_36: 1788432089
+      GUI3_37: 2028583900
+      GUI3_38: 1317507326
+      GUI3_39: -1870814823
+      GUI3_4: 1217561627
+      GUI3_5: -1778120334
+      GUI3_6: 916414576
+      GUI3_7: -1498725517
+      GUI3_8: -857120932
+      GUI3_9: 881633307
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
