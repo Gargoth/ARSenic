@@ -8,7 +8,6 @@ using System.Collections.Generic;
 
 public class GameManagerScript : Singleton<GameManagerScript>
 {
-    private List<string> textList = new List<string> { "First Text", "Second Text", "Third Text" }; // List of strings to cycle through
     private int currentIndex = 0; // Index to keep track of the current string in the list
     public static void DoLog(string log)
     {
@@ -39,9 +38,24 @@ public class GameManagerScript : Singleton<GameManagerScript>
     }
     public void TextChanger(TextMeshProUGUI displayText)
     {
-        displayText.text = textList[currentIndex];
-        
-        // Increment the current index, wrapping around to the start if necessary
-        currentIndex = (currentIndex + 1) % textList.Count;
+        // TODO: HELLO CEEJ IM SORRY IDK IF THERE'S A BETTER WAY TO DO THIS BUT IT WORKS HUHU
+        string currentSceneName = SceneManager.GetActiveScene().name;
+
+        string topicName = currentSceneName switch
+        {
+            "FrictionModule" => "friction",
+            _ => "",
+            // TODO(Lara): tutorial for Gravity
+            // populate when new scenes come up
+        };
+
+        if (topicName != "")
+        {
+            displayText.text = PersistentDataContainer.Instance.TopicTutorial[topicName][currentIndex];
+
+            // Increment the current index, wrapping around to the start if necessary
+            currentIndex = (currentIndex + 1) % PersistentDataContainer.Instance.TopicTutorial[topicName].Count;
+        }
     }
+    
 }
