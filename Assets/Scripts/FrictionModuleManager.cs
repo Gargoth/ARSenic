@@ -1,28 +1,25 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.UIElements;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class FrictionModuleManager : Singleton<FrictionModuleManager>
 {
     [SerializeField] GameObject objectContainer;
     [SerializeField] List<Material> materials;
     [SerializeField] List<PhysicMaterial> physicMaterials;
-    [SerializeField] GameObject pushButtonObj;
-    [SerializeField] GameObject fillMaskObj;
-    Image pushButton;
-    Image fillMask;
+    [SerializeField] List<GameObject> LevelPrefabs;
+    GameObject gameManager;
+    int selectedLevel;
     List<GameObject> selectedRoads;
     RaycastHit hit;
     List<int> uiTouchFingerIDs;
 
-    private void Awake()
+    void Awake()
     {
         selectedRoads = new List<GameObject>();
-        pushButton = pushButtonObj.GetComponent<Image>();
-        fillMask = fillMaskObj.GetComponent<Image>();
+        selectedLevel = PersistentDataContainer.Instance.selectedLevel;
+        Instantiate(LevelPrefabs[selectedLevel], objectContainer.transform);
     }
 
     void Update()
