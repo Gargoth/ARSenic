@@ -5,6 +5,8 @@ using UnityEngine;
 public class FrictionPlayerController : MonoBehaviour
 {
     [SerializeField] float maxPushForce;
+    Vector3 initialPos;
+    Quaternion initialRot;
     Transform directionObject;
     Rigidbody rb;
     
@@ -12,19 +14,22 @@ public class FrictionPlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         directionObject = transform.Find("Direction");
-        yield return null;
-        // DEBUG:
-        yield return new WaitForSeconds(2f);
-        PushPlayer(1f);
+        yield return new WaitForEndOfFrame();
+        initialPos = transform.position;
+        initialRot = transform.rotation;
     }
 
     public void PushPlayer(float pushCoefficient)
     {
         float pushForce = pushCoefficient * maxPushForce;
         Vector3 directionUnit = (directionObject.position - transform.position).normalized;
-        Debug.Log(pushForce);
-        Debug.Log(directionUnit);
-        Debug.Log(pushForce * directionUnit);
+        Debug.Log("Player pushed to direction with force: " + pushForce);
         rb.AddForce(pushForce * directionUnit);
+    }
+
+    public void ResetPlayer()
+    {
+        transform.position = initialPos;
+        transform.rotation = initialRot;
     }
 }

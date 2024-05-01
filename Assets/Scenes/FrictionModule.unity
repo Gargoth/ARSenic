@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 58698536}
   - component: {fileID: 58698535}
   m_Layer: 5
-  m_Name: Mask
+  m_Name: Fill Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -304,7 +304,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -538,6 +538,7 @@ GameObject:
   - component: {fileID: 258067480}
   - component: {fileID: 258067479}
   - component: {fileID: 258067478}
+  - component: {fileID: 258067481}
   m_Layer: 5
   m_Name: Push Button
   m_TagString: Untagged
@@ -647,6 +648,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 258067476}
   m_CullTransparentMesh: 1
+--- !u!114 &258067481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258067476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1342941453}
+          m_TargetAssemblyTypeName: FrictionModuleManager, Assembly-CSharp
+          m_MethodName: OnPushButtonDown
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1342941453}
+          m_TargetAssemblyTypeName: FrictionModuleManager, Assembly-CSharp
+          m_MethodName: OnPushButtonExit
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1342941453}
+          m_TargetAssemblyTypeName: FrictionModuleManager, Assembly-CSharp
+          m_MethodName: OnPushButtonUp
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &326309020
 GameObject:
   m_ObjectHideFlags: 0
@@ -3064,16 +3126,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _persistent: 1
   objectContainer: {fileID: 658065694}
+  progressMask: {fileID: 58698533}
   materials:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   physicMaterials:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  LevelPrefabs:
+  - {fileID: 13400000, guid: 8c3d03df653c95f48afa9fe988113d30, type: 2}
+  - {fileID: 13400000, guid: 45278116894220b4ca410b22f979d225, type: 2}
+  - {fileID: 13400000, guid: 9339027584e14cd45a84bea57f002425, type: 2}
+  levelPrefabs:
   - {fileID: 5445749609925521939, guid: 5948f2742b8f9024ab68cc2d5ae4757f, type: 3}
+  pushProgressRate: 1
 --- !u!4 &1342941454
 Transform:
   m_ObjectHideFlags: 0
@@ -3602,6 +3666,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1342941453}
+        m_TargetAssemblyTypeName: FrictionModuleManager, Assembly-CSharp
+        m_MethodName: HandleTargetFound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   OnTargetLost:
     m_PersistentCalls:
       m_Calls:
@@ -3609,6 +3685,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: ARManager, Assembly-CSharp
         m_MethodName: SetActiveObjectContainer
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1342941453}
+        m_TargetAssemblyTypeName: FrictionModuleManager, Assembly-CSharp
+        m_MethodName: HandleTargetLost
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

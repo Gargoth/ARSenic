@@ -1,46 +1,69 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class FrictionModuleManager : Singleton<FrictionModuleManager>
 {
     [SerializeField] GameObject objectContainer;
+    [SerializeField] GameObject progressMask;
     [SerializeField] List<Material> materials;
     [SerializeField] List<PhysicMaterial> physicMaterials;
-    [SerializeField] List<GameObject> LevelPrefabs;
-    GameObject gameManager;
-    int selectedLevel;
+    [SerializeField] List<GameObject> levelPrefabs;
+    [SerializeField] float pushProgressRate;
+    
+    [Header("DEBUG")]
+    [SerializeField] bool isTargetFound = false;
+    [SerializeField] bool canPush = true;
+    [SerializeField] bool forceReset = false;
+    
     List<GameObject> selectedRoads;
-    RaycastHit hit;
     List<int> uiTouchFingerIDs;
+    FrictionPlayerController player;
+    RaycastHit hit;
+    float pushProgress;
+    bool isPushButton = false;
 
     void Awake()
     {
+    }
+
+    IEnumerator Start()
+    {
         selectedRoads = new List<GameObject>();
-        selectedLevel = PersistentDataContainer.Instance.selectedLevel;
-        Instantiate(LevelPrefabs[selectedLevel], objectContainer.transform);
+        int selectedLevel = PersistentDataContainer.Instance.selectedLevel;
+        Instantiate(levelPrefabs[selectedLevel], objectContainer.transform);
+        yield return null;
     }
 
     void Update()
     {
-        var mainCam = Camera.main;
-        for (int i = 0; i < Input.touchCount; i++)
+        if (isPushButton)
         {
-            // Graphics Raycasts
-            Touch touch = Input.GetTouch(i);
-            /* TODO: Use graphics raycast to check if touch is on pushButton
-             * If it started on pushButton, slowly increase the fill value of the mask
-             * (to simulate loading the progress bar)
-             * On release, do something
-             */
-
-            // Physics Raycasts
-            HandlePhysRaycast(i, mainCam);
+            pushProgress = math.min(pushProgress + (pushProgressRate * Time.deltaTime), 1);
+            progressMask.GetComponent<Image>().fillAmount = pushProgress;
         }
     }
 
-    private void HandlePhysRaycast(int i, Camera mainCam)
+    public void HandleTargetFound()
+    {
+        isTargetFound = true;
+        player = GameObject.FindWithTag("Player").GetComponent<FrictionPlayerController>();
+    }
+
+    public void HandleTargetLost()
+    {
+        isTargetFound = false;
+        player = null;
+        pushProgress = 0;
+        progressMask.GetComponent<Image>().fillAmount = pushProgress;
+    }
+
+    void HandlePhysRaycast(int i, Camera mainCam)
     {
         if (!objectContainer.activeInHierarchy) return;
         Touch touch = Input.GetTouch(i);
@@ -55,6 +78,38 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
             // TODO: Select road
             SelectRoad(hit.collider.gameObject);
         }
+    }
+
+    public void ResetLevel()
+    {
+        canPush = true;
+        player.ResetPlayer();
+    }
+
+    public void OnPushButtonUp(BaseEventData baseEventData)
+    {
+        if (isPushButton && isTargetFound)
+        {
+            isPushButton = false;
+            player.PushPlayer(pushProgress);
+            pushProgress = 0;
+            progressMask.GetComponent<Image>().fillAmount = pushProgress;
+            canPush = false;
+        }
+    }
+
+    public void OnPushButtonDown(BaseEventData baseEventData)
+    {
+        if (isTargetFound && canPush)
+            isPushButton = true;
+    }
+
+    public void OnPushButtonExit(BaseEventData baseEventData)
+    {
+        isPushButton = false;
+        player.PushPlayer(pushProgress);
+        pushProgress = 0;
+        progressMask.GetComponent<Image>().fillAmount = pushProgress;
     }
 
     // TODO: Implementation
