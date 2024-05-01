@@ -11,6 +11,7 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
 {
     [SerializeField] GameObject objectContainer;
     [SerializeField] GameObject progressMask;
+    [SerializeField] GameObject shapeToggle;
     [SerializeField] List<Material> materials;
     [SerializeField] List<PhysicMaterial> physicMaterials;
     [SerializeField] List<GameObject> levelPrefabs;
@@ -19,6 +20,7 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
     [Header("DEBUG")]
     [SerializeField] bool isTargetFound = false;
     [SerializeField] bool canPush = true;
+    [SerializeField] bool forceRebindPlayer = false;
     [SerializeField] bool forceReset = false;
     
     List<GameObject> selectedRoads;
@@ -27,6 +29,7 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
     RaycastHit hit;
     float pushProgress;
     bool isPushButton = false;
+    bool isPlayerShapeCube = true;
 
     void Awake()
     {
@@ -47,12 +50,37 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
             pushProgress = math.min(pushProgress + (pushProgressRate * Time.deltaTime), 1);
             progressMask.GetComponent<Image>().fillAmount = pushProgress;
         }
+        
+        // DEBUG
+        if (forceReset)
+        {
+            forceReset = false;
+            ResetLevel();
+        }
+        
+        if (forceRebindPlayer)
+        {
+            forceRebindPlayer = false;
+            player = GameObject.FindWithTag("Player").GetComponent<FrictionPlayerController>();
+        }
+    }
+
+    void UpdatePlayerShape()
+    {
+        player.ToggleShape(isPlayerShapeCube);
+    }
+
+    public void HandleShapeToggle(bool isCube)
+    {
+        isPlayerShapeCube = isCube;
+        UpdatePlayerShape();
     }
 
     public void HandleTargetFound()
     {
         isTargetFound = true;
         player = GameObject.FindWithTag("Player").GetComponent<FrictionPlayerController>();
+        UpdatePlayerShape();
     }
 
     public void HandleTargetLost()

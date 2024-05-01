@@ -3127,6 +3127,7 @@ MonoBehaviour:
   _persistent: 1
   objectContainer: {fileID: 658065694}
   progressMask: {fileID: 58698533}
+  shapeToggle: {fileID: 0}
   materials:
   - {fileID: 0}
   - {fileID: 0}
@@ -3138,6 +3139,10 @@ MonoBehaviour:
   levelPrefabs:
   - {fileID: 5445749609925521939, guid: 5948f2742b8f9024ab68cc2d5ae4757f, type: 3}
   pushProgressRate: 1
+  isTargetFound: 0
+  canPush: 1
+  forceRebindPlayer: 0
+  forceReset: 0
 --- !u!4 &1342941454
 Transform:
   m_ObjectHideFlags: 0
@@ -4287,7 +4292,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1342941453}
+        m_TargetAssemblyTypeName: FrictionModuleManager, Assembly-CSharp
+        m_MethodName: HandleShapeToggle
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &1797324593
 GameObject:
