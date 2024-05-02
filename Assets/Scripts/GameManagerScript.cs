@@ -27,27 +27,21 @@ public class GameManagerScript : Singleton<GameManagerScript>
 
     public void SpawnPopupDialog(string message)
     {
+        // TO DO: don't spawn when the dialogue is already active
+        string topicName = SceneManager.GetActiveScene().name;
+        
         if (!PersistentDataContainer.Instance.popupCanvasPrefab)
         {
             PersistentDataContainer.Instance.popupCanvasPrefab = Resources.Load<GameObject>("Prefabs/Popup Canvas");
         }
-
+        
         GameObject newPopup = Instantiate(PersistentDataContainer.Instance.popupCanvasPrefab, Vector3.zero, Quaternion.identity);
         TextMeshProUGUI textUI = newPopup.transform.Find("Popup Text").GetComponent<TextMeshProUGUI>();
-        textUI.text = message;
+        textUI.text = PersistentDataContainer.Instance.TopicTutorial[topicName][currentIndex];
     }
     public void TextChanger(TextMeshProUGUI displayText)
     {
-        // TODO: HELLO CEEJ IM SORRY IDK IF THERE'S A BETTER WAY TO DO THIS BUT IT WORKS HUHU
-        string currentSceneName = SceneManager.GetActiveScene().name;
-
-        string topicName = currentSceneName switch
-        {
-            "FrictionModule" => "friction",
-            _ => "",
-            // TODO(Lara): tutorial for Gravity
-            // populate when new scenes come up
-        };
+        string topicName = SceneManager.GetActiveScene().name;
 
         if (topicName != "")
         {
