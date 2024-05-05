@@ -23,22 +23,20 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
     [SerializeField] bool forceRebindPlayer = false;
     [SerializeField] bool forceReset = false;
     
-    List<GameObject> selectedRoads;
+    [SerializeField] List<GameObject> selectedRoads;
     List<int> uiTouchFingerIDs;
+    EventSystem eventSystem;
     FrictionPlayerController player;
     RaycastHit hit;
     float pushProgress;
     bool isPushButton = false;
     bool isPlayerShapeCube = true;
 
-    void Awake()
-    {
-    }
-
     IEnumerator Start()
     {
         selectedRoads = new List<GameObject>();
         int selectedLevel = PersistentDataContainer.Instance.selectedLevel;
+        eventSystem = EventSystem.current;
         Instantiate(levelPrefabs[selectedLevel], objectContainer.transform);
         yield return null;
     }
@@ -49,6 +47,27 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
         {
             pushProgress = math.min(pushProgress + (pushProgressRate * Time.deltaTime), 1);
             progressMask.GetComponent<Image>().fillAmount = pushProgress;
+        }
+        
+        // Override Event System
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit hit;
+            //Send a ray from the camera to the mouseposition
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            //Create a raycast from the Camera and output anything it hits
+            int mask = 1 << 6; // Mask for Selectable layer
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
+                //Check the hit GameObject has a Collider
+                if (hit.collider != null)
+                {
+                    //Click a GameObject to return that GameObject your mouse pointer hit
+                    GameObject m_MyGameObject = hit.collider.gameObject;
+                    //Set this GameObject you clicked as the currently selected in the EventSystem
+                    eventSystem.SetSelectedGameObject(m_MyGameObject);
+                    //Output the current selected GameObject's name to the console
+                    Debug.Log("Current selected GameObject : " + eventSystem.currentSelectedGameObject);
+                }
         }
         
         // DEBUG
@@ -140,18 +159,34 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
         progressMask.GetComponent<Image>().fillAmount = pushProgress;
     }
 
+    public void OnRoadClick(BaseEventData baseEventData)
+    {
+        GameObject selectedObject = baseEventData.selectedObject;
+        Debug.Log(selectedObject);
+        if (selectedRoads.Contains(selectedObject))
+        {
+            UnselectRoad(selectedObject);
+        }
+        else
+        {
+            SelectRoad(selectedObject);
+        }
+    }
+
     // TODO: Implementation
     public void SelectRoad(GameObject obj)
     {
+        Debug.Log("Selected Road");
+        selectedRoads.Add(obj);
         // TODO: Highlight road
-        // TODO: Add to Selected Roads
     }
 
     // TODO: Implementation
     public void UnselectRoad(GameObject obj)
     {
+        Debug.Log("Unselected Road");
+        selectedRoads.Remove(obj);
         // TODO: Remove highlight
-        // TODO: Remove from selected roads
     }
 
     // TODO: Test

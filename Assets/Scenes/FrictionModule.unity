@@ -1217,7 +1217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EventMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 64
   m_MaxRayIntersections: 0
 --- !u!1 &427755880
 GameObject:
@@ -1526,91 +1526,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1510437358}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &661377579
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1330790573074379543, guid: 5948f2742b8f9024ab68cc2d5ae4757f, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3131676683125369006, guid: 5948f2742b8f9024ab68cc2d5ae4757f, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049405077430556247, guid: 5948f2742b8f9024ab68cc2d5ae4757f, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5445749609925521939, guid: 5948f2742b8f9024ab68cc2d5ae4757f, type: 3}
-      propertyPath: m_Name
-      value: Friction Stage 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7807115139241181725, guid: 5948f2742b8f9024ab68cc2d5ae4757f, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7851454664924914119, guid: 5948f2742b8f9024ab68cc2d5ae4757f, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8543528717876537732, guid: 5948f2742b8f9024ab68cc2d5ae4757f, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 9133654804011073306, guid: 5948f2742b8f9024ab68cc2d5ae4757f, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 9183576865914769500, guid: 5948f2742b8f9024ab68cc2d5ae4757f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9183576865914769500, guid: 5948f2742b8f9024ab68cc2d5ae4757f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9183576865914769500, guid: 5948f2742b8f9024ab68cc2d5ae4757f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9183576865914769500, guid: 5948f2742b8f9024ab68cc2d5ae4757f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9183576865914769500, guid: 5948f2742b8f9024ab68cc2d5ae4757f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9183576865914769500, guid: 5948f2742b8f9024ab68cc2d5ae4757f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9183576865914769500, guid: 5948f2742b8f9024ab68cc2d5ae4757f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9183576865914769500, guid: 5948f2742b8f9024ab68cc2d5ae4757f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9183576865914769500, guid: 5948f2742b8f9024ab68cc2d5ae4757f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9183576865914769500, guid: 5948f2742b8f9024ab68cc2d5ae4757f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5948f2742b8f9024ab68cc2d5ae4757f, type: 3}
 --- !u!1001 &684763601
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3558,7 +3473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac3bbaa7d3b18b7478de750ca61239f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _persistent: 1
+  _persistent: 0
   objectContainer: {fileID: 658065694}
   progressMask: {fileID: 58698533}
   shapeToggle: {fileID: 0}
@@ -3577,6 +3492,7 @@ MonoBehaviour:
   canPush: 1
   forceRebindPlayer: 0
   forceReset: 0
+  selectedRoads: []
 --- !u!4 &1342941454
 Transform:
   m_ObjectHideFlags: 0
@@ -5800,4 +5716,3 @@ SceneRoots:
   - {fileID: 1711520809}
   - {fileID: 1516324473}
   - {fileID: 804515007}
-  - {fileID: 661377579}
