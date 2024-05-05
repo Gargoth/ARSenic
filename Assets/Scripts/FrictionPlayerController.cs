@@ -25,6 +25,10 @@ public class FrictionPlayerController : MonoBehaviour
         yield return new WaitForEndOfFrame();
         initialPos = transform.position;
         initialRot = transform.rotation;
+
+		// testing
+		yield return new WaitForSeconds(2f);
+		PushPlayer(1f);
     }
 
     public void PushPlayer(float pushCoefficient)
