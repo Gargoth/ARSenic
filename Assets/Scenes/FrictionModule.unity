@@ -3563,9 +3563,9 @@ MonoBehaviour:
   progressMask: {fileID: 58698533}
   shapeToggle: {fileID: 0}
   materials:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 1a37d212766c4e444bd183225d3816c9, type: 2}
+  - {fileID: 2100000, guid: 77859c11a5041451bba8e6fade01a8e6, type: 2}
+  - {fileID: 2100000, guid: 5f208e503b1f2c04aad5dc65bb51eef1, type: 2}
   physicMaterials:
   - {fileID: 13400000, guid: 8c3d03df653c95f48afa9fe988113d30, type: 2}
   - {fileID: 13400000, guid: 45278116894220b4ca410b22f979d225, type: 2}
@@ -5540,7 +5540,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2118381664}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1342941453}
+        m_TargetAssemblyTypeName: FrictionModuleManager, Assembly-CSharp
+        m_MethodName: ResetLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2118381664
 MonoBehaviour:
   m_ObjectHideFlags: 0
