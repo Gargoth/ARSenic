@@ -14,10 +14,7 @@ public class ARManager : MonoBehaviour
 
     public void OnFoundGroundPlane()
     {
-        foreach (var canvas in GameObject.FindGameObjectsWithTag("Ground Plane Canvas"))
-        {
-            Destroy(canvas);
-        }
+        Destroy(GameObject.FindWithTag("Ground Plane Canvas"));
     }
 
     public void OnLostGroundPlane()
