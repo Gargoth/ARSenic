@@ -15,6 +15,7 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
     [SerializeField] List<PhysicMaterial> physicMaterials;
     [SerializeField] List<GameObject> levelPrefabs;
     [SerializeField] float pushProgressRate;
+    [SerializeField] Color emissionColor;
     
     [Header("DEBUG")]
     [SerializeField] bool isTargetFound = false;
@@ -187,6 +188,11 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
         Debug.Log("Selected Road");
         selectedRoads.Add(obj);
         // TODO: Highlight road
+        Renderer objRenderer = obj.GetComponent<Renderer>();
+        objRenderer.material.EnableKeyword("_EMISSION");
+        MaterialPropertyBlock materialPropertyBlock = new MaterialPropertyBlock();
+        materialPropertyBlock.SetColor("_EmissionColor", emissionColor);
+        objRenderer.SetPropertyBlock(materialPropertyBlock);
     }
 
     // TODO: Implementation
@@ -195,6 +201,8 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
         Debug.Log("Unselected Road");
         selectedRoads.Remove(obj);
         // TODO: Remove highlight
+        Renderer objRenderer = obj.GetComponent<Renderer>();
+        objRenderer.SetPropertyBlock(null);
     }
 
     // TODO: Test
