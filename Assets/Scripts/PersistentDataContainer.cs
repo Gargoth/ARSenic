@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class PersistentDataContainer : Singleton<PersistentDataContainer>
 {
+    // Flags
+    public bool f_startDialogShown = false;
+    public bool f_frictionDialogShown = false;
+    public bool f_gravityDialogShown = false;
+    
+    // Fields
     public int selectedLevel;
     public GameObject popupCanvasPrefab;
     
