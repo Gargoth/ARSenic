@@ -17,6 +17,15 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
     private void Start()
     {
         isAirResOn = true;
+        
+        if (PersistentDataContainer.Instance.f_gravityDialogShown)
+        {
+            Destroy(GameObject.FindWithTag("Popup Canvas"));
+        }
+        else
+        {
+            PersistentDataContainer.Instance.f_gravityDialogShown = true;
+        }
     }
 
     void Update()

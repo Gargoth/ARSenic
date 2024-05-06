@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class FrictionModuleManager : Singleton<FrictionModuleManager>
@@ -34,6 +33,15 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
 
     IEnumerator Start()
     {
+        if (PersistentDataContainer.Instance.f_frictionDialogShown)
+        {
+            Destroy(GameObject.FindWithTag("Popup Canvas"));
+        }
+        else
+        {
+            PersistentDataContainer.Instance.f_frictionDialogShown = true;
+        }
+        
         selectedRoads = new List<GameObject>();
         int selectedLevel = PersistentDataContainer.Instance.selectedLevel;
         eventSystem = EventSystem.current;
