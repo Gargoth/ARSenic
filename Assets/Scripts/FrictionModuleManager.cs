@@ -187,7 +187,6 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
     {
         Debug.Log("Selected Road");
         selectedRoads.Add(obj);
-        // TODO: Highlight road
         Renderer objRenderer = obj.GetComponent<Renderer>();
         objRenderer.material.EnableKeyword("_EMISSION");
         MaterialPropertyBlock materialPropertyBlock = new MaterialPropertyBlock();
@@ -195,12 +194,10 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
         objRenderer.SetPropertyBlock(materialPropertyBlock);
     }
 
-    // TODO: Implementation
     public void UnselectRoad(GameObject obj)
     {
         Debug.Log("Unselected Road");
         selectedRoads.Remove(obj);
-        // TODO: Remove highlight
         Renderer objRenderer = obj.GetComponent<Renderer>();
         objRenderer.SetPropertyBlock(null);
     }
@@ -222,6 +219,7 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
             MeshRenderer mesh = road.GetComponent<MeshRenderer>();
             mesh.material = materials[index];
         }
+        ClearSelectedRoads();
     }
 
     // Changes physics material of all selected roads
@@ -232,5 +230,6 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
             Collider collider = road.GetComponent<Collider>();
             collider.material = physicMaterials[index];
         }
+        ClearSelectedRoads();
     }
 }

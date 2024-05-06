@@ -27,8 +27,8 @@ public class FrictionPlayerController : MonoBehaviour
         initialRot = transform.rotation;
 
 		// testing
-		yield return new WaitForSeconds(2f);
-		PushPlayer(1f);
+		// yield return new WaitForSeconds(2f);
+		// PushPlayer(1f);
     }
 
     public void PushPlayer(float pushCoefficient)
