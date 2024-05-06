@@ -6,6 +6,8 @@ TagManager:
   tags:
   - GravObject
   - Popup Canvas
+  - Toothbrush
+  - Ground Plane Canvas
   layers:
   - Default
   - TransparentFX
