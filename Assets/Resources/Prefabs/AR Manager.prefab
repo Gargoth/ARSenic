@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectContainer: {fileID: 0}
   contentPositioningBehaviour: {fileID: 0}
+  groundPlaneCanvasPrefab: {fileID: 876479642909983071, guid: 870b2e644d0804f7fbb7e1f80d558751, type: 3}
