@@ -108,6 +108,7 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
     {
         isTargetFound = true;
         player = GameObject.FindWithTag("Player").GetComponent<FrictionPlayerController>();
+        player.SetInitialState();
         UpdatePlayerShape();
     }
 
@@ -205,9 +206,9 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
     // TODO: Test
     public void ClearSelectedRoads()
     {
-        foreach (GameObject road in selectedRoads)
+        for (int i = selectedRoads.Count - 1; i >= 0; i--)
         {
-            UnselectRoad(road);
+            UnselectRoad(selectedRoads[i]);
         }
     }
 

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8088551004602097028}
   m_Layer: 5
   m_Name: Ground Plane Canvas
-  m_TagString: Untagged
+  m_TagString: Ground Plane Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

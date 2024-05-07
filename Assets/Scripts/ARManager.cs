@@ -7,6 +7,7 @@ public class ARManager : MonoBehaviour
     [SerializeField] private GameObject objectContainer;
     [SerializeField] private ContentPositioningBehaviour contentPositioningBehaviour;
     [SerializeField] GameObject groundPlaneCanvasPrefab;
+    GameObject groundPlaneCanvas;
 
     public void Start()
     {
@@ -14,12 +15,12 @@ public class ARManager : MonoBehaviour
 
     public void OnFoundGroundPlane()
     {
-        Destroy(GameObject.FindWithTag("Ground Plane Canvas"));
+        Destroy(groundPlaneCanvas);
     }
 
     public void OnLostGroundPlane()
     {
-        Instantiate(groundPlaneCanvasPrefab);
+        groundPlaneCanvas = Instantiate(groundPlaneCanvasPrefab);
     }
 
     public void HandlePlaneFinderHit(HitTestResult hitTestResult)
