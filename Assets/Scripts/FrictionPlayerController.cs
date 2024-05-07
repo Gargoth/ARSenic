@@ -43,7 +43,7 @@ public class FrictionPlayerController : MonoBehaviour
 
     public void ResetPlayer()
     {
-        transform.position = initialPos;
+        transform.position = FrictionStageManager.Instance.GetSpawnPos();
         transform.rotation = initialRot;
         rb.isKinematic = true;
     }
