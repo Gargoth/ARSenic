@@ -1484,9 +1484,9 @@ RectTransform:
   - {fileID: 427755881}
   m_Father: {fileID: 328824303}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 607, y: -229.5}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -473, y: -229.5}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &588808722
@@ -1798,7 +1798,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1118047546}
+  m_TargetGraphic: {fileID: 720731585}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -1984,6 +1984,8 @@ GameObject:
   - component: {fileID: 804515006}
   - component: {fileID: 804515005}
   - component: {fileID: 804515004}
+  - component: {fileID: 804515009}
+  - component: {fileID: 804515008}
   m_Layer: 5
   m_Name: Popup Canvas
   m_TagString: Popup Canvas
@@ -2074,6 +2076,44 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &804515008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804515003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.8627451}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &804515009
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804515003}
+  m_CullTransparentMesh: 1
 --- !u!1 &876183883
 GameObject:
   m_ObjectHideFlags: 0
@@ -2207,7 +2247,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: 1. Point your camera towards the ground plane. Tap it when you see the
-    square
+    square.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
@@ -3626,7 +3666,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _persistent: 0
   objectContainer: {fileID: 658065694}
-  progressMask: {fileID: 58698533}
   shapeToggle: {fileID: 0}
   materials:
   - {fileID: 2100000, guid: 1a37d212766c4e444bd183225d3816c9, type: 2}
@@ -3640,8 +3679,18 @@ MonoBehaviour:
   - {fileID: 5445749609925521939, guid: 5948f2742b8f9024ab68cc2d5ae4757f, type: 3}
   - {fileID: 5445749609925521939, guid: 10d5f29ad58f541e18a469d982d31291, type: 3}
   - {fileID: 5445749609925521939, guid: 1c5ba579b6cb449f5bf1369f60c8c948, type: 3}
-  pushProgressRate: 1
   emissionColor: {r: 0.7058824, g: 0.69803923, b: 0.3254902, a: 0}
+  progressMask: {fileID: 58698533}
+  pushProgressRate: 1
+  bottomMenu:
+  - {fileID: 1253612669}
+  - {fileID: 1118047544}
+  - {fileID: 720731583}
+  - {fileID: 2005534255}
+  - {fileID: 1305601075}
+  - {fileID: 1973325966}
+  - {fileID: 258067476}
+  - {fileID: 1754095530}
   isTargetFound: 0
   canPush: 1
   forceRebindPlayer: 0
@@ -5347,7 +5396,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1118047546}
+  m_TargetGraphic: {fileID: 2005534257}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:

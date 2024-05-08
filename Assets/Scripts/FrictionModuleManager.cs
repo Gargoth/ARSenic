@@ -9,13 +9,18 @@ using UnityEngine.UI;
 public class FrictionModuleManager : Singleton<FrictionModuleManager>
 {
     [SerializeField] GameObject objectContainer;
-    [SerializeField] GameObject progressMask;
     [SerializeField] GameObject shapeToggle;
+
+	[Header("ROAD MATERIALS")]
     [SerializeField] List<Material> materials;
     [SerializeField] List<PhysicMaterial> physicMaterials;
     [SerializeField] List<GameObject> levelPrefabs;
-    [SerializeField] float pushProgressRate;
     [SerializeField] Color emissionColor;
+
+	[Header("PUSH")]
+    [SerializeField] GameObject progressMask;
+	[SerializeField] float pushProgressRate;
+	[SerializeField] List<GameObject> bottomMenu;
     
     [Header("DEBUG")]
     [SerializeField] bool isTargetFound = false;
@@ -141,6 +146,7 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
     {
         canPush = true;
         player.ResetPlayer();
+		ResetColor();
     }
 
     public void OnPushButtonUp(BaseEventData baseEventData)
@@ -167,7 +173,29 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
         player.PushPlayer(pushProgress);
         pushProgress = 0;
         progressMask.GetComponent<Image>().fillAmount = pushProgress;
+		
+		GrayOut();
     }
+
+	public void GrayOut()
+	{
+		for (int i = 0; i < bottomMenu.Count; i++)
+		{
+			Debug.Log(i);
+			Image image = bottomMenu[i].GetComponent<Image>();
+			image.color = Color.gray;
+		}
+	}
+
+	public void ResetColor()
+	{
+		for (int i = 0; i < bottomMenu.Count; i++)
+		{
+			Debug.Log(i);
+			Image image = bottomMenu[i].GetComponent<Image>();
+			image.color = Color.white;
+		}
+	}
 
     public void OnRoadClick(BaseEventData baseEventData)
     {
