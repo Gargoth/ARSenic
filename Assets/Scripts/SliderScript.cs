@@ -11,7 +11,7 @@ public class SliderScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _sliderText;
     private float x = 0;
     private float y = 9.81f;
-    private float z = 274;
+    private float z = 24.79f;
     public float gravityForce;
     
     // Sprites
@@ -25,6 +25,8 @@ public class SliderScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // set initial gravity to Earth's
+        gravityForce = 9.81f;
         _slider.onValueChanged.AddListener((v) =>
         {
             float A = (x*z - Mathf.Pow(y,2)) / (x - 2*y + z);
@@ -102,22 +104,6 @@ public class SliderScript : MonoBehaviour
                 if (handleImage != null)
                 {
                     handleImage.sprite = jupiter;
-                }
-            }
-        }
-
-        // Sun
-        else if (gravityForce > 200 && gravityForce < 274)
-        {
-            _slider.value = 1;
-            // Find the slider handle and change its image
-            Transform handleTransform = _slider.transform.Find("Handle Slide Area").Find("Handle");
-            if (handleTransform != null)
-            {
-                Image handleImage = handleTransform.GetComponent<Image>();
-                if (handleImage != null)
-                {
-                    handleImage.sprite = sun;
                 }
             }
         }

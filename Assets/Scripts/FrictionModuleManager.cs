@@ -181,7 +181,6 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
 	{
 		for (int i = 0; i < bottomMenu.Count; i++)
 		{
-			Debug.Log(i);
 			Image image = bottomMenu[i].GetComponent<Image>();
 			image.color = Color.gray;
 		}
@@ -191,7 +190,6 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
 	{
 		for (int i = 0; i < bottomMenu.Count; i++)
 		{
-			Debug.Log(i);
 			Image image = bottomMenu[i].GetComponent<Image>();
 			image.color = Color.white;
 		}
