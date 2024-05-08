@@ -29,6 +29,7 @@ public class GameManagerScript : Singleton<GameManagerScript>
     {
         // TO DO: don't spawn when the dialogue is already active
         string topicName = SceneManager.GetActiveScene().name;
+		currentIndex = 0;
         
         if (!PersistentDataContainer.Instance.popupCanvasPrefab)
         {
@@ -45,10 +46,9 @@ public class GameManagerScript : Singleton<GameManagerScript>
 
         if (topicName != "")
         {
-            displayText.text = PersistentDataContainer.Instance.TopicTutorial[topicName][currentIndex];
-
             // Increment the current index, wrapping around to the start if necessary
             currentIndex = (currentIndex + 1) % PersistentDataContainer.Instance.TopicTutorial[topicName].Count;
+			displayText.text = PersistentDataContainer.Instance.TopicTutorial[topicName][currentIndex];
         }
     }
     
