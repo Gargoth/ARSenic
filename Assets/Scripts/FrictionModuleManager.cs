@@ -80,7 +80,6 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
                     //Set this GameObject you clicked as the currently selected in the EventSystem
                     eventSystem.SetSelectedGameObject(m_MyGameObject);
                     //Output the current selected GameObject's name to the console
-                    Debug.Log("Current selected GameObject : " + eventSystem.currentSelectedGameObject);
                 }
         }
         
@@ -178,7 +177,6 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
     public void OnRoadClick(BaseEventData baseEventData)
     {
         GameObject selectedObject = baseEventData.selectedObject;
-        Debug.Log(selectedObject);
         if (selectedRoads.Contains(selectedObject))
         {
             UnselectRoad(selectedObject);
@@ -191,7 +189,6 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
 
     public void SelectRoad(GameObject obj)
     {
-        Debug.Log("Selected Road");
         selectedRoads.Add(obj);
         Renderer objRenderer = obj.GetComponent<Renderer>();
         objRenderer.material.EnableKeyword("_EMISSION");
@@ -202,7 +199,6 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
 
     public void UnselectRoad(GameObject obj)
     {
-        Debug.Log("Unselected Road");
         selectedRoads.Remove(obj);
         Renderer objRenderer = obj.GetComponent<Renderer>();
         objRenderer.SetPropertyBlock(null);
