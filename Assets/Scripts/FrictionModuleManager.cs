@@ -141,6 +141,7 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
             pushProgress = 0;
             progressMask.GetComponent<Image>().fillAmount = pushProgress;
             canPush = false;
+            GrayOut();
         }
     }
 
@@ -154,8 +155,6 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
     {
         pushProgress = 0;
         progressMask.GetComponent<Image>().fillAmount = pushProgress;
-		
-		GrayOut();
     }
 
 	public void GrayOut()
