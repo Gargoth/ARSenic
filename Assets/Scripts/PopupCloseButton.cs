@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class PopupCloseButton : MonoBehaviour
 {
-    // WARN: Unsafe due to possible infinite loop; TODO: Add max loop limit
+    public void MoveToScene(string sceneName)
+    {
+        GameManagerScript.MoveToScene(sceneName);
+    }
+    
     public void ClosePopupCanvas()
     {
         Transform currentTransform = transform;

@@ -11,7 +11,7 @@ public class FrictionTargetScript : MonoBehaviour
     Coroutine finishingLevelCoroutine;
     void Start()
     {
-        targetDuration = FrictionStageManager.Instance.targetDuration;
+        targetDuration = FrictionStageManager.Instance.GetTargetDuration();
         endCanvasPrefab = Resources.Load<GameObject>("Prefabs/End Canvas");
     }
 

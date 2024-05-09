@@ -6,13 +6,18 @@ using UnityEngine.EventSystems;
 public class FrictionStageManager : Singleton<FrictionStageManager>
 {
     [SerializeField] GameObject spawnObject;
-    public float targetDuration;
+    float targetDuration = 2f;
     FrictionModuleManager frictionModuleManager;
     Vector3 spawnPos;
     void Start()
     {
         frictionModuleManager = FrictionModuleManager.Instance;
         spawnPos = spawnObject.transform.position;
+    }
+
+    public float GetTargetDuration()
+    {
+        return targetDuration;
     }
 
     public Vector3 GetSpawnPos()
