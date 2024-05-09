@@ -24,6 +24,10 @@ public class FrictionPlayerController : MonoBehaviour
         directionObject = transform.Find("Direction");
         yield return new WaitForEndOfFrame();
         SetInitialState();
+
+		// testing
+		yield return new WaitForSeconds(1f);
+		PushPlayer(1f);
     }
 
     public void SetInitialState()
