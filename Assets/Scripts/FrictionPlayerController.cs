@@ -26,8 +26,8 @@ public class FrictionPlayerController : MonoBehaviour
         SetInitialState();
 
 		// testing
-		yield return new WaitForSeconds(1f);
-		PushPlayer(1f);
+		// yield return new WaitForSeconds(1f);
+		// PushPlayer(1f);
     }
 
     public void SetInitialState()
@@ -47,9 +47,9 @@ public class FrictionPlayerController : MonoBehaviour
 
     public void ResetPlayer()
     {
+        rb.isKinematic = true;
         transform.position = FrictionStageManager.Instance.GetSpawnPos();
         transform.rotation = initialRot;
-        rb.isKinematic = true;
     }
 
     public void ToggleShape(bool isCube)

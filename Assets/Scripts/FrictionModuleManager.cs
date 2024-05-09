@@ -125,23 +125,6 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
         progressMask.GetComponent<Image>().fillAmount = pushProgress;
     }
 
-    void HandlePhysRaycast(int i, Camera mainCam)
-    {
-        if (!objectContainer.activeInHierarchy) return;
-        Touch touch = Input.GetTouch(i);
-        if (touch.phase != TouchPhase.Began) return;
-        Ray ray = mainCam!.ScreenPointToRay(touch.position);
-        int mask = ~(1 << 2);
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
-        {
-            if (!hit.collider.CompareTag("Road")) return;
-            // Do stuff
-            // TODO: Highlight road
-            // TODO: Select road
-            SelectRoad(hit.collider.gameObject);
-        }
-    }
-
     public void ResetLevel()
     {
         canPush = true;
@@ -169,8 +152,6 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
 
     public void OnPushButtonExit(BaseEventData baseEventData)
     {
-        isPushButton = false;
-        player.PushPlayer(pushProgress);
         pushProgress = 0;
         progressMask.GetComponent<Image>().fillAmount = pushProgress;
 		
@@ -209,7 +190,6 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
         }
     }
 
-    // TODO: Implementation
     public void SelectRoad(GameObject obj)
     {
         Debug.Log("Selected Road");
@@ -229,7 +209,6 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
         objRenderer.SetPropertyBlock(null);
     }
 
-    // TODO: Test
     public void ClearSelectedRoads()
     {
         for (int i = selectedRoads.Count - 1; i >= 0; i--)
@@ -238,25 +217,30 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
         }
     }
 
+    public void ChangeRoad(int index)
+    {
+        ChangeMaterial(index);
+        ChangePhysicMaterial(index);
+        ClearSelectedRoads();
+    }
+
     // Changes material of all selected roads
-    public void ChangeMaterial(int index)
+    void ChangeMaterial(int index)
     {
         foreach (GameObject road in selectedRoads)
         {
             MeshRenderer mesh = road.GetComponent<MeshRenderer>();
             mesh.material = materials[index];
         }
-        ClearSelectedRoads();
     }
 
     // Changes physics material of all selected roads
-    public void ChangePhysicMaterial(int index)
+    void ChangePhysicMaterial(int index)
     {
         foreach (GameObject road in selectedRoads)
         {
             Collider collider = road.GetComponent<Collider>();
             collider.material = physicMaterials[index];
         }
-        ClearSelectedRoads();
     }
 }
