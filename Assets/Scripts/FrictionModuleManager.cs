@@ -55,6 +55,16 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
         yield return null;
     }
 
+    void FixedUpdate()
+    {
+        if (isTargetFound)
+        {
+            Vector3 transformUp = objectContainer.transform.up;
+            Vector3 newGravity = -transformUp.normalized * 9.81f;
+            Physics.gravity = newGravity;
+        }
+    }
+
     void Update()
     {
         if (isPushButton)

@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class FrictionStageManager : Singleton<FrictionStageManager>
 {
     [SerializeField] GameObject spawnObject;
+    public float targetDuration;
     FrictionModuleManager frictionModuleManager;
     Vector3 spawnPos;
     void Start()
