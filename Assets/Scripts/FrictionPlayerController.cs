@@ -71,7 +71,7 @@ public class FrictionPlayerController : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
-        Vector3 direction = (transform.position - FrictionStageManager.Instance.GetSpawnPos()).normalized;
+        Vector3 direction = (transform.position - transform.Find("Direction").position).normalized;
         Gizmos.DrawLine(transform.position, transform.position - direction*0.1f);
     }
 }
