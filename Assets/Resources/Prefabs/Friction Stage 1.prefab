@@ -1058,6 +1058,10 @@ PrefabInstance:
       propertyPath: spawnObject
       value: 
       objectReference: {fileID: 2906610014917625145}
+    - target: {fileID: 2298625883241296362, guid: 169af5d3222c03e4197a1d84b7a12cfd, type: 3}
+      propertyPath: targetDuration
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3698750747996584168, guid: 169af5d3222c03e4197a1d84b7a12cfd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 39

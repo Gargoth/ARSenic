@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -66,5 +67,11 @@ public class FrictionPlayerController : MonoBehaviour
             sphereCollider.enabled = true;
             meshFilter.mesh = sphereMesh;
         }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Vector3 direction = (transform.position - FrictionStageManager.Instance.GetSpawnPos()).normalized;
+        Gizmos.DrawLine(transform.position, transform.position - direction*0.1f);
     }
 }
