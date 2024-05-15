@@ -3103,7 +3103,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_CenterOfMass: {x: 0, y: 0.03125, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
@@ -3112,7 +3112,7 @@ Rigidbody:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_ImplicitCom: 1
+  m_ImplicitCom: 0
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -3154,10 +3154,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raycastDensity: 5
-  useOverrideDensity: 1
-  useOverrideVariation: 1
+  useOverrideDensity: 0
+  useOverrideVariation: 0
   debug: 0
-  overrideAirDensity: 3
+  overrideAirDensity: 8
   overrideDensityVariation: 1
 --- !u!114 &831921996
 MonoBehaviour:
@@ -3444,10 +3444,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raycastDensity: 5
-  useOverrideDensity: 1
-  useOverrideVariation: 1
+  useOverrideDensity: 0
+  useOverrideVariation: 0
   debug: 0
-  overrideAirDensity: 3
+  overrideAirDensity: 8
   overrideDensityVariation: 1
 --- !u!114 &918464196
 MonoBehaviour:
@@ -4799,10 +4799,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raycastDensity: 5
-  useOverrideDensity: 1
-  useOverrideVariation: 1
+  useOverrideDensity: 0
+  useOverrideVariation: 0
   debug: 0
-  overrideAirDensity: 3
+  overrideAirDensity: 8
   overrideDensityVariation: 1
 --- !u!114 &1298749648
 MonoBehaviour:
@@ -5059,7 +5059,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: -0.025, z: 0}
+  m_CenterOfMass: {x: 0, y: -0.0046875, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
@@ -5110,10 +5110,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raycastDensity: 5
-  useOverrideDensity: 1
-  useOverrideVariation: 1
+  useOverrideDensity: 0
+  useOverrideVariation: 0
   debug: 0
-  overrideAirDensity: 3
+  overrideAirDensity: 8
   overrideDensityVariation: 1
 --- !u!114 &1324479577
 MonoBehaviour:
@@ -7577,10 +7577,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raycastDensity: 5
-  useOverrideDensity: 1
-  useOverrideVariation: 1
+  useOverrideDensity: 0
+  useOverrideVariation: 0
   debug: 0
-  overrideAirDensity: 3
+  overrideAirDensity: 8
   overrideDensityVariation: 1
 --- !u!114 &2017445049
 MonoBehaviour:
@@ -7680,10 +7680,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raycastDensity: 5
-  useOverrideDensity: 1
-  useOverrideVariation: 1
+  useOverrideDensity: 0
+  useOverrideVariation: 0
   debug: 0
-  overrideAirDensity: 3
+  overrideAirDensity: 8
   overrideDensityVariation: 1
 --- !u!1001 &8125269626593647781
 PrefabInstance:
