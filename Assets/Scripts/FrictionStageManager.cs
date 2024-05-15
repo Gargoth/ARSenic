@@ -12,7 +12,7 @@ public class FrictionStageManager : Singleton<FrictionStageManager>
     void Start()
     {
         frictionModuleManager = FrictionModuleManager.Instance;
-        spawnPos = spawnObject.transform.position;
+        spawnPos = spawnObject.transform.localPosition;
     }
 
     public float GetTargetDuration()
