@@ -17,7 +17,7 @@ public class FrictionTargetScript : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && finishingLevelCoroutine == null)
         {
             Debug.Log("Player trigger enter");
             finishingLevelCoroutine = StartCoroutine(FinishingLevel(targetDuration));
@@ -32,6 +32,7 @@ public class FrictionTargetScript : MonoBehaviour
             if (finishingLevelCoroutine != null)
             {
                 StopCoroutine(finishingLevelCoroutine);
+                finishingLevelCoroutine = null;
             }
         }
     }
