@@ -3652,10 +3652,11 @@ MonoBehaviour:
   - {fileID: 13400000, guid: 45278116894220b4ca410b22f979d225, type: 2}
   - {fileID: 13400000, guid: 9339027584e14cd45a84bea57f002425, type: 2}
   levelPrefabs:
-  - {fileID: 5445749609925521939, guid: 5948f2742b8f9024ab68cc2d5ae4757f, type: 3}
+  - {fileID: 5445749609925521939, guid: 0a8b415714c81467a9d9b2a592cd0d95, type: 3}
   - {fileID: 5445749609925521939, guid: 10d5f29ad58f541e18a469d982d31291, type: 3}
-  - {fileID: 5445749609925521939, guid: 1c5ba579b6cb449f5bf1369f60c8c948, type: 3}
+  - {fileID: 5445749609925521939, guid: 5948f2742b8f9024ab68cc2d5ae4757f, type: 3}
   - {fileID: 5445749609925521939, guid: 54486524fe6234eb79765f3a00761b2f, type: 3}
+  - {fileID: 5445749609925521939, guid: c6925b80affa44ef0affbcba63ba5d70, type: 3}
   emissionColor: {r: 0.7058824, g: 0.69803923, b: 0.3254902, a: 0}
   progressMask: {fileID: 58698533}
   pushProgressRate: 1
