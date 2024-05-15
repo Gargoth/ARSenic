@@ -33,8 +33,8 @@ public class FrictionPlayerController : MonoBehaviour
 
     public void SetInitialState()
     {
-        initialPos = transform.position;
-        initialRot = transform.rotation;
+        initialPos = transform.localPosition;
+        initialRot = transform.localRotation;
     }
 
     public void PushPlayer(float pushCoefficient)
@@ -49,8 +49,10 @@ public class FrictionPlayerController : MonoBehaviour
     public void ResetPlayer()
     {
         rb.isKinematic = true;
-        transform.position = FrictionStageManager.Instance.GetSpawnPos();
-        transform.rotation = initialRot;
+        transform.localPosition = initialPos;
+        transform.localRotation = initialRot;
+        // transform.position = FrictionStageManager.Instance.GetSpawnPos();
+        // transform.rotation = initialRot;
     }
 
     public void ToggleShape(bool isCube)
