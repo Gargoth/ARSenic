@@ -5,15 +5,16 @@ using UnityEngine;
 
 public class GravModObject : MonoBehaviour
 {
-    public float floatForce;
-    // Rigidbody _rb;
+    public float floatForce = 0;
+    Rigidbody _rb;
 
     private void Start()
     {
-        // _rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
     {
+        _rb.AddForce(-Physics.gravity*floatForce, ForceMode.Acceleration);
     }
 }
