@@ -1922,6 +1922,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1806631603}
+        m_TargetAssemblyTypeName: StopwatchScript, Assembly-CSharp
+        m_MethodName: ToggleStopwatch
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &779190849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5071,6 +5083,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1797324593}
   m_CullTransparentMesh: 1
+--- !u!114 &1806631603 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7189992445511880023, guid: 56b5946e19405d645b91ef0156784c57, type: 3}
+  m_PrefabInstance: {fileID: 3325749895394694159}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e4dbad010ede7649ac9bf154dda36a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1822916803
 GameObject:
   m_ObjectHideFlags: 0

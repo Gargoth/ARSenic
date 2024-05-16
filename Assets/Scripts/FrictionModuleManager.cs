@@ -43,6 +43,7 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
         if (PersistentDataContainer.Instance.f_frictionDialogShown)
         {
             Destroy(GameObject.FindWithTag("Popup Canvas"));
+            StopwatchScript.Instance.ToggleStopwatch(true);
         }
         else
         {
