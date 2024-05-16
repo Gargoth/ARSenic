@@ -1,18 +1,17 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FrictionTargetScript : MonoBehaviour
+public class FailedLevel : MonoBehaviour
 {
-    GameObject endCanvasPrefab;
-    GameObject endCanvas;
+    GameObject failedLevelPrefab;
+    GameObject failedLevel;
     float targetDuration;
     Coroutine finishingLevelCoroutine;
     void Start()
     {
         targetDuration = FrictionStageManager.Instance.GetTargetDuration();
-        endCanvasPrefab = Resources.Load<GameObject>("Prefabs/End Canvas");
+        failedLevelPrefab = Resources.Load<GameObject>("Prefabs/Failed Level");
     }
 
     void OnTriggerEnter(Collider other)
@@ -36,18 +35,11 @@ public class FrictionTargetScript : MonoBehaviour
             }
         }
     }
-
-    void FinishLevel()
-    {
-        endCanvas = Instantiate(endCanvasPrefab);
-        FrictionModuleManager.Instance.FinishLevel();
-    }
-
     IEnumerator FinishingLevel(float duration)
     {
         Debug.Log("Starting Finishing Level Coroutine with duration " + duration);
         yield return new WaitForSeconds(duration);
-        FinishLevel();
+        failedLevel = Instantiate(failedLevelPrefab);
         Debug.Log("Ended Finishing Level Coroutine");
     }
 }
