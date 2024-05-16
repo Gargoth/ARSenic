@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class FailedLevel : MonoBehaviour
 {
+    [Tooltip("Put text to display here!")] [SerializeField] string popupText;
     GameObject failedLevelPrefab;
     GameObject failedLevel;
     float targetDuration;
@@ -35,11 +37,19 @@ public class FailedLevel : MonoBehaviour
             }
         }
     }
+
+    void SpawnPopup(string popupText)
+    {
+        failedLevel = Instantiate(failedLevelPrefab);
+        TextMeshProUGUI popupTextUI = failedLevel.transform.Find("Page 4").Find("PopupText").GetComponent<TextMeshProUGUI>();
+        popupTextUI.text = popupText;
+    }
+    
     IEnumerator FinishingLevel(float duration)
     {
         Debug.Log("Starting Finishing Level Coroutine with duration " + duration);
         yield return new WaitForSeconds(duration);
-        failedLevel = Instantiate(failedLevelPrefab);
+        SpawnPopup(popupText);
         Debug.Log("Ended Finishing Level Coroutine");
     }
 }
