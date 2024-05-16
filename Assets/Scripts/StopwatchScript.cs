@@ -8,11 +8,16 @@ public class StopwatchScript : Singleton<StopwatchScript>
 {
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] float currentTime;
-    bool isStopwatchRunning = true;
+    bool isStopwatchRunning = false;
 
-    public void ToggleStopwatch(bool state)
+    public float GetTime()
     {
-        isStopwatchRunning = state;
+        return currentTime;
+    }
+
+    public void ToggleStopwatch(bool isRunning)
+    {
+        isStopwatchRunning = isRunning;
     }
 
     void Update()
