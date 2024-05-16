@@ -36,6 +36,7 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
     float pushProgress;
     bool isPushButton = false;
     bool isPlayerShapeCube = true;
+    bool isFinished = false;
 
     IEnumerator Start()
     {
@@ -246,5 +247,11 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
             Collider collider = road.GetComponent<Collider>();
             collider.material = physicMaterials[index];
         }
+    }
+
+    public void FinishLevel()
+    {
+        isFinished = false;
+        StopwatchScript.Instance.ToggleStopwatch(false);
     }
 }
