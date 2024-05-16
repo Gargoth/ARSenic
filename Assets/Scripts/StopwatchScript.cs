@@ -10,6 +10,11 @@ public class StopwatchScript : Singleton<StopwatchScript>
     [SerializeField] float currentTime;
     bool isStopwatchRunning = true;
 
+    public float GetTime()
+    {
+        return currentTime;
+    }
+
     public void ToggleStopwatch(bool state)
     {
         isStopwatchRunning = state;
