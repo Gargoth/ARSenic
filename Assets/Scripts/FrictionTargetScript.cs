@@ -40,6 +40,7 @@ public class FrictionTargetScript : MonoBehaviour
     void FinishLevel()
     {
         endCanvas = Instantiate(endCanvasPrefab);
+        FrictionModuleManager.Instance.FinishLevel();
     }
 
     IEnumerator FinishingLevel(float duration)

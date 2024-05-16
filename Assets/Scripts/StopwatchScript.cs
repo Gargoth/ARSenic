@@ -4,18 +4,20 @@ using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class StopwatchScript : MonoBehaviour
+public class StopwatchScript : Singleton<StopwatchScript>
 {
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] float currentTime;
-    
-    void Start()
+    bool isStopwatchRunning = true;
+
+    public void ToggleStopwatch(bool state)
     {
+        isStopwatchRunning = state;
     }
 
     void Update()
     {
-        if (timerText)
+        if (timerText != null && isStopwatchRunning)
         {
             currentTime += Time.deltaTime;
             int minutes = (int)(currentTime / 60);
