@@ -1525,8 +1525,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.2610903, y: -53}
-  m_SizeDelta: {x: 677.0353, y: 158.6}
+  m_AnchoredPosition: {x: -0.0011902, y: 1.9563}
+  m_SizeDelta: {x: 979.1, y: 295.9904}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1347100938
 MonoBehaviour:
@@ -1548,7 +1548,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Explore the basics of friction and motion! Select a topic you want to learn
+  m_text: Explore the basics of force and motion. Select a topic you want to learn
     and play games!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1576,7 +1576,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 43.65
+  m_fontSize: 72
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2468,8 +2468,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 181.98926}
-  m_SizeDelta: {x: 731.79, y: 239.7258}
+  m_AnchoredPosition: {x: 0.000024796, y: 264}
+  m_SizeDelta: {x: 979.0929, y: 157.2914}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1754562369
 MonoBehaviour:
