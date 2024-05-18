@@ -11,7 +11,7 @@ public class FrictionTargetScript : MonoBehaviour
     void Start()
     {
         endCanvasPrefab = Resources.Load<GameObject>("Prefabs/End Canvas");
-        GetComponent<DelayedTrigger>().triggerEvent.AddListener(FinishLevel);
+        GetComponent<DelayedTrigger>().TriggerEvent.AddListener(FinishLevel);
     }
     
     void FinishLevel()

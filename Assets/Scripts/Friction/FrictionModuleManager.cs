@@ -26,11 +26,7 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
     [SerializeField] bool isTargetFound = false;
 
     [SerializeField]
-    public bool CanPush
-    {
-        get;
-        private set;
-    } = true;
+    public bool CanPush { get; private set; } = true;
     [SerializeField] bool forceRebindPlayer = false;
     [SerializeField] bool forceReset = false;
     
@@ -81,24 +77,7 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
             progressMask.GetComponent<Image>().fillAmount = pushProgress;
         }
         
-        // Override Event System
-        if (Input.GetMouseButtonDown(0))
-        {
-            RaycastHit hit;
-            // Send a ray from the camera to the mouseposition
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            // Create a raycast from the Camera and output anything it hits
-            int mask = 1 << 6; // Mask for Selectable layer
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
-                // Check the hit GameObject has a Collider
-                if (hit.collider != null)
-                {
-                    // Click a GameObject to return that GameObject your mouse pointer hit
-                    GameObject m_MyGameObject = hit.collider.gameObject;
-                    // Set this GameObject you clicked as the currently selected in the EventSystem
-                    eventSystem.SetSelectedGameObject(m_MyGameObject);
-                }
-        }
+        RaycastSelectable();
         
         // DEBUG
         if (forceReset)
@@ -111,6 +90,23 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
         {
             forceRebindPlayer = false;
             player = GameObject.FindWithTag("Player").GetComponent<FrictionPlayerController>();
+        }
+    }
+
+    void RaycastSelectable()
+    {
+        // Override Event System
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            int mask = 1 << 6; // Mask for Selectable layer
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
+                if (hit.collider != null)
+                {
+                    GameObject selectableObject = hit.collider.gameObject;
+                    eventSystem.SetSelectedGameObject(selectableObject);
+                }
         }
     }
 

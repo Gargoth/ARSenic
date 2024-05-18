@@ -5,14 +5,17 @@ using Unity.Services.Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 
 public class GameManagerScript : Singleton<GameManagerScript>
 {
+    public GameObject ObjectContainer { get; private set; }
     private int currentIndex = 0; // Index to keep track of the current string in the list
 
     void Start()
     {
-        GameObject.FindWithTag("Object Container")?.SetActive(false);
+        ObjectContainer = GameObject.FindWithTag("Object Container");
+        ObjectContainer.SetActive(false);
     }
 
     public static void DoLog(string log)

@@ -12,7 +12,7 @@ public class FailedLevel : MonoBehaviour
     void Start()
     {
         failedLevelPrefab = Resources.Load<GameObject>("Prefabs/Failed Level");
-        GetComponent<DelayedTrigger>().triggerEvent.AddListener(SpawnPopup);
+        GetComponent<DelayedTrigger>().TriggerEvent.AddListener(SpawnPopup);
     }
 
     void SpawnPopup()

@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class DelayedTrigger : MonoBehaviour
 {
     [SerializeField] float targetDuration = 2f;
-    [NonSerialized] public UnityEvent triggerEvent;
+    [NonSerialized] public UnityEvent TriggerEvent;
     Coroutine triggerCoroutine;
     
     void Start() { }
@@ -17,7 +17,7 @@ public class DelayedTrigger : MonoBehaviour
         if (other.gameObject.CompareTag("Player") && triggerCoroutine == null && !FrictionModuleManager.Instance.CanPush)
         {
             Debug.Log("Player trigger enter");
-            triggerCoroutine = StartCoroutine(triggerIEnumerator(targetDuration));
+            triggerCoroutine = StartCoroutine(TriggerIEnumerator(targetDuration));
         }
     }
 
@@ -34,11 +34,11 @@ public class DelayedTrigger : MonoBehaviour
         }
     }
 
-    IEnumerator triggerIEnumerator(float duration)
+    IEnumerator TriggerIEnumerator(float duration)
     {
         Debug.Log("Starting Finishing Level Coroutine with duration " + duration);
         yield return new WaitForSeconds(duration);
-        triggerEvent.Invoke();
+        TriggerEvent.Invoke();
         Debug.Log("Ended Finishing Level Coroutine");
     }
 }
