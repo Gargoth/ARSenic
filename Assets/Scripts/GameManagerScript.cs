@@ -9,6 +9,12 @@ using System.Collections.Generic;
 public class GameManagerScript : Singleton<GameManagerScript>
 {
     private int currentIndex = 0; // Index to keep track of the current string in the list
+
+    void Start()
+    {
+        GameObject.FindWithTag("Object Container")?.SetActive(false);
+    }
+
     public static void DoLog(string log)
     {
         Debug.Log(log);
