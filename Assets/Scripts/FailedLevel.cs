@@ -16,9 +16,9 @@ public class FailedLevel : MonoBehaviour
         failedLevelPrefab = Resources.Load<GameObject>("Prefabs/Failed Level");
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && finishingLevelCoroutine == null)
+        if (other.gameObject.CompareTag("Player") && finishingLevelCoroutine == null && !FrictionModuleManager.Instance.CanPush)
         {
             Debug.Log("Player trigger enter");
             finishingLevelCoroutine = StartCoroutine(FinishingLevel(targetDuration));

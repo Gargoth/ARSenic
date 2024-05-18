@@ -24,7 +24,13 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
     
     [Header("DEBUG")]
     [SerializeField] bool isTargetFound = false;
-    [SerializeField] bool canPush = true;
+
+    [SerializeField]
+    public bool CanPush
+    {
+        get;
+        private set;
+    } = true;
     [SerializeField] bool forceRebindPlayer = false;
     [SerializeField] bool forceReset = false;
     
@@ -137,7 +143,7 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
 
     public void ResetLevel()
     {
-        canPush = true;
+        CanPush = true;
         player.ResetPlayer();
 		ResetColor();
     }
@@ -150,14 +156,14 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
             player.PushPlayer(pushProgress);
             pushProgress = 0;
             progressMask.GetComponent<Image>().fillAmount = pushProgress;
-            canPush = false;
+            CanPush = false;
             GrayOut();
         }
     }
 
     public void OnPushButtonDown(BaseEventData baseEventData)
     {
-        if (isTargetFound && canPush)
+        if (isTargetFound && CanPush)
             isPushButton = true;
     }
 
