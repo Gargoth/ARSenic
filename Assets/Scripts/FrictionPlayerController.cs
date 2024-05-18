@@ -25,10 +25,6 @@ public class FrictionPlayerController : MonoBehaviour
         directionObject = transform.Find("Direction");
         yield return new WaitForEndOfFrame();
         SetInitialState();
-
-		// testing
-		// yield return new WaitForSeconds(1f);
-		// PushPlayer(1f);
     }
 
     public void SetInitialState()
@@ -42,7 +38,6 @@ public class FrictionPlayerController : MonoBehaviour
         rb.isKinematic = false;
         float pushForce = pushCoefficient * maxPushForce;
         Vector3 directionUnit = (directionObject.position - transform.position).normalized;
-        Debug.Log("Player pushed to direction with force: " + pushForce);
         rb.AddForce(pushForce * directionUnit);
     }
 
@@ -51,8 +46,6 @@ public class FrictionPlayerController : MonoBehaviour
         rb.isKinematic = true;
         transform.localPosition = initialPos;
         transform.localRotation = initialRot;
-        // transform.position = FrictionStageManager.Instance.GetSpawnPos();
-        // transform.rotation = initialRot;
     }
 
     public void ToggleShape(bool isCube)
