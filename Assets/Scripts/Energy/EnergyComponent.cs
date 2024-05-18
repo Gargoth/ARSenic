@@ -10,17 +10,10 @@ public abstract class EnergyComponent : MonoBehaviour
 {
     public string Name { get; private set; } // NOTE: Is this needed?
     [SerializeField] GameObject componentModelPrefab;
-    public EnergyTile ParentTile { get; set; }
     public bool IsGenerator { get; private set; }
     public IEnergyType InAcceptedEnergyType { get; private set; }
     [CanBeNull] public IEnergyType InEnergyType { get; set; }
     public IEnergyType OutEnergyType { get; private set; }
-
-    void Start()
-    {
-        ParentTile.OnPowerEvent.AddListener(TurnOn);
-        ParentTile.OnDepowerEvent.AddListener(TurnOff);
-    }
 
     public virtual bool ReceiveEnergy(IEnergyType energyType)
     {

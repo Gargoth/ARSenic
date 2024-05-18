@@ -60,4 +60,16 @@ public class EnergyTile : MonoBehaviour
         if (IsSelected) ;
         else ;
     }
+
+    void AddComponentListeners()
+    {
+        OnPowerEvent.AddListener(CurrentComponent.TurnOn);
+        OnDepowerEvent.AddListener(CurrentComponent.TurnOff);
+    }
+
+    void RemoveComponentListeners()
+    {
+        OnPowerEvent.RemoveListener(CurrentComponent.TurnOn);
+        OnDepowerEvent.RemoveListener(CurrentComponent.TurnOff);
+    }
 }
