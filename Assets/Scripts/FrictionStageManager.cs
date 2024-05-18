@@ -7,7 +7,6 @@ public class FrictionStageManager : Singleton<FrictionStageManager>
 {
     [Tooltip("In seconds")] [SerializeField] float minThreeStarTime;
     [Tooltip("In seconds")] [SerializeField] float minTwoStarTime;
-    float targetDuration = 2f;
     FrictionModuleManager frictionModuleManager;
     void Start()
     {
@@ -22,11 +21,6 @@ public class FrictionStageManager : Singleton<FrictionStageManager>
             return 2;
         else
             return 1;
-    }
-
-    public float GetTargetDuration()
-    {
-        return targetDuration;
     }
 
     public void RoadClickHandler(BaseEventData baseEventData)
