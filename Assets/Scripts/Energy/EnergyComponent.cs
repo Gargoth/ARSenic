@@ -13,13 +13,11 @@ public abstract class EnergyComponent : MonoBehaviour
     public bool IsGenerator { get; private set; }
     public IEnergyType InAcceptedEnergyType { get; private set; }
     [CanBeNull] public IEnergyType InEnergyType { get; set; }
-    public IEnergyType OutEnergyType { get; private set; }
+    public List<IEnergyType> OutEnergyType { get; private set; }
 
-    public virtual bool ReceiveEnergy(IEnergyType energyType)
+    public virtual bool ReceiveEnergy(List<IEnergyType> inputEnergyTypes)
     {
-        if (energyType == InAcceptedEnergyType)
-            return true;
-        return false;
+        return inputEnergyTypes.Contains(InAcceptedEnergyType);
     }
 
     public virtual void TurnOn()

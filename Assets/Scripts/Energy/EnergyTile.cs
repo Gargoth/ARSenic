@@ -11,10 +11,21 @@ public class EnergyTile : MonoBehaviour
     [field: SerializeField] public EnergyTile PreviousTile { get; private set; }
     [field: SerializeField] public bool IsSelectable { get; private set; }
     public bool IsSelected { get; set; } = false;
-    [field: SerializeField] public bool IsGenerator { get; private set; }
     [CanBeNull] public EnergyComponent CurrentComponent { get; set; }
     public UnityEvent OnPowerEvent { get; }
     public UnityEvent OnDepowerEvent { get; }
+    [Tooltip("Level ends when this is powered")] [field: SerializeField] public bool IsTargetTile { get; private set; }
+    
+    public bool IsGenerator
+    {
+        get
+        {
+            if (CurrentComponent == null || !CurrentComponent.IsGenerator)
+                return false;
+            return true;
+        }
+    }
+    
 
     void Start()
     {
@@ -48,7 +59,7 @@ public class EnergyTile : MonoBehaviour
     }
 
     [CanBeNull]
-    public IEnergyType SendEnergy()
+    public List<IEnergyType> SendEnergy()
     {
         if (IsPowered())
             return CurrentComponent.OutEnergyType;

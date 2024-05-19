@@ -9,7 +9,6 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
     EventSystem eventSystem;
     GameObject objectContainer;
     GameObject selectedTile;
-    [SerializeField] GameObject finalTile;  // If this tile is powered, trigger level end
     
     void Start()
     {
