@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class EnergyTile : MonoBehaviour
 {
@@ -17,8 +18,20 @@ public class EnergyTile : MonoBehaviour
 
     void Start()
     {
-        PreviousTile.OnPowerEvent.AddListener(TryPower);
-        PreviousTile.OnDepowerEvent.AddListener(OnDepower);
+        if (PreviousTile != null)
+        {
+            PreviousTile.OnPowerEvent.AddListener(TryPower);
+            PreviousTile.OnDepowerEvent.AddListener(OnDepower);
+        }
+    }
+
+    void OnDrawGizmos()
+    {
+        if (PreviousTile != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(PreviousTile.transform.position, transform.position);
+        }
     }
 
     public void TryPower()
@@ -52,15 +65,6 @@ public class EnergyTile : MonoBehaviour
         OnDepowerEvent.Invoke();
     }
 
-    public void OnTileClick()
-    {
-        IsSelected = !IsSelected;
-        // TODO: Implement color change?
-        // Possibly use Highlight.cs similar to Friction roads
-        if (IsSelected) ;
-        else ;
-    }
-
     void AddComponentListeners()
     {
         OnPowerEvent.AddListener(CurrentComponent.TurnOn);
@@ -71,5 +75,10 @@ public class EnergyTile : MonoBehaviour
     {
         OnPowerEvent.RemoveListener(CurrentComponent.TurnOn);
         OnDepowerEvent.RemoveListener(CurrentComponent.TurnOff);
+    }
+
+    public void HandleClick(BaseEventData baseEventData)
+    {
+        EnergyModuleManager.Instance.SelectTile(baseEventData);
     }
 }
