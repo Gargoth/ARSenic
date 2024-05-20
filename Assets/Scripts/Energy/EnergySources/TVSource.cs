@@ -7,12 +7,12 @@ public class TVSource : EnergySource
 {
     public string Name { get; private set; } = "TV"; // NOTE: Is this needed?
     public bool IsGenerator { get; private set; } = true;
-    [CanBeNull] public IEnergyType InAcceptedEnergyType { get; private set; } = new ElectricalEnergy();
+    [CanBeNull] public string InAcceptedEnergyType { get; private set; } = "electrical";
 
-    public List<IEnergyType> OutEnergyType { get; private set; } = new List<IEnergyType>
+    public List<string> OutEnergyType { get; private set; } = new List<string>
     {
-        new LightEnergy(),
-        new SoundEnergy(),
+        "light",
+        "sound"
     };
 
     void Awake()

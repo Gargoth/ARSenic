@@ -136,12 +136,17 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
         selectedTileScript.CurrentSource = null;
 
         // Add new source
-        // TODO: Update sources
+        CreateNewSource(energySourceName, selectedTileScript);
+        Debug.Log(name + "'s current source is " + selectedTileScript.CurrentSource.Name);
+    }
+
+    void CreateNewSource(string energySourceName, EnergyTile selectedTileScript)
+    {
         EnergySource newSource;
         switch (energySourceName)
         {
             case "Sun":
-                newSource = selectedTile.AddComponent(typeof(SunSource)) as SunSource;
+                newSource = selectedTile.AddComponent(typeof(SunSource)) as EnergySource;
                 selectedTileScript.CurrentSource = newSource;
                 break;
             case "SolarPanel":

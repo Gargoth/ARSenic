@@ -6,17 +6,14 @@ using UnityEngine;
 
 public class SunSource : EnergySource
 {
-    public string Name { get; private set; } = "Sun"; // NOTE: Is this needed?
-    public bool IsGenerator { get; private set; } = true;
-
-    public List<IEnergyType> OutEnergyType { get; private set; } = new List<IEnergyType>
-    {
-        new LightEnergy(),
-        new HeatEnergy(),
-    };
+    [field: SerializeField]
+    public List<string> OutEnergyType { get; private set; }
 
     void Awake()
     {
+        Name = "Sun";
+        IsGenerator = true;
+        OutEnergyType = new List<string> { "light", "heat" };
         EnergySourceModelPrefab = Resources.Load<GameObject>("Prefabs/Energy Sources/Sun");
     }
 }

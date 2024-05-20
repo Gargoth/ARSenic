@@ -7,11 +7,11 @@ public class SolarPanelSource : EnergySource
 {
     public string Name { get; private set; } = "SolarPanel"; // NOTE: Is this needed?
     public bool IsGenerator { get; private set; } = true;
-    [CanBeNull] public IEnergyType InAcceptedEnergyType { get; private set; } = new LightEnergy();
+    [CanBeNull] public string InAcceptedEnergyType { get; private set; } = "light";
 
-    public List<IEnergyType> OutEnergyType { get; private set; } = new List<IEnergyType>
+    public List<string> OutEnergyType { get; private set; } = new List<string>
     {
-        new ElectricalEnergy(),
+        "electrical"
     };
 
     void Awake()
