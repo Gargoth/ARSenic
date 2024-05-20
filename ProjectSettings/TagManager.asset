@@ -9,6 +9,8 @@ TagManager:
   - Toothbrush
   - Ground Plane Canvas
   - Object Container
+  - Friction Target
+  - End Canvas
   layers:
   - Default
   - TransparentFX

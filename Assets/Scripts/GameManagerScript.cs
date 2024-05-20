@@ -15,7 +15,7 @@ public class GameManagerScript : Singleton<GameManagerScript>
     void Start()
     {
         ObjectContainer = GameObject.FindWithTag("Object Container");
-        ObjectContainer.SetActive(false);
+        ObjectContainer?.SetActive(false);
     }
 
     public static void DoLog(string log)

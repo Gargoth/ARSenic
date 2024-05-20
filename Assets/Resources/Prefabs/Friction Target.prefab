@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 8997086186760498909}
   - component: {fileID: 3866426225493010651}
   - component: {fileID: 7993367594343893665}
+  - component: {fileID: 7282464657185007694}
   m_Layer: 0
   m_Name: Friction Target
-  m_TagString: Untagged
+  m_TagString: Friction Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,3 +148,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53f325eac6f64bc458f918ac6d42f281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7282464657185007694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8952268700340660021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99f00e5e4759e3343b8cf0b7ca2f12f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetDuration: 2

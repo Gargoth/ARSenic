@@ -9,14 +9,23 @@ public class DelayedTrigger : MonoBehaviour
     [SerializeField] float targetDuration = 2f;
     [NonSerialized] public UnityEvent TriggerEvent;
     Coroutine triggerCoroutine;
-    
-    void Start() { }
+
+    void Awake()
+    {
+        TriggerEvent = new UnityEvent();
+    }
+
+    void Start()
+    {
+        FrictionModuleManager.Instance.ResetActions.AddListener(CancelTriggerCoroutine);
+    }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && triggerCoroutine == null && !FrictionModuleManager.Instance.CanPush)
+        if (other.gameObject.CompareTag("Player") && triggerCoroutine == null &&
+            !FrictionModuleManager.Instance.CanPush)
         {
-            Debug.Log("Player trigger enter");
+            Debug.Log("Player trigger enter" + name);
             triggerCoroutine = StartCoroutine(TriggerIEnumerator(targetDuration));
         }
     }
@@ -25,12 +34,18 @@ public class DelayedTrigger : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player trigger exit");
-            if (triggerCoroutine != null)
-            {
-                StopCoroutine(triggerCoroutine);
-                triggerCoroutine = null;
-            }
+            Debug.Log("Player trigger exit" + name);
+            CancelTriggerCoroutine();
+        }
+    }
+
+    public void CancelTriggerCoroutine()
+    {
+        if (triggerCoroutine != null)
+        {
+            StopCoroutine(triggerCoroutine);
+            triggerCoroutine = null;
+            Debug.Log("Stopping trigger coroutine");
         }
     }
 

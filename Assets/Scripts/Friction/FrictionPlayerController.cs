@@ -24,6 +24,8 @@ public class FrictionPlayerController : MonoBehaviour
         sphereCollider = GetComponent<SphereCollider>();
         directionObject = transform.Find("Direction");
         yield return new WaitForEndOfFrame();
+        Debug.Log("Adding ResetPlayer Listener");
+        FrictionModuleManager.Instance.ResetActions.AddListener(ResetPlayer);
         SetInitialState();
     }
 
@@ -41,8 +43,9 @@ public class FrictionPlayerController : MonoBehaviour
         rb.AddForce(pushForce * directionUnit);
     }
 
-    public void ResetPlayer()
+    void ResetPlayer()
     {
+        Debug.Log("Resetting player");
         rb.isKinematic = true;
         transform.localPosition = initialPos;
         transform.localRotation = initialRot;

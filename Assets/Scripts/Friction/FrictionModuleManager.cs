@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -27,14 +28,13 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
 
     [SerializeField]
     public bool CanPush { get; private set; } = true;
-    [SerializeField] bool forceRebindPlayer = false;
-    [SerializeField] bool forceReset = false;
     
     [SerializeField] List<GameObject> selectedRoads;
     List<int> uiTouchFingerIDs;
     EventSystem eventSystem;
     FrictionPlayerController player;
     RaycastHit hit;
+    public UnityEvent ResetActions { get; private set; }
     float pushProgress;
     bool isPushButton = false;
     bool isPlayerShapeCube = true;
@@ -51,7 +51,8 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
         {
             PersistentDataContainer.Instance.f_frictionDialogShown = true;
         }
-        
+
+        ResetActions = new UnityEvent();
         selectedRoads = new List<GameObject>();
         int selectedLevel = PersistentDataContainer.Instance.selectedLevel;
         eventSystem = EventSystem.current;
@@ -78,19 +79,6 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
         }
         
         RaycastSelectable();
-        
-        // DEBUG
-        if (forceReset)
-        {
-            forceReset = false;
-            ResetLevel();
-        }
-        
-        if (forceRebindPlayer)
-        {
-            forceRebindPlayer = false;
-            player = GameObject.FindWithTag("Player").GetComponent<FrictionPlayerController>();
-        }
     }
 
     void RaycastSelectable()
@@ -140,7 +128,7 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
     public void ResetLevel()
     {
         CanPush = true;
-        player.ResetPlayer();
+        ResetActions.Invoke();
 		ResetColor();
     }
 
