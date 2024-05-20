@@ -472,16 +472,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GravityModuleManagerScript, Assembly-CSharp
-        m_MethodName: SpawnPrefab
-        m_Mode: 3
+      - m_Target: {fileID: 367328672}
+        m_TargetAssemblyTypeName: EnergyModuleManager, Assembly-CSharp
+        m_MethodName: AssignEnergySource
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Sun
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &372334728
@@ -522,68 +522,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 372334725}
   m_CullTransparentMesh: 1
---- !u!1001 &393572221
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1838400436}
-    m_Modifications:
-    - target: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.23
-      objectReference: {fileID: 0}
-    - target: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5788315565296593618, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
-      propertyPath: m_Name
-      value: Energy Tile (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
---- !u!4 &393572222 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
-  m_PrefabInstance: {fileID: 393572221}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &487654229
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,7 +629,7 @@ GameObject:
   - component: {fileID: 576819710}
   - component: {fileID: 576819709}
   m_Layer: 5
-  m_Name: Balloon
+  m_Name: Solar Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -760,16 +698,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GravityModuleManagerScript, Assembly-CSharp
-        m_MethodName: SpawnPrefab
-        m_Mode: 3
+      - m_Target: {fileID: 367328672}
+        m_TargetAssemblyTypeName: EnergyModuleManager, Assembly-CSharp
+        m_MethodName: AssignEnergySource
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 1
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: SolarPanel
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &576819710
@@ -937,7 +875,7 @@ GameObject:
   - component: {fileID: 745218290}
   - component: {fileID: 745218289}
   m_Layer: 5
-  m_Name: Tennis Ball
+  m_Name: Human
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1006,16 +944,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GravityModuleManagerScript, Assembly-CSharp
-        m_MethodName: SpawnPrefab
-        m_Mode: 3
+      - m_Target: {fileID: 367328672}
+        m_TargetAssemblyTypeName: EnergyModuleManager, Assembly-CSharp
+        m_MethodName: AssignEnergySource
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
+          m_IntArgument: 1
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Human
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &745218290
@@ -1651,6 +1589,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 964301689}
   m_CullTransparentMesh: 1
+--- !u!1001 &988221343
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1838400436}
+    m_Modifications:
+    - target: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5788315565296593618, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
+      propertyPath: m_Name
+      value: Energy Tile (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
+--- !u!4 &988221344 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
+  m_PrefabInstance: {fileID: 988221343}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1012426033
 GameObject:
   m_ObjectHideFlags: 0
@@ -1925,6 +1925,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1101332523}
   m_CullTransparentMesh: 1
+--- !u!1001 &1142494574
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1838400436}
+    m_Modifications:
+    - target: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5788315565296593618, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
+      propertyPath: m_Name
+      value: Energy Tile (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
+--- !u!4 &1142494575 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
+  m_PrefabInstance: {fileID: 1142494574}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1175945136
 GameObject:
   m_ObjectHideFlags: 0
@@ -2070,7 +2132,7 @@ GameObject:
   - component: {fileID: 1209577902}
   - component: {fileID: 1209577901}
   m_Layer: 5
-  m_Name: Crate
+  m_Name: Stove
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2139,16 +2201,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GravityModuleManagerScript, Assembly-CSharp
-        m_MethodName: SpawnPrefab
-        m_Mode: 3
+      - m_Target: {fileID: 367328672}
+        m_TargetAssemblyTypeName: EnergyModuleManager, Assembly-CSharp
+        m_MethodName: AssignEnergySource
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
+          m_IntArgument: 1
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Stove
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1209577902
@@ -2335,7 +2397,7 @@ GameObject:
   - component: {fileID: 1479383350}
   - component: {fileID: 1479383349}
   m_Layer: 5
-  m_Name: Shuttle
+  m_Name: TV
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2404,16 +2466,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GravityModuleManagerScript, Assembly-CSharp
-        m_MethodName: SpawnPrefab
-        m_Mode: 3
+      - m_Target: {fileID: 367328672}
+        m_TargetAssemblyTypeName: EnergyModuleManager, Assembly-CSharp
+        m_MethodName: AssignEnergySource
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
+          m_IntArgument: 1
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: TV
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1479383350
@@ -2467,7 +2529,7 @@ GameObject:
   - component: {fileID: 1657004126}
   - component: {fileID: 1657004125}
   m_Layer: 5
-  m_Name: Shuttle (1)
+  m_Name: Generator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2536,16 +2598,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GravityModuleManagerScript, Assembly-CSharp
-        m_MethodName: SpawnPrefab
-        m_Mode: 3
+      - m_Target: {fileID: 367328672}
+        m_TargetAssemblyTypeName: EnergyModuleManager, Assembly-CSharp
+        m_MethodName: AssignEnergySource
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
+          m_IntArgument: 1
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Generator
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1657004126
@@ -3139,7 +3201,8 @@ Transform:
   m_Children:
   - {fileID: 487654230}
   - {fileID: 4903172841797066}
-  - {fileID: 393572222}
+  - {fileID: 1142494575}
+  - {fileID: 988221344}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1878357141

@@ -11,21 +11,26 @@ public class EnergyTile : MonoBehaviour
     [field: SerializeField] public EnergyTile PreviousTile { get; private set; }
     [field: SerializeField] public bool IsSelectable { get; private set; }
     public bool IsSelected { get; set; } = false;
-    [CanBeNull] public EnergyComponent CurrentComponent { get; set; }
-    public UnityEvent OnPowerEvent { get; }
-    public UnityEvent OnDepowerEvent { get; }
+    [CanBeNull] public EnergySource CurrentSource { get; set; }
+    public UnityEvent OnPowerEvent { get; private set; }
+    public UnityEvent OnDepowerEvent { get; private set; }
     [Tooltip("Level ends when this is powered")] [field: SerializeField] public bool IsTargetTile { get; private set; }
     
     public bool IsGenerator
     {
         get
         {
-            if (CurrentComponent == null || !CurrentComponent.IsGenerator)
+            if (CurrentSource == null || !CurrentSource.IsGenerator)
                 return false;
             return true;
         }
     }
-    
+
+    void Awake()
+    {
+        OnPowerEvent = new UnityEvent();
+        OnDepowerEvent = new UnityEvent();
+    }
 
     void Start()
     {
@@ -53,7 +58,7 @@ public class EnergyTile : MonoBehaviour
 
     public bool IsPowered()
     {
-        if (IsGenerator && CurrentComponent != null || CurrentComponent.ReceiveEnergy(PreviousTile.SendEnergy()))
+        if (IsGenerator && CurrentSource != null || CurrentSource.ReceiveEnergy(PreviousTile.SendEnergy()))
             return true;
         return false;
     }
@@ -62,7 +67,7 @@ public class EnergyTile : MonoBehaviour
     public List<IEnergyType> SendEnergy()
     {
         if (IsPowered())
-            return CurrentComponent.OutEnergyType;
+            return CurrentSource.OutEnergyType;
         return null;
     }
 
@@ -78,14 +83,14 @@ public class EnergyTile : MonoBehaviour
 
     void AddComponentListeners()
     {
-        OnPowerEvent.AddListener(CurrentComponent.TurnOn);
-        OnDepowerEvent.AddListener(CurrentComponent.TurnOff);
+        OnPowerEvent.AddListener(CurrentSource.TurnOn);
+        OnDepowerEvent.AddListener(CurrentSource.TurnOff);
     }
 
     void RemoveComponentListeners()
     {
-        OnPowerEvent.RemoveListener(CurrentComponent.TurnOn);
-        OnDepowerEvent.RemoveListener(CurrentComponent.TurnOff);
+        OnPowerEvent.RemoveListener(CurrentSource.TurnOn);
+        OnDepowerEvent.RemoveListener(CurrentSource.TurnOff);
     }
 
     public void HandleClick(BaseEventData baseEventData)

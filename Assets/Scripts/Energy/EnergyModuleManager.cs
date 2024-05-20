@@ -49,10 +49,6 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
                     eventSystem.SetSelectedGameObject(selectableObject);
                 }
             }
-            else
-            {
-                UnselectTile();
-            }
         }
     }
 
@@ -94,6 +90,13 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
         }
 
         Renderer objRenderer;
+
+        if (selectedTile == obj)
+        {
+            UnselectTile();
+            return;
+        }
+        
         if (selectedTile != null)
         {
             UnselectTile();
@@ -119,5 +122,48 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
         objRenderer.SetPropertyBlock(null);
         Debug.Log(selectedTile);
         selectedTile = null;
+    }
+
+    // NOTE: There has to be a better way to do this
+    public void AssignEnergySource(string energySourceName)
+    {
+        if (selectedTile == null)
+            return;
+
+        EnergyTile selectedTileScript = selectedTile.GetComponent<EnergyTile>();
+        // Remove current source
+        Destroy(selectedTileScript.CurrentSource);
+        selectedTileScript.CurrentSource = null;
+
+        // Add new source
+        // TODO: Update sources
+        EnergySource newSource;
+        switch (energySourceName)
+        {
+            case "Sun":
+                newSource = selectedTile.AddComponent(typeof(SunSource)) as SunSource;
+                selectedTileScript.CurrentSource = newSource;
+                break;
+            case "SolarPanel":
+                newSource = selectedTile.AddComponent(typeof(SolarPanelSource)) as SolarPanelSource;
+                selectedTileScript.CurrentSource = newSource;
+                break;
+            case "Human":
+                newSource = selectedTile.AddComponent(typeof(HumanSource)) as HumanSource;
+                selectedTileScript.CurrentSource = newSource;
+                break;
+            case "Stove":
+                newSource = selectedTile.AddComponent(typeof(StoveSource)) as StoveSource;
+                selectedTileScript.CurrentSource = newSource;
+                break;
+            case "TV":
+                newSource = selectedTile.AddComponent(typeof(TVSource)) as TVSource;
+                selectedTileScript.CurrentSource = newSource;
+                break;
+            case "Generator":
+                newSource = selectedTile.AddComponent(typeof(GeneratorSource)) as GeneratorSource;
+                selectedTileScript.CurrentSource = newSource;
+                break;
+        }
     }
 }
