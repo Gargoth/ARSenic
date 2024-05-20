@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 123660167415709540}
   - component: {fileID: 3555371146300030853}
   - component: {fileID: 5786162116556243003}
+  - component: {fileID: 3430417081585482543}
   m_Layer: 0
   m_Name: Failed Level
   m_TagString: Untagged
@@ -136,6 +137,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupText: "<i>You didn\u2019t reach the goal!</i> Your friction may be <b><color=#72c6f0>too
     high</color=#72c6f0></b> or your initial push was <b>too weak</b>."
+--- !u!114 &3430417081585482543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3276270318180863595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99f00e5e4759e3343b8cf0b7ca2f12f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetDuration: 2
 --- !u!1 &5445749609925521939
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,6 +216,7 @@ GameObject:
   - component: {fileID: 2962742589172815309}
   - component: {fileID: 9039560382832742114}
   - component: {fileID: 1125874729797597785}
+  - component: {fileID: 6691675551977032038}
   m_Layer: 0
   m_Name: Failed Level (2)
   m_TagString: Untagged
@@ -294,6 +309,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupText: "<i>You didn\u2019t reach the goal!</i> Your friction may be <b><color=#72c6f0>too
     high</color=#72c6f0></b> or your initial push was <b>too weak</b>."
+--- !u!114 &6691675551977032038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6640603336333360370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99f00e5e4759e3343b8cf0b7ca2f12f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetDuration: 3.5
 --- !u!1 &7103166198789227218
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,6 +429,7 @@ GameObject:
   - component: {fileID: 2162998912500117325}
   - component: {fileID: 6903881629144938799}
   - component: {fileID: 6204197077120433047}
+  - component: {fileID: 7897467728851824247}
   m_Layer: 0
   m_Name: Failed Level (1)
   m_TagString: Untagged
@@ -493,6 +522,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupText: '<i>You went past the goal!</i> Your friction may be <b><color=#9be4bd>too
     high</color=#9be4bd></b> or your initial push was <b>too strong</b>. '
+--- !u!114 &7897467728851824247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7696165442262176186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99f00e5e4759e3343b8cf0b7ca2f12f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetDuration: 2
 --- !u!1001 &478751307108598425
 PrefabInstance:
   m_ObjectHideFlags: 0
