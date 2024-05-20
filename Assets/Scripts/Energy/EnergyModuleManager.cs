@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -9,11 +10,22 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
     EventSystem eventSystem;
     GameObject objectContainer;
     GameObject selectedTile;
-    
+    [Header("DEBUG")] [SerializeField] bool debugMode;
+
     void Start()
     {
         objectContainer = GameManagerScript.Instance.ObjectContainer;
         eventSystem = EventSystem.current;
+
+        if (debugMode)
+        {
+            Debug.Log("Debug Mode detected");
+            StartCoroutine(InitializeDebugMode());
+        }
+        else
+        {
+            objectContainer.transform.SetParent(GameObject.Find("Ground Plane Stage").transform);
+        }
     }
 
     void Update()
@@ -44,6 +56,34 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
         }
     }
 
+    IEnumerator InitializeDebugMode()
+    {
+        Debug.Log("Initializing Debug Mode");
+        GameObject debugCamera = InitializeDebugCamera();
+        yield return new WaitForEndOfFrame();
+        Debug.Log("Changing Camera");
+        GameObject arCamera = Camera.main.gameObject;
+        arCamera.tag = "Untagged";
+        arCamera.gameObject.SetActive(false);
+        debugCamera.tag = "MainCamera";
+        objectContainer.SetActive(true);
+    }
+
+    GameObject InitializeDebugCamera()
+    {
+        Debug.Log("Initializing Debug Camera");
+        GameObject debugCamera = new GameObject();
+        debugCamera.AddComponent<Camera>().backgroundColor = Color.black;
+        PhysicsRaycaster physicsRaycaster = debugCamera.AddComponent<PhysicsRaycaster>();
+        physicsRaycaster.eventMask = 1 << 6;
+        debugCamera.transform.SetParent(objectContainer.transform.parent);
+        float distance = 1f;
+        debugCamera.transform.localPosition = Vector3.zero + Vector3.one * distance;
+        debugCamera.transform.LookAt(objectContainer.transform);
+        debugCamera.name = "DEBUG Camera";
+        return debugCamera;
+    }
+
     public void SelectTile(BaseEventData baseEventData)
     {
         GameObject obj = baseEventData.selectedObject;
@@ -52,6 +92,7 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
         {
             Debug.Log("Energy: Clicked tile not selectable");
         }
+
         Renderer objRenderer;
         if (selectedTile != null)
         {
