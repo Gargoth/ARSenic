@@ -389,7 +389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _persistent: 0
   selectedTileColor: {r: 0.7058824, g: 0.69803923, b: 0.3254902, a: 0}
-  debugMode: 1
+  debugMode: 0
 --- !u!1 &372334725
 GameObject:
   m_ObjectHideFlags: 0
@@ -3543,6 +3543,7 @@ MonoBehaviour:
   <EnergySourceModelPrefab>k__BackingField: {fileID: 0}
   <InEnergyType>k__BackingField: 
   <OutEnergyType>k__BackingField: []
+  currentParticleSystems: []
 --- !u!1001 &7685739248465830431
 PrefabInstance:
   m_ObjectHideFlags: 0
