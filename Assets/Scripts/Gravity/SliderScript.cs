@@ -11,15 +11,14 @@ public class SliderScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _sliderText;
     private float x = 0;
     private float y = 9.81f;
-    private float z = 24.79f;
+    private float z = 17;
     public float gravityForce;
     
     // Sprites
     public Sprite moon;
     public Sprite mars;
     public Sprite earth;
-    public Sprite jupiter;
-    public Sprite sun;
+    public Sprite neptune;
     
 
     // Start is called before the first frame update
@@ -61,7 +60,7 @@ public class SliderScript : MonoBehaviour
         }
         
         // Mars
-        else if (gravityForce > 1 && gravityForce < 5)
+        else if (gravityForce > 3 && gravityForce < 5)
         {
             _slider.value = Mathf.Log((3.7f - A) / B) / C;
             // Find the slider handle and change its image
@@ -77,7 +76,7 @@ public class SliderScript : MonoBehaviour
         }
 
         // Earth
-        else if (gravityForce > 8 && gravityForce < 17)
+        else if (gravityForce > 9 && gravityForce < 10)
         {
             _slider.value = 0.5f;
             // Find the slider handle and change its image
@@ -92,10 +91,10 @@ public class SliderScript : MonoBehaviour
             }
         }
 
-        // Jupiter
-        else if (gravityForce > 20 && gravityForce < 40)
+        // Neptune
+        else if (gravityForce > 11 && gravityForce < 13)
         {
-            _slider.value = Mathf.Log((24.8f - A) / B) / C;
+            _slider.value = Mathf.Log((11.15f - A) / B) / C;
             // Find the slider handle and change its image
             Transform handleTransform = _slider.transform.Find("Handle Slide Area").Find("Handle");
             if (handleTransform != null)
@@ -103,7 +102,7 @@ public class SliderScript : MonoBehaviour
                 Image handleImage = handleTransform.GetComponent<Image>();
                 if (handleImage != null)
                 {
-                    handleImage.sprite = jupiter;
+                    handleImage.sprite = neptune;
                 }
             }
         }
