@@ -179,4 +179,15 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
                 break;
         }
     }
+
+    public void FinishLevel()
+    {
+        foreach (GameObject canvas in GameObject.FindGameObjectsWithTag("Popup Canvas"))
+        {
+            Destroy(canvas);
+        }
+        GameObject endCanvasPrefab = Resources.Load<GameObject>("Prefabs/End Canvas");
+        Instantiate(endCanvasPrefab);
+        StopwatchScript.Instance.ToggleStopwatch(false);
+    }
 }

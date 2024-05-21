@@ -18,7 +18,7 @@ public class EnergyTile : MonoBehaviour
 
     [Tooltip("Level ends when this is powered")]
     [field: SerializeField]
-    public bool IsTargetTile { get; private set; }
+    public bool IsFinalTile { get; private set; }
 
     void Awake()
     {
@@ -81,6 +81,10 @@ public class EnergyTile : MonoBehaviour
     {
         Debug.Log(name + " is powered");
         OnPowerEvent.Invoke();
+        if (IsFinalTile)
+        {
+            EnergyModuleManager.Instance.FinishLevel();
+        }
     }
 
     void OnDepower()
