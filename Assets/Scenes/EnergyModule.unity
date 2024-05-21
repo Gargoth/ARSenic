@@ -1653,7 +1653,11 @@ PrefabInstance:
     - target: {fileID: 3906739364074748954, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
       propertyPath: <CurrentSource>k__BackingField
       value: 
-      objectReference: {fileID: 2059926099}
+      objectReference: {fileID: 0}
+    - target: {fileID: 3906739364074748954, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
+      propertyPath: <StartWithSource>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5788315565296593618, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
       propertyPath: m_Name
       value: Energy Tile (2)
@@ -1661,10 +1665,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5788315565296593618, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2059926099}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
 --- !u!4 &988221344 stripped
 Transform:
@@ -3449,27 +3450,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1898345756}
   m_CullTransparentMesh: 1
---- !u!1 &2059926093 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5788315565296593618, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}
-  m_PrefabInstance: {fileID: 988221343}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2059926099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059926093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57963da04194eeb48a6f426830b12110, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <EnergySourceType>k__BackingField: 4
-  <EnergySourceModelPrefab>k__BackingField: {fileID: 0}
-  <InEnergyType>k__BackingField: 
-  <OutEnergyType>k__BackingField: []
 --- !u!4 &4903172841797066 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2201545958684027446, guid: 347a06f0fa5565349b607b5cf104a2b3, type: 3}

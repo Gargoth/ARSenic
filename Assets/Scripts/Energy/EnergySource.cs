@@ -8,6 +8,7 @@ using UnityEngine.Serialization;
 
 public enum EnergySourceType
 {
+    NoSource,
     SunSource,
     SolarPanelSource,
     HumanSource,
@@ -29,7 +30,9 @@ public class EnergySource : MonoBehaviour
 
     IEnumerator Start()
     {
+        Debug.Log(name + " waiting for EnergySourceType != null");
         yield return new WaitUntil(() => EnergySourceType != null);
+        Debug.Log(name + " EnergySourceType = " + EnergySourceType);
         InitializeEnergySourceFields();
 
         EnergySourceModelPrefab = Resources.Load<GameObject>("Prefabs/Energy Sources/" + Name);

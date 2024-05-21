@@ -11,6 +11,7 @@ public class EnergyTile : MonoBehaviour
     [field: SerializeField] public EnergyTile PreviousTile { get; private set; }
     [field: SerializeField] public bool IsSelectable { get; private set; }
     public bool IsSelected { get; set; } = false;
+    [field: SerializeField] [CanBeNull] public EnergySourceType StartWithSource { get; set; }
     [field: SerializeField] [CanBeNull] public EnergySource CurrentSource { get; set; }
     public UnityEvent OnPowerEvent { get; private set; }
     public UnityEvent OnDepowerEvent { get; private set; }
@@ -31,6 +32,13 @@ public class EnergyTile : MonoBehaviour
         {
             PreviousTile.OnPowerEvent.AddListener(UpdatePower);
             PreviousTile.OnDepowerEvent.AddListener(OnDepower);
+        }
+
+        if (StartWithSource != EnergySourceType.NoSource)
+        {
+            EnergySource newSource = gameObject.AddComponent(typeof(EnergySource)) as EnergySource;
+            CurrentSource = newSource;
+            newSource.EnergySourceType = StartWithSource;
         }
     }
 
