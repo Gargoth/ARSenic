@@ -27,6 +27,8 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
         {
             objectContainer.transform.SetParent(GameObject.Find("Ground Plane Stage").transform);
         }
+        
+        StopwatchScript.Instance.ToggleStopwatch(true);
     }
 
     void Update()
