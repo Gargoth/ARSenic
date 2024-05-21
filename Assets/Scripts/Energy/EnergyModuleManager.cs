@@ -27,7 +27,7 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
         {
             objectContainer.transform.SetParent(GameObject.Find("Ground Plane Stage").transform);
         }
-        
+
         StopwatchScript.Instance.ToggleStopwatch(true);
     }
 
@@ -100,7 +100,7 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
             UnselectTile();
             return;
         }
-        
+
         if (selectedTile != null)
         {
             UnselectTile();
@@ -128,7 +128,6 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
         selectedTile = null;
     }
 
-    // NOTE: There has to be a better way to do this
     public void AssignEnergySource(string energySourceName)
     {
         if (selectedTile == null)
@@ -136,11 +135,16 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
 
         EnergyTile selectedTileScript = selectedTile.GetComponent<EnergyTile>();
         // Remove current source
-        Destroy(selectedTileScript.CurrentSource);
-        selectedTileScript.CurrentSource = null;
+        if (selectedTileScript.CurrentSource != null)
+        {
+            selectedTileScript.RemoveComponentListeners();
+            Destroy(selectedTileScript.CurrentSource);
+            selectedTileScript.CurrentSource = null;
+        }
 
         // Add new source
         CreateNewSource(energySourceName, selectedTileScript);
+        selectedTileScript.AddComponentListeners();
         Debug.Log(name + "'s current source is " + selectedTileScript.CurrentSource.Name);
     }
 
@@ -188,6 +192,7 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
         {
             Destroy(canvas);
         }
+
         GameObject endCanvasPrefab = Resources.Load<GameObject>("Prefabs/End Canvas");
         Instantiate(endCanvasPrefab);
         StopwatchScript.Instance.ToggleStopwatch(false);

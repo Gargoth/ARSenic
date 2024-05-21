@@ -39,6 +39,7 @@ public class EnergyTile : MonoBehaviour
             EnergySource newSource = gameObject.AddComponent(typeof(EnergySource)) as EnergySource;
             CurrentSource = newSource;
             newSource.EnergySourceType = StartWithSource;
+            AddComponentListeners();
         }
     }
 
@@ -93,13 +94,13 @@ public class EnergyTile : MonoBehaviour
         OnDepowerEvent.Invoke();
     }
 
-    void AddComponentListeners()
+    public void AddComponentListeners()
     {
         OnPowerEvent.AddListener(CurrentSource.TurnOn);
         OnDepowerEvent.AddListener(CurrentSource.TurnOff);
     }
 
-    void RemoveComponentListeners()
+    public void RemoveComponentListeners()
     {
         OnPowerEvent.RemoveListener(CurrentSource.TurnOn);
         OnDepowerEvent.RemoveListener(CurrentSource.TurnOff);

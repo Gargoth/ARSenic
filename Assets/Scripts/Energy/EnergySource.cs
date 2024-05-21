@@ -20,17 +20,23 @@ public enum EnergySourceType
 [RequireComponent(typeof(EnergyTile))]
 public class EnergySource : MonoBehaviour
 {
+    static Dictionary<string, Color> _energyTypeColor = new Dictionary<string, Color>() {
+        { "Light", Color.yellow }
+    };
+
     public string Name { get; protected set; } // NOTE: Is this needed?
     [field: SerializeField] public EnergySourceType EnergySourceType { get; set; }
     [field: SerializeField] protected GameObject EnergySourceModelPrefab { get; set; }
     public bool IsGenerator { get; protected set; }
     [field: SerializeField] [CanBeNull] public string InEnergyType { get; private set; }
     [field: SerializeField] public List<string> OutEnergyType { get; private set; }
+    public List<GameObject> currentParticleSystems;
     GameObject model;
 
     IEnumerator Start()
     {
         Debug.Log(name + " waiting for EnergySourceType != null");
+        List<GameObject> currentParticleSystems = new List<GameObject>();
         yield return new WaitUntil(() => EnergySourceType != null);
         Debug.Log(name + " EnergySourceType = " + EnergySourceType);
         InitializeEnergySourceFields();
@@ -39,6 +45,17 @@ public class EnergySource : MonoBehaviour
         yield return new WaitUntil(() => EnergySourceModelPrefab != null);
         model = Instantiate(EnergySourceModelPrefab, transform);
         GetComponent<EnergyTile>().UpdatePower();
+    }
+
+    List<Color> GetOutColors()
+    {
+        List<Color> outColors = new List<Color>();
+        foreach (string outEnergy in OutEnergyType)
+        {
+            if (_energyTypeColor.ContainsKey(outEnergy))
+                outColors.Add(_energyTypeColor[outEnergy]);
+        }
+        return outColors;
     }
 
     void InitializeEnergySourceFields()
@@ -105,6 +122,7 @@ public class EnergySource : MonoBehaviour
 
     void OnDestroy()
     {
+        TurnOff();
         Destroy(model);
     }
 
@@ -117,13 +135,22 @@ public class EnergySource : MonoBehaviour
 
     public virtual void TurnOn()
     {
-        // TODO: Implementation
-        // Enable particles
+        // GameObject particleSystemPrefab = Resources.Load<GameObject>("Prefabs/Energy Sources/EnergySource Particles");
+        // foreach (Color outColor in GetOutColors())
+        // {
+        //     GameObject newParticleSystem = Instantiate(particleSystemPrefab, transform);
+        //     newParticleSystem.transform.position = model.GetComponent<Renderer>().bounds.center;
+        //     particleAttractorLinear attractor = newParticleSystem.GetComponentInChildren<particleAttractorLinear>();
+        //     attractor.target = model.transform;
+        // }
     }
 
     public virtual void TurnOff()
     {
-        // TODO: Implementation
-        // Disable particles
+        // for (int i = currentParticleSystems.Count - 1; i >= 0; i--)
+        // {
+        //     Destroy(currentParticleSystems[i]);
+        //     currentParticleSystems.RemoveAt(i);
+        // }
     }
 }
