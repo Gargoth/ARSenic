@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -87,6 +88,7 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
         if (!tileScript.IsSelectable)
         {
             Debug.Log("Energy: Clicked tile not selectable");
+            return;
         }
 
         Renderer objRenderer;
@@ -146,28 +148,34 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
         switch (energySourceName)
         {
             case "Sun":
-                newSource = selectedTile.AddComponent(typeof(SunSource)) as EnergySource;
+                newSource = selectedTile.AddComponent(typeof(EnergySource)) as EnergySource;
                 selectedTileScript.CurrentSource = newSource;
+                newSource.EnergySourceType = EnergySourceType.SunSource;
                 break;
             case "SolarPanel":
-                newSource = selectedTile.AddComponent(typeof(SolarPanelSource)) as SolarPanelSource;
+                newSource = selectedTile.AddComponent(typeof(EnergySource)) as EnergySource;
                 selectedTileScript.CurrentSource = newSource;
+                newSource.EnergySourceType = EnergySourceType.SolarPanelSource;
                 break;
             case "Human":
-                newSource = selectedTile.AddComponent(typeof(HumanSource)) as HumanSource;
+                newSource = selectedTile.AddComponent(typeof(EnergySource)) as EnergySource;
                 selectedTileScript.CurrentSource = newSource;
+                newSource.EnergySourceType = EnergySourceType.HumanSource;
                 break;
             case "Stove":
-                newSource = selectedTile.AddComponent(typeof(StoveSource)) as StoveSource;
+                newSource = selectedTile.AddComponent(typeof(EnergySource)) as EnergySource;
                 selectedTileScript.CurrentSource = newSource;
+                newSource.EnergySourceType = EnergySourceType.StoveSource;
                 break;
             case "TV":
-                newSource = selectedTile.AddComponent(typeof(TVSource)) as TVSource;
+                newSource = selectedTile.AddComponent(typeof(EnergySource)) as EnergySource;
                 selectedTileScript.CurrentSource = newSource;
+                newSource.EnergySourceType = EnergySourceType.TVSource;
                 break;
             case "Generator":
-                newSource = selectedTile.AddComponent(typeof(GeneratorSource)) as GeneratorSource;
+                newSource = selectedTile.AddComponent(typeof(EnergySource)) as EnergySource;
                 selectedTileScript.CurrentSource = newSource;
+                newSource.EnergySourceType = EnergySourceType.GeneratorSource;
                 break;
         }
     }

@@ -62,22 +62,11 @@ public class EnergyTile : MonoBehaviour
 
         if (prevPowerCheck)
         {
-            Debug.Log(PreviousTile.SendEnergy());
-            Debug.Log(CurrentSource.InAcceptedEnergyType);
-            
-            if (PreviousTile.CurrentSource.OutEnergyType.Contains(CurrentSource.InAcceptedEnergyType))
+            if (PreviousTile.CurrentSource.OutEnergyType.Contains(CurrentSource.InEnergyType))
                 return true;
         }
 
         return false;
-    }
-
-    [CanBeNull]
-    public List<string> SendEnergy()
-    {
-        if (IsPowered())
-            return CurrentSource.OutEnergyType;
-        return null;
     }
 
     void OnPower()

@@ -6,34 +6,109 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
 
+public enum EnergySourceType
+{
+    SunSource,
+    SolarPanelSource,
+    HumanSource,
+    StoveSource,
+    TVSource,
+    GeneratorSource,
+}
+
 [RequireComponent(typeof(EnergyTile))]
-public abstract class EnergySource : MonoBehaviour
+public class EnergySource : MonoBehaviour
 {
     public string Name { get; protected set; } // NOTE: Is this needed?
+    [field: SerializeField] public EnergySourceType EnergySourceType { get; set; }
     [field: SerializeField] protected GameObject EnergySourceModelPrefab { get; set; }
     public bool IsGenerator { get; protected set; }
-    [CanBeNull] public string InAcceptedEnergyType { get; private set; }
-    [CanBeNull] public string InEnergyType { get; set; }
-    public List<string> OutEnergyType { get; private set; }
+    [field: SerializeField] [CanBeNull] public string InEnergyType { get; private set; }
+    [field: SerializeField] public List<string> OutEnergyType { get; private set; }
     GameObject model;
 
     IEnumerator Start()
     {
-        yield return new WaitForEndOfFrame();
+        yield return new WaitUntil(() => EnergySourceType != null);
+        InitializeEnergySourceFields();
+
+        EnergySourceModelPrefab = Resources.Load<GameObject>("Prefabs/Energy Sources/" + Name);
+        yield return new WaitUntil(() => EnergySourceModelPrefab != null);
         model = Instantiate(EnergySourceModelPrefab, transform);
         GetComponent<EnergyTile>().UpdatePower();
     }
 
+    void InitializeEnergySourceFields()
+    {
+        switch (EnergySourceType)
+        {
+            case (EnergySourceType.SunSource):
+                Name = "Sun";
+                IsGenerator = true;
+                InEnergyType = null;
+                OutEnergyType = new List<string>
+                {
+                    "Light", "Heat"
+                };
+                break;
+            case (EnergySourceType.SolarPanelSource):
+                Name = "SolarPanel";
+                IsGenerator = false;
+                InEnergyType = "Light";
+                OutEnergyType = new List<string>
+                {
+                    "Electrical"
+                };
+                break;
+            case (EnergySourceType.HumanSource):
+                Name = "Human";
+                IsGenerator = false;
+                InEnergyType = "Chemical";
+                OutEnergyType = new List<string>
+                {
+                    "Mechanical"
+                };
+                break;
+            case (EnergySourceType.StoveSource):
+                Name = "Stove";
+                IsGenerator = false;
+                InEnergyType = "Heat";
+                OutEnergyType = new List<string>
+                {
+                    "Chemical"
+                };
+                break;
+            case (EnergySourceType.TVSource):
+                Name = "TV";
+                IsGenerator = false;
+                InEnergyType = "Electrical";
+                OutEnergyType = new List<string>
+                {
+                    "Light",
+                    "Sound"
+                };
+                break;
+            case (EnergySourceType.GeneratorSource):
+                Name = "Generator";
+                IsGenerator = false;
+                InEnergyType = "Mechanical";
+                OutEnergyType = new List<string>
+                {
+                    "Electrical"
+                };
+                break;
+        }
+    }
+
     void OnDestroy()
     {
-        Debug.Log("Energy source destroyed, destroying attached model");
         Destroy(model);
     }
 
     public virtual bool ReceiveEnergy(List<string> inputEnergyTypes)
     {
-        if (InAcceptedEnergyType != null)
-            return inputEnergyTypes.Contains(InAcceptedEnergyType);
+        if (InEnergyType != null)
+            return inputEnergyTypes.Contains(InEnergyType);
         return false;
     }
 
