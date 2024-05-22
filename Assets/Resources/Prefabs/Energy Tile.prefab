@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1371097675506287165}
   m_Layer: 6
   m_Name: Energy Tile
-  m_TagString: Untagged
+  m_TagString: Energy Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,7 +121,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <PreviousTile>k__BackingField: {fileID: 0}
   <IsSelectable>k__BackingField: 1
-  <IsTargetTile>k__BackingField: 0
+  <StartWithSource>k__BackingField: 0
+  <CurrentSource>k__BackingField: {fileID: 0}
 --- !u!114 &1371097675506287165
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Events;
@@ -18,8 +19,6 @@ public class EnergyTile : MonoBehaviour
 
     [Tooltip("Level ends when this is powered")]
     [field: SerializeField]
-    public bool IsFinalTile { get; private set; }
-
     void Awake()
     {
         OnPowerEvent = new UnityEvent();
@@ -73,7 +72,7 @@ public class EnergyTile : MonoBehaviour
 
         if (prevPowerCheck)
         {
-            if (PreviousTile.CurrentSource.OutEnergyType.Contains(CurrentSource.InEnergyType))
+            if (Enumerable.Intersect(PreviousTile.CurrentSource.OutEnergyType, CurrentSource.InEnergyType).Any())
                 return true;
         }
 
@@ -84,11 +83,6 @@ public class EnergyTile : MonoBehaviour
     {
         Debug.Log(name + " is powered");
         OnPowerEvent.Invoke();
-
-        if (IsFinalTile)
-        {
-            EnergyModuleManager.Instance.FinishLevel();
-        }
 
         if (PreviousTile != null)
             yield return new WaitUntil(() => PreviousTile.CurrentSource != null);

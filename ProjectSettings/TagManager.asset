@@ -11,6 +11,7 @@ TagManager:
   - Object Container
   - Friction Target
   - End Canvas
+  - Energy Tile
   layers:
   - Default
   - TransparentFX

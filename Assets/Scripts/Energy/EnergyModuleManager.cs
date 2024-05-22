@@ -12,6 +12,7 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
     GameObject objectContainer;
     EventSystem eventSystem;
     GameObject selectedTile;
+    GameObject[] energyTiles;
 
     IEnumerator Start()
     {
@@ -21,11 +22,25 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
         yield return new WaitUntil(() => ARManager.Instance != null);
         objectContainer = ARManager.Instance.objectContainer;
         Instantiate(levelPrefabs[selectedLevel], objectContainer.transform);
+        yield return new WaitForSeconds(1f);
+        energyTiles = GameObject.FindGameObjectsWithTag("Energy Tile");
+        InvokeRepeating("CheckWin", 0f, 1f);
     }
 
     void Update()
     {
         RaycastSelectable();
+    }
+
+    void CheckWin()
+    {
+        foreach (GameObject energyTile in energyTiles)
+        {
+            EnergyTile tileScript = energyTile.GetComponent<EnergyTile>();
+            if (!tileScript.IsPowered())
+                return;
+        }
+        FinishLevel();
     }
 
     void RaycastSelectable()

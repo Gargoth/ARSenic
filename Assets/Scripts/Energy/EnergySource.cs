@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Events;
@@ -34,7 +35,7 @@ public class EnergySource : MonoBehaviour
     [field: SerializeField] public EnergySourceType EnergySourceType { get; set; }
     [field: SerializeField] protected GameObject EnergySourceModelPrefab { get; set; }
     public bool IsGenerator { get; protected set; }
-    [field: SerializeField] [CanBeNull] public string InEnergyType { get; private set; }
+    [field: SerializeField] public List<string> InEnergyType { get; private set; }
     [field: SerializeField] public List<string> OutEnergyType { get; private set; }
     public List<GameObject> currentParticleSystems;
     public GameObject Model { get; private set; }
@@ -95,34 +96,25 @@ public class EnergySource : MonoBehaviour
             case (EnergySourceType.SolarPanelSource):
                 Name = "SolarPanel";
                 IsGenerator = false;
-                InEnergyType = "Light";
-                OutEnergyType = new List<string>
-                {
-                    "Electrical"
-                };
+                InEnergyType = new List<string> { "Light" };
+                OutEnergyType = new List<string> { "Electrical" };
                 break;
             case (EnergySourceType.HumanSource):
                 Name = "Human";
                 IsGenerator = false;
-                InEnergyType = "Chemical";
-                OutEnergyType = new List<string>
-                {
-                    "Mechanical"
-                };
+                InEnergyType = new List<string> { "Chemical" };
+                OutEnergyType = new List<string> { "Mechanical" };
                 break;
             case (EnergySourceType.StoveSource):
                 Name = "Stove";
                 IsGenerator = false;
-                InEnergyType = "Heat";
-                OutEnergyType = new List<string>
-                {
-                    "Chemical"
-                };
+                InEnergyType = new List<string> { "Heat", "Electrical" };
+                OutEnergyType = new List<string> { "Chemical" };
                 break;
             case (EnergySourceType.TVSource):
                 Name = "TV";
                 IsGenerator = false;
-                InEnergyType = "Electrical";
+                InEnergyType = new List<string> { "Electrical" };
                 OutEnergyType = new List<string>
                 {
                     "Light",
@@ -132,11 +124,8 @@ public class EnergySource : MonoBehaviour
             case (EnergySourceType.GeneratorSource):
                 Name = "Generator";
                 IsGenerator = false;
-                InEnergyType = "Mechanical";
-                OutEnergyType = new List<string>
-                {
-                    "Electrical"
-                };
+                InEnergyType = new List<string> { "Mechanical" };
+                OutEnergyType = new List<string> { "Electrical" };
                 break;
         }
     }
@@ -150,7 +139,7 @@ public class EnergySource : MonoBehaviour
     public virtual bool ReceiveEnergy(List<string> inputEnergyTypes)
     {
         if (InEnergyType != null)
-            return inputEnergyTypes.Contains(InEnergyType);
+            return Enumerable.Intersect(inputEnergyTypes, InEnergyType).Any();
         return false;
     }
 
