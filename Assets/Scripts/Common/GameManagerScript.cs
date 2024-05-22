@@ -10,6 +10,8 @@ public class GameManagerScript : Singleton<GameManagerScript>
 {
     public GameObject ObjectContainer { get; private set; }
     private int currentIndex = 0; // Index to keep track of the current string in the list
+    
+    [SerializeField] List<GameObject> popUps;
 
     void Start()
     {
@@ -56,12 +58,14 @@ public class GameManagerScript : Singleton<GameManagerScript>
     public void TextChanger(TextMeshProUGUI displayText)
     {
         string topicName = SceneManager.GetActiveScene().name;
-
+        
         if (topicName != "")
         {
+            popUps[currentIndex].SetActive(false);
             // Increment the current index, wrapping around to the start if necessary
             currentIndex = (currentIndex + 1) % PersistentDataContainer.Instance.TopicTutorial[topicName].Count;
 			displayText.text = PersistentDataContainer.Instance.TopicTutorial[topicName][currentIndex];
+            popUps[currentIndex].SetActive(true);
         }
     }
     
