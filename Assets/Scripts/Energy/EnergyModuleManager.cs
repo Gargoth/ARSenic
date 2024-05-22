@@ -40,7 +40,9 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
             if (!tileScript.IsPowered())
                 return;
         }
-        FinishLevel();
+
+        CancelInvoke("CheckWin");
+        Invoke("FinishLevel", 1f);
     }
 
     void RaycastSelectable()
