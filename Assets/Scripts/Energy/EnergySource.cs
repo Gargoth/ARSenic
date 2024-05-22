@@ -35,6 +35,7 @@ public class EnergySource : MonoBehaviour
 
     IEnumerator Start()
     {
+        Debug.Log(EnergySourceType.HumanSource.ToString());
         Debug.Log(name + " waiting for EnergySourceType != null");
         List<GameObject> currentParticleSystems = new List<GameObject>();
         yield return new WaitUntil(() => EnergySourceType != null);

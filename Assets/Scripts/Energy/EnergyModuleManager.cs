@@ -13,6 +13,7 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
 
     void Start()
     {
+        eventSystem = EventSystem.current;
         StopwatchScript.Instance.ToggleStopwatch(true);
     }
 
