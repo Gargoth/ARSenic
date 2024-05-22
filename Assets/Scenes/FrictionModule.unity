@@ -240,6 +240,26 @@ PrefabInstance:
       value: AR Manager
       objectReference: {fileID: 0}
     - target: {fileID: 5249202519962215236, guid: 3bf9d2320ac2be14e87e1d5216c7819a, type: 3}
+      propertyPath: distance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5249202519962215236, guid: 3bf9d2320ac2be14e87e1d5216c7819a, type: 3}
+      propertyPath: offset.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5249202519962215236, guid: 3bf9d2320ac2be14e87e1d5216c7819a, type: 3}
+      propertyPath: offset.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5249202519962215236, guid: 3bf9d2320ac2be14e87e1d5216c7819a, type: 3}
+      propertyPath: offset.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5249202519962215236, guid: 3bf9d2320ac2be14e87e1d5216c7819a, type: 3}
+      propertyPath: debugMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5249202519962215236, guid: 3bf9d2320ac2be14e87e1d5216c7819a, type: 3}
       propertyPath: objectContainer
       value: 
       objectReference: {fileID: 658065694}
@@ -1732,7 +1752,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &658065695
 Transform:
   m_ObjectHideFlags: 0
@@ -1741,12 +1761,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 658065694}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 1510437358}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &684763601
 PrefabInstance:
@@ -2409,7 +2429,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 92.6
+  m_fontSize: 84.3
   m_fontSizeBase: 79.5
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4058,7 +4078,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _persistent: 0
   objectContainer: {fileID: 658065694}
-  shapeToggle: {fileID: 0}
   materials:
   - {fileID: 2100000, guid: 1a37d212766c4e444bd183225d3816c9, type: 2}
   - {fileID: 2100000, guid: 77859c11a5041451bba8e6fade01a8e6, type: 2}
@@ -4087,9 +4106,6 @@ MonoBehaviour:
   - {fileID: 258067476}
   - {fileID: 1754095530}
   isTargetFound: 0
-  canPush: 1
-  forceRebindPlayer: 0
-  forceReset: 0
   selectedRoads: []
 --- !u!4 &1342941454
 Transform:
@@ -4828,8 +4844,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 658065695}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1510437359
@@ -6472,6 +6487,7 @@ SceneRoots:
   - {fileID: 52696234}
   - {fileID: 3325749895394694159}
   - {fileID: 1342941454}
+  - {fileID: 658065695}
   - {fileID: 1510437358}
   - {fileID: 1711520809}
   - {fileID: 328824303}
