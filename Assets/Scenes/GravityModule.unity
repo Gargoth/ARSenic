@@ -1657,7 +1657,7 @@ Transform:
   m_GameObject: {fileID: 487599098}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalPosition: {x: 0, y: 2.44, z: 0}
   m_LocalScale: {x: 2, y: 0.040000003, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3570,7 +3570,7 @@ MonoBehaviour:
   useOverrideDensity: 0
   useOverrideVariation: 0
   debug: 0
-  overrideAirDensity: 8
+  overrideAirDensity: 200
   overrideDensityVariation: 1
 --- !u!114 &831921996
 MonoBehaviour:
@@ -3860,7 +3860,7 @@ MonoBehaviour:
   useOverrideDensity: 0
   useOverrideVariation: 0
   debug: 0
-  overrideAirDensity: 8
+  overrideAirDensity: 16.33333
   overrideDensityVariation: 1
 --- !u!114 &918464196
 MonoBehaviour:
@@ -5140,7 +5140,7 @@ MonoBehaviour:
   useOverrideDensity: 0
   useOverrideVariation: 0
   debug: 0
-  overrideAirDensity: 8
+  overrideAirDensity: 16.33333
   overrideDensityVariation: 1
 --- !u!114 &1298749648
 MonoBehaviour:
@@ -5406,7 +5406,7 @@ Rigidbody:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_ImplicitCom: 0
+  m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -5451,7 +5451,7 @@ MonoBehaviour:
   useOverrideDensity: 0
   useOverrideVariation: 0
   debug: 0
-  overrideAirDensity: 8
+  overrideAirDensity: 16.33333
   overrideDensityVariation: 1
 --- !u!114 &1324479577
 MonoBehaviour:
@@ -8122,7 +8122,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2017445045}
-  m_Material: {fileID: 13400000, guid: efaa9899d5bb745b9996121c5006e8a4, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -8153,7 +8153,7 @@ MonoBehaviour:
   useOverrideDensity: 0
   useOverrideVariation: 0
   debug: 0
-  overrideAirDensity: 8
+  overrideAirDensity: 16.33333
   overrideDensityVariation: 1
 --- !u!114 &2017445049
 MonoBehaviour:
@@ -8389,7 +8389,7 @@ MonoBehaviour:
   useOverrideDensity: 0
   useOverrideVariation: 0
   debug: 0
-  overrideAirDensity: 8
+  overrideAirDensity: 16.33333
   overrideDensityVariation: 1
 --- !u!1 &2050700254
 GameObject:
@@ -8781,7 +8781,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5249202519962215236, guid: 3bf9d2320ac2be14e87e1d5216c7819a, type: 3}
       propertyPath: debugMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5249202519962215236, guid: 3bf9d2320ac2be14e87e1d5216c7819a, type: 3}
       propertyPath: objectContainer
