@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Codice.CM.Common;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Events;
@@ -31,7 +32,7 @@ public class EnergyTile : MonoBehaviour
         if (PreviousTile != null)
         {
             PreviousTile.OnPowerEvent.AddListener(UpdatePower);
-            PreviousTile.OnDepowerEvent.AddListener(OnDepower);
+            PreviousTile.OnDepowerEvent.AddListener(() => StartCoroutine(OnDepower()));
         }
 
         if (StartWithSource != EnergySourceType.NoSource)
@@ -55,9 +56,9 @@ public class EnergyTile : MonoBehaviour
     public void UpdatePower()
     {
         if (IsPowered())
-            OnPower();
+            StartCoroutine(OnPower());
         else
-            OnDepower();
+            StartCoroutine(OnDepower());
     }
 
     public bool IsPowered()
@@ -78,20 +79,29 @@ public class EnergyTile : MonoBehaviour
         return false;
     }
 
-    void OnPower()
+    IEnumerator OnPower()
     {
         Debug.Log(name + " is powered");
         OnPowerEvent.Invoke();
+
         if (IsFinalTile)
         {
             EnergyModuleManager.Instance.FinishLevel();
         }
+
+        if (PreviousTile != null)
+            yield return new WaitUntil(() => PreviousTile.CurrentSource != null);
+            yield return new WaitUntil(() => CurrentSource.Model!= null);
+            PreviousTile.CurrentSource.SetParticleTarget(CurrentSource.Model.transform);
     }
 
-    void OnDepower()
+    IEnumerator OnDepower()
     {
         Debug.Log(name + " is depowered");
         OnDepowerEvent.Invoke();
+        if (PreviousTile != null)
+            yield return new WaitUntil(() => PreviousTile.CurrentSource.Model!= null);
+            PreviousTile.CurrentSource.SetParticleTarget(PreviousTile.CurrentSource.Model.transform);
     }
 
     public void AddComponentListeners()
