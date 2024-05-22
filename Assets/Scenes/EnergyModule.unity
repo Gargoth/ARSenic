@@ -389,7 +389,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _persistent: 0
   selectedTileColor: {r: 0.7058824, g: 0.69803923, b: 0.3254902, a: 0}
-  debugMode: 0
 --- !u!1 &372334725
 GameObject:
   m_ObjectHideFlags: 0
@@ -3615,6 +3614,26 @@ PrefabInstance:
     - target: {fileID: 1253112443082875175, guid: 3bf9d2320ac2be14e87e1d5216c7819a, type: 3}
       propertyPath: m_Name
       value: AR Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5249202519962215236, guid: 3bf9d2320ac2be14e87e1d5216c7819a, type: 3}
+      propertyPath: distance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5249202519962215236, guid: 3bf9d2320ac2be14e87e1d5216c7819a, type: 3}
+      propertyPath: offset.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5249202519962215236, guid: 3bf9d2320ac2be14e87e1d5216c7819a, type: 3}
+      propertyPath: offset.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5249202519962215236, guid: 3bf9d2320ac2be14e87e1d5216c7819a, type: 3}
+      propertyPath: offset.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5249202519962215236, guid: 3bf9d2320ac2be14e87e1d5216c7819a, type: 3}
+      propertyPath: debugMode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5249202519962215236, guid: 3bf9d2320ac2be14e87e1d5216c7819a, type: 3}
       propertyPath: objectContainer

@@ -44,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37457c77d3f604c4c9cba34230de2d9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectContainer: {fileID: 0}
+  _persistent: 0
   contentPositioningBehaviour: {fileID: 0}
   groundPlaneCanvasPrefab: {fileID: 876479642909983071, guid: 870b2e644d0804f7fbb7e1f80d558751, type: 3}
+  debugMode: 0
+  offset: {x: 0, y: 0, z: 0}
+  distance: 0

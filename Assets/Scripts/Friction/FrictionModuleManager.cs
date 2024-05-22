@@ -10,8 +10,7 @@ using UnityEngine.UI;
 public class FrictionModuleManager : Singleton<FrictionModuleManager>
 {
     [SerializeField] GameObject objectContainer;
-    [SerializeField] GameObject shapeToggle;
-
+    
 	[Header("ROAD MATERIALS")]
     [SerializeField] List<Material> materials;
     [SerializeField] List<PhysicMaterial> physicMaterials;
@@ -56,8 +55,9 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
         selectedRoads = new List<GameObject>();
         int selectedLevel = PersistentDataContainer.Instance.selectedLevel;
         eventSystem = EventSystem.current;
+        yield return new WaitUntil(() => ARManager.Instance != null);
+        objectContainer = ARManager.Instance.objectContainer;
         Instantiate(levelPrefabs[selectedLevel], objectContainer.transform);
-        yield return null;
     }
 
     void FixedUpdate()

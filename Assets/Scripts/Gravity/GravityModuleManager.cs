@@ -1,5 +1,6 @@
  using System;
-using System.Collections.Generic;
+ using System.Collections;
+ using System.Collections.Generic;
 using AirResistance2;
 using TMPro;
 using UnityEngine;
@@ -7,14 +8,13 @@ using Random = UnityEngine.Random;
 
 public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
 {
-    [SerializeField] private GameObject objectContainer;
-    [SerializeField] private List<GameObject> spawnPrefabs;
-    [SerializeField] private TextMeshProUGUI _debugText;
-    [SerializeField] private float gravityForce;
-    private bool isAirResOn;
-    private RaycastHit hit;
+    GameObject objectContainer;
+    [SerializeField] List<GameObject> spawnPrefabs;
+    [SerializeField] float gravityForce;
+    bool isAirResOn;
+    RaycastHit hit;
 
-    private void Start()
+    IEnumerator Start()
     {
         isAirResOn = true;
         
@@ -26,6 +26,8 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
         {
             PersistentDataContainer.Instance.f_gravityDialogShown = true;
         }
+        yield return new WaitUntil(() => ARManager.Instance != null);
+        objectContainer = ARManager.Instance.objectContainer;
     }
 
     void Update()
@@ -77,11 +79,6 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
         }
     }
 
-    public void ChangeDebugText(string val)
-    {
-        _debugText.text = val;
-    }
-
     public static void ClearItems()
     {
         GameObject[] items = GameObject.FindGameObjectsWithTag("GravObject");
@@ -93,15 +90,11 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
 
     public void SpawnPrefab(int prefabNum)
     {
-        // ChangeDebugText("Try spawn prefab " + prefabNum + " out of " + spawnPrefabs.Count + " prefabs");
         if (prefabNum < 0 || prefabNum >= spawnPrefabs.Count) return;
-        // ChangeDebugText("Attempt to spawn prefab " + prefabNum);
         GameObject prefabObject = spawnPrefabs[prefabNum];
         GameObject newObject = Instantiate(prefabObject, objectContainer.transform.position + Vector3.up*0.25f,
             Random.rotation);
-        // ChangeDebugText("Prefab spawned");
         newObject.SetActive(true);
-        // ChangeDebugText("Prefab spawned DONE");
         newObject.GetComponent<AirResistance>().enabled = isAirResOn;
     }
 }
