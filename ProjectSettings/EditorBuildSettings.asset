@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/EnergyModule.unity
     guid: a02be14140bb55a4faa3230ec7a888a4
   - enabled: 1
-    path: Assets/Scenes/Level Select.unity
+    path: Assets/Scenes/Friction Level Select.unity
     guid: 7980987fc7dd544af98882df37a020fe
   - enabled: 1
     path: Assets/Scenes/FrictionModule.unity
@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GravityModule.unity
     guid: c1f2727489acf2e4e86703b65c1a01da
+  - enabled: 1
+    path: Assets/Scenes/Energy Level Select.unity
+    guid: fb0d1c6d94448f342ba797b639b50599
   m_configObjects: {}

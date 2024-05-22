@@ -49,7 +49,9 @@ public class EnergyTile : MonoBehaviour
         if (PreviousTile != null)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawLine(PreviousTile.transform.position, transform.position);
+            Vector3 prevTileCenter = PreviousTile.GetComponent<Renderer>().bounds.center;
+            Vector3 ourTileCenter = GetComponent<Renderer>().bounds.center;
+            Gizmos.DrawLine(prevTileCenter, ourTileCenter);
         }
     }
 

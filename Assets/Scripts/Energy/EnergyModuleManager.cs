@@ -8,13 +8,19 @@ using UnityEngine.EventSystems;
 public class EnergyModuleManager : Singleton<EnergyModuleManager>
 {
     [SerializeField] Color selectedTileColor;
+    [SerializeField] List<GameObject> levelPrefabs;
+    GameObject objectContainer;
     EventSystem eventSystem;
     GameObject selectedTile;
 
-    void Start()
+    IEnumerator Start()
     {
         eventSystem = EventSystem.current;
         StopwatchScript.Instance.ToggleStopwatch(true);
+        int selectedLevel = PersistentDataContainer.Instance.selectedLevel;
+        yield return new WaitUntil(() => ARManager.Instance != null);
+        objectContainer = ARManager.Instance.objectContainer;
+        Instantiate(levelPrefabs[selectedLevel], objectContainer.transform);
     }
 
     void Update()
