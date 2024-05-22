@@ -31,7 +31,7 @@ public class EnergyTile : MonoBehaviour
         if (PreviousTile != null)
         {
             PreviousTile.OnPowerEvent.AddListener(UpdatePower);
-            PreviousTile.OnDepowerEvent.AddListener(OnDepower);
+            PreviousTile.OnDepowerEvent.AddListener(() => StartCoroutine(OnDepower()));
         }
 
         if (StartWithSource != EnergySourceType.NoSource)
@@ -48,16 +48,18 @@ public class EnergyTile : MonoBehaviour
         if (PreviousTile != null)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawLine(PreviousTile.transform.position, transform.position);
+            Vector3 prevTileCenter = PreviousTile.GetComponent<Renderer>().bounds.center;
+            Vector3 ourTileCenter = GetComponent<Renderer>().bounds.center;
+            Gizmos.DrawLine(prevTileCenter, ourTileCenter);
         }
     }
 
     public void UpdatePower()
     {
         if (IsPowered())
-            OnPower();
+            StartCoroutine(OnPower());
         else
-            OnDepower();
+            StartCoroutine(OnDepower());
     }
 
     public bool IsPowered()
@@ -78,20 +80,30 @@ public class EnergyTile : MonoBehaviour
         return false;
     }
 
-    void OnPower()
+    IEnumerator OnPower()
     {
         Debug.Log(name + " is powered");
         OnPowerEvent.Invoke();
+
         if (IsFinalTile)
         {
             EnergyModuleManager.Instance.FinishLevel();
         }
+
+        if (PreviousTile != null)
+            yield return new WaitUntil(() => PreviousTile.CurrentSource != null);
+            yield return new WaitUntil(() => CurrentSource.Model!= null);
+            PreviousTile.CurrentSource.SetParticleTarget(CurrentSource.ModelCenterTransform());
     }
 
-    void OnDepower()
+    IEnumerator OnDepower()
     {
         Debug.Log(name + " is depowered");
         OnDepowerEvent.Invoke();
+        if (PreviousTile != null)
+            yield return new WaitUntil(() => PreviousTile.CurrentSource!= null);
+            yield return new WaitUntil(() => PreviousTile.CurrentSource.Model!= null);
+            PreviousTile.CurrentSource.SetParticleTarget(PreviousTile.CurrentSource.ModelCenterTransform());
     }
 
     public void AddComponentListeners()

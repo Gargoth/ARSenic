@@ -1,12 +1,12 @@
 {
-    "name": "EnergyModule",
+    "name": "Editor",
     "rootNamespace": "",
     "references": [
-        "GUID:35428d92a58d3714caea46e535f45ed7",
-        "GUID:d371fef011853454d869fd72f269ebbd",
-        "GUID:3a642ac6e99598e41b7b9722c49942ab"
+        "GUID:cf40b6ea9c1624f40b27c0e47a0646a8"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

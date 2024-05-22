@@ -20,8 +20,14 @@ public enum EnergySourceType
 [RequireComponent(typeof(EnergyTile))]
 public class EnergySource : MonoBehaviour
 {
-    static Dictionary<string, Color> _energyTypeColor = new Dictionary<string, Color>() {
-        { "Light", Color.yellow }
+    static Dictionary<string, Color> _energyTypeColor = new Dictionary<string, Color>()
+    {
+        { "Light", Color.yellow },
+        { "Heat", Color.red },
+        { "Sound", Color.magenta },
+        { "Mechanical", Color.gray },
+        { "Electrical", Color.blue },
+        { "Chemical", Color.green },
     };
 
     public string Name { get; protected set; } // NOTE: Is this needed?
@@ -31,20 +37,34 @@ public class EnergySource : MonoBehaviour
     [field: SerializeField] [CanBeNull] public string InEnergyType { get; private set; }
     [field: SerializeField] public List<string> OutEnergyType { get; private set; }
     public List<GameObject> currentParticleSystems;
-    GameObject model;
+    public GameObject Model { get; private set; }
+    Transform modelTransform;
+
+    void Awake()
+    {
+        List<GameObject> currentParticleSystems = new List<GameObject>();
+    }
 
     IEnumerator Start()
     {
+        Debug.Log(EnergySourceType.HumanSource.ToString());
         Debug.Log(name + " waiting for EnergySourceType != null");
-        List<GameObject> currentParticleSystems = new List<GameObject>();
         yield return new WaitUntil(() => EnergySourceType != null);
         Debug.Log(name + " EnergySourceType = " + EnergySourceType);
         InitializeEnergySourceFields();
 
         EnergySourceModelPrefab = Resources.Load<GameObject>("Prefabs/Energy Sources/" + Name);
         yield return new WaitUntil(() => EnergySourceModelPrefab != null);
-        model = Instantiate(EnergySourceModelPrefab, transform);
+        Model = Instantiate(EnergySourceModelPrefab, transform);
         GetComponent<EnergyTile>().UpdatePower();
+    }
+
+    public Transform ModelCenterTransform()
+    {
+        if (modelTransform == null)
+            modelTransform = new GameObject().transform;
+        modelTransform.position = Model.GetComponentInChildren<Renderer>().bounds.center;
+        return modelTransform;
     }
 
     List<Color> GetOutColors()
@@ -55,6 +75,7 @@ public class EnergySource : MonoBehaviour
             if (_energyTypeColor.ContainsKey(outEnergy))
                 outColors.Add(_energyTypeColor[outEnergy]);
         }
+
         return outColors;
     }
 
@@ -123,7 +144,7 @@ public class EnergySource : MonoBehaviour
     void OnDestroy()
     {
         TurnOff();
-        Destroy(model);
+        Destroy(Model);
     }
 
     public virtual bool ReceiveEnergy(List<string> inputEnergyTypes)
@@ -133,24 +154,48 @@ public class EnergySource : MonoBehaviour
         return false;
     }
 
+    public virtual void SetParticleTarget(Transform target)
+    {
+        if (currentParticleSystems == null)
+            currentParticleSystems = new List<GameObject>();
+
+        foreach (GameObject particleSystem in currentParticleSystems)
+        {
+            particleAttractorLinear attractor = particleSystem.GetComponentInChildren<particleAttractorLinear>();
+            attractor.target = target;
+        }
+    }
+
     public virtual void TurnOn()
     {
-        // GameObject particleSystemPrefab = Resources.Load<GameObject>("Prefabs/Energy Sources/EnergySource Particles");
-        // foreach (Color outColor in GetOutColors())
-        // {
-        //     GameObject newParticleSystem = Instantiate(particleSystemPrefab, transform);
-        //     newParticleSystem.transform.position = model.GetComponent<Renderer>().bounds.center;
-        //     particleAttractorLinear attractor = newParticleSystem.GetComponentInChildren<particleAttractorLinear>();
-        //     attractor.target = model.transform;
-        // }
+        GameObject particleSystemPrefab = Resources.Load<GameObject>("Prefabs/Energy Sources/EnergySource Particles");
+        foreach (Color outColor in GetOutColors())
+        {
+            GameObject newParticleSystemGameObject = Instantiate(particleSystemPrefab, transform);
+            if (currentParticleSystems == null)
+                currentParticleSystems = new List<GameObject>();
+            currentParticleSystems.Add(newParticleSystemGameObject);
+            newParticleSystemGameObject.transform.position = ModelCenterTransform().position;
+
+            particleAttractorLinear attractor =
+                newParticleSystemGameObject.GetComponentInChildren<particleAttractorLinear>();
+            attractor.target = Model.transform.GetChild(0);
+
+            ParticleSystem particleSystem = attractor.GetComponent<ParticleSystem>();
+            ParticleSystem.MainModule particleSystemMain = particleSystem.main;
+            particleSystemMain.startColor = outColor;
+        }
     }
 
     public virtual void TurnOff()
     {
-        // for (int i = currentParticleSystems.Count - 1; i >= 0; i--)
-        // {
-        //     Destroy(currentParticleSystems[i]);
-        //     currentParticleSystems.RemoveAt(i);
-        // }
+        if (currentParticleSystems == null || currentParticleSystems.Count == 0)
+            return;
+
+        for (int i = currentParticleSystems.Count - 1; i >= 0; i--)
+        {
+            Destroy(currentParticleSystems[i]);
+            currentParticleSystems.RemoveAt(i);
+        }
     }
 }
