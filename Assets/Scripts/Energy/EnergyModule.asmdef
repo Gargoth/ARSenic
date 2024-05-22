@@ -1,0 +1,17 @@
+{
+    "name": "EnergyModule",
+    "rootNamespace": "",
+    "references": [
+        "GUID:35428d92a58d3714caea46e535f45ed7",
+        "GUID:d371fef011853454d869fd72f269ebbd"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
