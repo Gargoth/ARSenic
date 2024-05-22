@@ -38,6 +38,7 @@ public class EnergySource : MonoBehaviour
     [field: SerializeField] public List<string> OutEnergyType { get; private set; }
     public List<GameObject> currentParticleSystems;
     public GameObject Model { get; private set; }
+    Transform modelTransform;
 
     void Awake()
     {
@@ -56,6 +57,14 @@ public class EnergySource : MonoBehaviour
         yield return new WaitUntil(() => EnergySourceModelPrefab != null);
         Model = Instantiate(EnergySourceModelPrefab, transform);
         GetComponent<EnergyTile>().UpdatePower();
+    }
+
+    public Transform ModelCenterTransform()
+    {
+        if (modelTransform == null)
+            modelTransform = new GameObject().transform;
+        modelTransform.position = Model.GetComponentInChildren<Renderer>().bounds.center;
+        return modelTransform;
     }
 
     List<Color> GetOutColors()
@@ -149,7 +158,7 @@ public class EnergySource : MonoBehaviour
     {
         if (currentParticleSystems == null)
             currentParticleSystems = new List<GameObject>();
-        
+
         foreach (GameObject particleSystem in currentParticleSystems)
         {
             particleAttractorLinear attractor = particleSystem.GetComponentInChildren<particleAttractorLinear>();
@@ -166,7 +175,7 @@ public class EnergySource : MonoBehaviour
             if (currentParticleSystems == null)
                 currentParticleSystems = new List<GameObject>();
             currentParticleSystems.Add(newParticleSystemGameObject);
-            newParticleSystemGameObject.transform.position = Model.GetComponentInChildren<Renderer>().bounds.center;
+            newParticleSystemGameObject.transform.position = ModelCenterTransform().position;
 
             particleAttractorLinear attractor =
                 newParticleSystemGameObject.GetComponentInChildren<particleAttractorLinear>();

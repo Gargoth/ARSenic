@@ -92,7 +92,7 @@ public class EnergyTile : MonoBehaviour
         if (PreviousTile != null)
             yield return new WaitUntil(() => PreviousTile.CurrentSource != null);
             yield return new WaitUntil(() => CurrentSource.Model!= null);
-            PreviousTile.CurrentSource.SetParticleTarget(CurrentSource.Model.transform);
+            PreviousTile.CurrentSource.SetParticleTarget(CurrentSource.ModelCenterTransform());
     }
 
     IEnumerator OnDepower()
@@ -100,8 +100,9 @@ public class EnergyTile : MonoBehaviour
         Debug.Log(name + " is depowered");
         OnDepowerEvent.Invoke();
         if (PreviousTile != null)
+            yield return new WaitUntil(() => PreviousTile.CurrentSource!= null);
             yield return new WaitUntil(() => PreviousTile.CurrentSource.Model!= null);
-            PreviousTile.CurrentSource.SetParticleTarget(PreviousTile.CurrentSource.Model.transform);
+            PreviousTile.CurrentSource.SetParticleTarget(PreviousTile.CurrentSource.ModelCenterTransform());
     }
 
     public void AddComponentListeners()
