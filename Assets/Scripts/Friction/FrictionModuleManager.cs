@@ -61,6 +61,7 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
         yield return new WaitUntil(() => ARManager.Instance != null);
         objectContainer = ARManager.Instance.objectContainer;
         Instantiate(levelPrefabs[selectedLevel], objectContainer.transform);
+        StopwatchScript.Instance.ToggleStopwatch(true);
         player = GameObject.FindWithTag("Player").GetComponent<FrictionPlayerController>();
 
         if (ARManager.Instance.debugMode)
