@@ -65,7 +65,7 @@ public class GameManagerScript : Singleton<GameManagerScript>
             // Increment the current index, wrapping around to the start if necessary
             currentIndex = (currentIndex + 1) % PersistentDataContainer.Instance.TopicTutorial[topicName].Count;
 			displayText.text = PersistentDataContainer.Instance.TopicTutorial[topicName][currentIndex];
-            popUps[currentIndex].SetActive(true);
+            // popUps[currentIndex].SetActive(true);
         }
     }
     

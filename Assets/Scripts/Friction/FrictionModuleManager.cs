@@ -217,7 +217,7 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
     public void ChangeRoad(int index)
     {
         if (selectedRoads.Count == 0)
-            Toast.Show("No roads selected");
+            Toast.Show("Select a road first!");
         ChangeMaterial(index);
         ChangePhysicMaterial(index);
         ClearSelectedRoads();
