@@ -23,7 +23,6 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
         objectContainer = ARManager.Instance.objectContainer;
         Instantiate(levelPrefabs[selectedLevel], objectContainer.transform);
         yield return new WaitForSeconds(1f);
-        energyTiles = GameObject.FindGameObjectsWithTag("Energy Tile");
         InvokeRepeating("CheckWin", 0f, 1f);
     }
 
@@ -34,6 +33,9 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
 
     void CheckWin()
     {
+        energyTiles = GameObject.FindGameObjectsWithTag("Energy Tile");
+        if (energyTiles.Length == 0)
+            return;
         foreach (GameObject energyTile in energyTiles)
         {
             EnergyTile tileScript = energyTile.GetComponent<EnergyTile>();
