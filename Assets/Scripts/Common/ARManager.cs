@@ -16,7 +16,7 @@ public class ARManager : Singleton<ARManager>
 
     #region DEBUG
 
-    [Header("DEBUG")] [SerializeField] bool debugMode;
+    [Header("DEBUG")] [SerializeField] public bool debugMode;
     [SerializeField] Vector3 offset;
     [SerializeField] float distance;
     GameObject debugCamera;

@@ -26,6 +26,8 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
     [Header("DEBUG")]
     [SerializeField] bool isTargetFound = false;
 
+    private bool isDebugMode;
+
     [SerializeField]
     public bool CanPush { get; private set; } = true;
     
@@ -59,6 +61,12 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
         yield return new WaitUntil(() => ARManager.Instance != null);
         objectContainer = ARManager.Instance.objectContainer;
         Instantiate(levelPrefabs[selectedLevel], objectContainer.transform);
+        player = GameObject.FindWithTag("Player").GetComponent<FrictionPlayerController>();
+
+        if (ARManager.Instance.debugMode)
+            isDebugMode = true;
+        else
+            isDebugMode = false;
     }
 
     void FixedUpdate()
@@ -135,7 +143,7 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
 
     public void OnPushButtonUp(BaseEventData baseEventData)
     {
-        if (isPushButton && isTargetFound)
+        if (isPushButton && (isDebugMode || isTargetFound))
         {
             isPushButton = false;
             player.PushPlayer(pushProgress);
@@ -148,7 +156,7 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
 
     public void OnPushButtonDown(BaseEventData baseEventData)
     {
-        if (isTargetFound && CanPush)
+        if ((isDebugMode || isTargetFound) && CanPush)
             isPushButton = true;
     }
 
