@@ -3,7 +3,8 @@
     "rootNamespace": "",
     "references": [
         "Common",
-        "Inheritable"
+        "Inheritable",
+        "ToastUI"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

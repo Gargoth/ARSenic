@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using EasyUI.Toast;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
@@ -215,6 +216,8 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
 
     public void ChangeRoad(int index)
     {
+        if (selectedRoads.Count == 0)
+            Toast.Show("No roads selected");
         ChangeMaterial(index);
         ChangePhysicMaterial(index);
         ClearSelectedRoads();
