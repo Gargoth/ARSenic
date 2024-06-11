@@ -11,8 +11,8 @@ using Random = UnityEngine.Random;
  /// </summary>
 public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
 {
-    GameObject objectContainer;
-    [SerializeField] List<GameObject> spawnPrefabs;
+    [NonSerialized] public GameObject ObjectContainer;
+    [SerializeField] public List<GameObject> spawnPrefabs;
     [SerializeField] float gravityForce;
     bool isAirResOn;
     RaycastHit hit;
@@ -20,7 +20,7 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
     IEnumerator Start()
     {
         isAirResOn = true;
-        
+
         // Display tutorial dialog if not yet seen
         if (PersistentDataContainer.Instance.f_gravityDialogShown)
         {
@@ -31,7 +31,7 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
             PersistentDataContainer.Instance.f_gravityDialogShown = true;
         }
         yield return new WaitUntil(() => ARManager.Instance != null);
-        objectContainer = ARManager.Instance.objectContainer;
+        ObjectContainer = ARManager.Instance.objectContainer;
     }
 
     void Update()
@@ -43,7 +43,7 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
             var mainCam = Camera.main;
             for (int i = 0; i < Input.touchCount; i++)
            {
-               if (!objectContainer.activeInHierarchy) continue;
+               if (!ObjectContainer.activeInHierarchy) continue;
                Touch touch = Input.GetTouch(0);
                if (touch.phase != TouchPhase.Began) continue;
                Ray ray = mainCam.ScreenPointToRay(touch.position);
@@ -72,7 +72,7 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
     {
         float x = 0;
         float y = 9.81f;
-        float z = 274;
+        float z = 14;
         float A = (x*z - Mathf.Pow(y,2)) / (x - 2*y + z);
         float B = Mathf.Pow((y-x),2) / (x - 2 * y + z);
         float C = 2 * Mathf.Log((z-y) / (y-x));
@@ -114,8 +114,11 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
     {
         if (prefabNum < 0 || prefabNum >= spawnPrefabs.Count) return;
         GameObject prefabObject = spawnPrefabs[prefabNum];
-        GameObject newObject = Instantiate(prefabObject, objectContainer.transform.position + Vector3.up*0.25f,
+        GameObject newObject = Instantiate(prefabObject, ObjectContainer.transform.position + Vector3.up*0.25f,
             Random.rotation);
+        newObject.tag = "GravObject";
+        if (newObject.GetComponent<AirResistance>() == null)
+            newObject.AddComponent<AirResistance>();
         newObject.SetActive(true);
         newObject.GetComponent<AirResistance>().enabled = isAirResOn;
     }
