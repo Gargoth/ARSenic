@@ -5,10 +5,13 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// Main handler for the Energy Module processes
+/// </summary>
 public class EnergyModuleManager : Singleton<EnergyModuleManager>
 {
-    [SerializeField] Color selectedTileColor;
-    [SerializeField] List<GameObject> levelPrefabs;
+    [Tooltip("Color of selected energy tile")] [SerializeField] Color selectedTileColor;
+    [Tooltip("List of level prefabs")] [SerializeField] List<GameObject> levelPrefabs;
     GameObject objectContainer;
     EventSystem eventSystem;
     GameObject selectedTile;
@@ -19,9 +22,11 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
         eventSystem = EventSystem.current;
         StopwatchScript.Instance.ToggleStopwatch(true);
         int selectedLevel = PersistentDataContainer.Instance.selectedLevel;
+        // Once AR Manager is ready, instantiate level
         yield return new WaitUntil(() => ARManager.Instance != null);
         objectContainer = ARManager.Instance.objectContainer;
         Instantiate(levelPrefabs[selectedLevel], objectContainer.transform);
+        // Wait for 1 second, then find all energy tiles
         yield return new WaitForSeconds(1f);
         energyTiles = GameObject.FindGameObjectsWithTag("Energy Tile");
         InvokeRepeating("CheckWin", 0f, 1f);
@@ -32,6 +37,10 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
         RaycastSelectable();
     }
 
+    /// <summary>
+    /// Checks if all energy tiles are powered.
+    /// Repeatedly invoked from the Start function
+    /// </summary>
     void CheckWin()
     {
         foreach (GameObject energyTile in energyTiles)
@@ -45,6 +54,9 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
         Invoke("FinishLevel", 1f);
     }
 
+    /// <summary>
+    /// Uses event system and physics raycaster to set selected object to the one that was clicked
+    /// </summary>
     void RaycastSelectable()
     {
         // Override Event System
@@ -64,6 +76,11 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
         }
     }
 
+    /// <summary>
+    /// Handles logic for when a tile is selected.
+    /// Handles highlighting with Highlight.cs
+    /// </summary>
+    /// <param name="baseEventData">Event data received from event system</param>
     public void SelectTile(BaseEventData baseEventData)
     {
         GameObject obj = baseEventData.selectedObject;
@@ -97,6 +114,11 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
         Debug.Log(selectedTile);
     }
 
+    /// <summary>
+    /// Handles logic for when a tile is unselected.
+    /// Handles highlighting with Highlight.cs
+    /// </summary>
+    /// <param name="baseEventData">Event data received from event system</param>
     void UnselectTile()
     {
         if (selectedTile == null)
@@ -109,6 +131,11 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
         selectedTile = null;
     }
 
+    /// <summary>
+    /// Handles listeners for when a new energy source is assigned to selected tile
+    /// Calls CreateNewSource() to handle creation of new energy source
+    /// </summary>
+    /// <param name="energySourceName">Name of the energy source to be assigned. Has to be string to allow UI button to use it. Will be converted to appropriate GameObject type</param>
     public void AssignEnergySource(string energySourceName)
     {
         if (selectedTile == null)
@@ -129,9 +156,16 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
         Debug.Log(name + "'s current source is " + selectedTileScript.CurrentSource.Name);
     }
 
+    /// <summary>
+    /// Creates new energy source and assigns it to the tile
+    /// Handles conversion of energySourceName string to appropriate energy source
+    /// </summary>
+    /// <param name="energySourceName">Name of the energy source to attach</param>
+    /// <param name="selectedTileScript">Script of the tile to attach energy source to</param>
     void CreateNewSource(string energySourceName, EnergyTile selectedTileScript)
     {
         EnergySource newSource;
+        // Create new source based on string parameter
         switch (energySourceName)
         {
             case "Sun":
@@ -167,6 +201,10 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
         }
     }
 
+    /// <summary>
+    /// Handles level completion
+    /// Displays canvas that signifies level end
+    /// </summary>
     public void FinishLevel()
     {
         foreach (GameObject canvas in GameObject.FindGameObjectsWithTag("Popup Canvas"))
