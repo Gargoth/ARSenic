@@ -28,6 +28,9 @@ public class ARManager : Singleton<ARManager>
 
     void Start()
     {
+        if (groundPlaneCanvasPrefab == null)
+            groundPlaneCanvasPrefab = Resources.Load<GameObject>("Prefabs/Ground Plane Canvas");
+        
         if (objectContainer == null)
             objectContainer = GameManagerScript.Instance.ObjectContainer;
 
