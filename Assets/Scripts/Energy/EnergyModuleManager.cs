@@ -10,8 +10,8 @@ using UnityEngine.EventSystems;
 /// </summary>
 public class EnergyModuleManager : Singleton<EnergyModuleManager>
 {
-    [Tooltip("Color of selected energy tile")] [SerializeField] Color selectedTileColor;
-    [Tooltip("List of level prefabs")] [SerializeField] List<GameObject> levelPrefabs;
+    [SerializeField] Color selectedTileColor;
+    [SerializeField] List<GameObject> levelPrefabs;
     GameObject objectContainer;
     EventSystem eventSystem;
     GameObject selectedTile;
@@ -22,13 +22,10 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
         eventSystem = EventSystem.current;
         StopwatchScript.Instance.ToggleStopwatch(true);
         int selectedLevel = PersistentDataContainer.Instance.selectedLevel;
-        // Once AR Manager is ready, instantiate level
         yield return new WaitUntil(() => ARManager.Instance != null);
         objectContainer = ARManager.Instance.objectContainer;
         Instantiate(levelPrefabs[selectedLevel], objectContainer.transform);
-        // Wait for 1 second, then find all energy tiles
         yield return new WaitForSeconds(1f);
-        energyTiles = GameObject.FindGameObjectsWithTag("Energy Tile");
         InvokeRepeating("CheckWin", 0f, 1f);
     }
 
@@ -43,6 +40,9 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
     /// </summary>
     void CheckWin()
     {
+        energyTiles = GameObject.FindGameObjectsWithTag("Energy Tile");
+        if (energyTiles.Length == 0)
+            return;
         foreach (GameObject energyTile in energyTiles)
         {
             EnergyTile tileScript = energyTile.GetComponent<EnergyTile>();
@@ -166,7 +166,6 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
     void CreateNewSource(string energySourceName, EnergyTile selectedTileScript)
     {
         EnergySource newSource;
-        // Create new source based on string parameter
         switch (energySourceName)
         {
             case "Sun":

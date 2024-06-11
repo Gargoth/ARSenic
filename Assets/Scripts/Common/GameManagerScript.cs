@@ -49,21 +49,20 @@ public class GameManagerScript : Singleton<GameManagerScript>
     /// <param name="message">The message to display in the popup dialog.</param>
     public void SpawnPopupDialog(string message)
     {
-        // TODO: Don't spawn when the dialogue is already active
+        // TO DO: don't spawn when the dialogue is already active
         string topicName = SceneManager.GetActiveScene().name;
-        currentIndex = 0;
-
+		currentIndex = 0;
+        
         if (!PersistentDataContainer.Instance.popupCanvasPrefab)
         {
             PersistentDataContainer.Instance.popupCanvasPrefab = Resources.Load<GameObject>("Prefabs/Popup Canvas");
         }
-
+        
         GameObject newPopup = Instantiate(PersistentDataContainer.Instance.popupCanvasPrefab, Vector3.zero, Quaternion.identity);
         TextMeshProUGUI textUI = newPopup.transform.Find("Popup Text").GetComponent<TextMeshProUGUI>();
         textUI.text = PersistentDataContainer.Instance.TopicTutorial[topicName][currentIndex];
     }
-    
-    
+
     /// <summary>
     /// Updates the text of the displayText parameter with the next topic tutorial message for the current scene.
     /// If there are no more topic tutorial messages, the currentIndex is wrapped around to the start.
@@ -79,7 +78,7 @@ public class GameManagerScript : Singleton<GameManagerScript>
             // Increment the current index, wrapping around to the start if necessary
             currentIndex = (currentIndex + 1) % PersistentDataContainer.Instance.TopicTutorial[topicName].Count;
 			displayText.text = PersistentDataContainer.Instance.TopicTutorial[topicName][currentIndex];
-            popUps[currentIndex].SetActive(true);
+            // popUps[currentIndex].SetActive(true);
         }
     }
 }

@@ -29,23 +29,24 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
     [Header("DEBUG")]
     [SerializeField] bool isTargetFound = false;
 
-    [Tooltip("Flag to see if the player can push the object")]
+    private bool isDebugMode;
+
     [SerializeField]
     public bool CanPush { get; private set; } = true;
     
-    [Tooltip("List of selected road objects. Do not set manually. Serialized for easy debugging.")] [SerializeField] List<GameObject> selectedRoads;
+    [SerializeField] List<GameObject> selectedRoads;
+    List<int> uiTouchFingerIDs;
     EventSystem eventSystem;
     FrictionPlayerController player;
-    RaycastHit hit; // Global variable for storing raycast hits to avoid passing the hit everywhere through function params
+    RaycastHit hit;
     public UnityEvent ResetActions { get; private set; }
-    float pushProgress; // Value from [0, 1]. Used by the progress bar
+    float pushProgress;
     bool isPushButton = false;
     bool isPlayerShapeCube = true;
     bool isFinished = false;
 
     IEnumerator Start()
     {
-        // Show tutorial on scene load if not seen yet
         if (PersistentDataContainer.Instance.f_frictionDialogShown)
         {
             Destroy(GameObject.FindWithTag("Popup Canvas"));
@@ -60,10 +61,16 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
         selectedRoads = new List<GameObject>();
         int selectedLevel = PersistentDataContainer.Instance.selectedLevel;
         eventSystem = EventSystem.current;
-        // Once ARManager is ready, instantiate level
         yield return new WaitUntil(() => ARManager.Instance != null);
         objectContainer = ARManager.Instance.objectContainer;
         Instantiate(levelPrefabs[selectedLevel], objectContainer.transform);
+        StopwatchScript.Instance.ToggleStopwatch(true);
+        player = GameObject.FindWithTag("Player").GetComponent<FrictionPlayerController>();
+
+        if (ARManager.Instance.debugMode)
+            isDebugMode = true;
+        else
+            isDebugMode = false;
     }
 
     void FixedUpdate()
@@ -80,7 +87,6 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
 
     void Update()
     {
-        // Update the push button progress bar
         if (isPushButton)
         {
             pushProgress = math.min(pushProgress + (pushProgressRate * Time.deltaTime), 1);
@@ -90,7 +96,6 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
         RaycastSelectable();
     }
 
-    
     /// <summary>
     /// Uses event system and physics raycaster to set selected object to the one that was clicked
     /// TODO: Merge with EnergyModuleManager RaycastSelectable
@@ -175,7 +180,7 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
     /// <param name="baseEventData"></param>
     public void OnPushButtonUp(BaseEventData baseEventData)
     {
-        if (isPushButton && isTargetFound)
+        if (isPushButton && (isDebugMode || isTargetFound))
         {
             isPushButton = false;
             player.PushPlayer(pushProgress);
@@ -192,7 +197,7 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
     /// <param name="baseEventData"></param>
     public void OnPushButtonDown(BaseEventData baseEventData)
     {
-        if (isTargetFound && CanPush)
+        if ((isDebugMode || isTargetFound) && CanPush)
             isPushButton = true;
     }
 
@@ -217,7 +222,7 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
 			image.color = Color.gray;
 		}
 	}
-
+  
     /// <summary>
     /// Resets UI button colors
     /// </summary>
@@ -294,7 +299,7 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
     public void ChangeRoad(int index)
     {
         if (selectedRoads.Count == 0)
-            Toast.Show("No roads selected");
+            Toast.Show("Select a road first!");
         ChangeMaterial(index);
         ChangePhysicMaterial(index);
         ClearSelectedRoads();
@@ -312,7 +317,7 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
             mesh.material = materials[index];
         }
     }
-
+    
     /// <summary>
     /// Changes physics material of selected roads
     /// </summary>
@@ -325,7 +330,7 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
             collider.material = physicMaterials[index];
         }
     }
-
+    
     /// <summary>
     /// Handles level completion
     /// </summary>

@@ -14,7 +14,7 @@ public class SliderScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _sliderText;
     private float x = 0;
     private float y = 9.81f;
-    private float z = 17;
+    private float z = 14;
     public float gravityForce;
     
     // Sprites

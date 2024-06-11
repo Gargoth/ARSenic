@@ -19,13 +19,12 @@ public class ARManager : Singleton<ARManager>
 
     #region DEBUG
 
-    [Header("DEBUG")] [SerializeField] bool debugMode;
+    [Header("DEBUG")] [SerializeField] public bool debugMode;
     [SerializeField] Vector3 offset;
     [SerializeField] float distance;
     GameObject debugCamera;
 
     #endregion
-
 
     void Start()
     {
@@ -45,8 +44,7 @@ public class ARManager : Singleton<ARManager>
 
     void Update()
     {
-        if (debugMode)
-            HandleDebugMode();
+        HandleDebugMode();
     }
 
     /// <summary>
@@ -95,7 +93,7 @@ public class ARManager : Singleton<ARManager>
         debugCamera.tag = "MainCamera";
         objectContainer.SetActive(true);
     }
-
+    
     /// <summary>
     /// Creates a debug camera in the scene and returns it
     /// </summary>
