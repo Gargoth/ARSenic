@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using Unity.Mathematics;
 
+/// <summary>
+/// Handles the slider logic used for setting the gravity
+/// </summary>
 public class SliderScript : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
