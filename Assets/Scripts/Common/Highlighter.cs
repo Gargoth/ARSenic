@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Used to highlight the object it is attached to.
+/// </summary>
 public class Highlight : MonoBehaviour
 {
     //we assign all the renderers here through the inspector
@@ -24,6 +27,10 @@ public class Highlight : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Uses the color set in the inspector as the material's emission to highlight the object
+    /// </summary>
+    /// <param name="val">State of the highlight. True if on, False if off</param>
     public void ToggleHighlight(bool val)
     {
         if (val)

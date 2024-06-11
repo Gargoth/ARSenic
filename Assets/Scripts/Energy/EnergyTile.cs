@@ -7,6 +7,11 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// Class used for energy tiles
+/// Handles creation and teardown of the energy sources
+/// Handles adding and removing listeners
+/// </summary>
 public class EnergyTile : MonoBehaviour
 {
     [field: SerializeField] public EnergyTile PreviousTile { get; private set; }
@@ -16,9 +21,6 @@ public class EnergyTile : MonoBehaviour
     [field: SerializeField] [CanBeNull] public EnergySource CurrentSource { get; set; }
     public UnityEvent OnPowerEvent { get; private set; }
     public UnityEvent OnDepowerEvent { get; private set; }
-
-    [Tooltip("Level ends when this is powered")]
-    [field: SerializeField]
     void Awake()
     {
         OnPowerEvent = new UnityEvent();
@@ -29,12 +31,14 @@ public class EnergyTile : MonoBehaviour
     {
         if (PreviousTile != null)
         {
+            // Attach listeners
             PreviousTile.OnPowerEvent.AddListener(UpdatePower);
             PreviousTile.OnDepowerEvent.AddListener(() => StartCoroutine(OnDepower()));
         }
 
         if (StartWithSource != EnergySourceType.NoSource)
         {
+            // Create new source
             EnergySource newSource = gameObject.AddComponent(typeof(EnergySource)) as EnergySource;
             CurrentSource = newSource;
             newSource.EnergySourceType = StartWithSource;
@@ -53,6 +57,9 @@ public class EnergyTile : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Public function for updating energy source state
+    /// </summary>
     public void UpdatePower()
     {
         if (IsPowered())
@@ -61,6 +68,11 @@ public class EnergyTile : MonoBehaviour
             StartCoroutine(OnDepower());
     }
 
+    /// <summary>
+    /// Checks if the tile is powered
+    /// Powered if the current source is a generator or if the previous tile is powered and the current source uses the same energy type as the previous tile's output
+    /// </summary>
+    /// <returns>True if powered, else false</returns>
     public bool IsPowered()
     {
         bool generatorCheck = CurrentSource != null && CurrentSource != null && CurrentSource.IsGenerator;
@@ -79,6 +91,10 @@ public class EnergyTile : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// Update energy source particle system target
+    /// Called from UpdatePower
+    /// </summary>
     IEnumerator OnPower()
     {
         Debug.Log(name + " is powered");
@@ -90,6 +106,10 @@ public class EnergyTile : MonoBehaviour
             PreviousTile.CurrentSource.SetParticleTarget(CurrentSource.ModelCenterTransform());
     }
 
+    /// <summary>
+    /// Remove energy source particle system target
+    /// Called from UpdatePower
+    /// </summary>
     IEnumerator OnDepower()
     {
         Debug.Log(name + " is depowered");
@@ -100,18 +120,28 @@ public class EnergyTile : MonoBehaviour
             PreviousTile.CurrentSource.SetParticleTarget(PreviousTile.CurrentSource.ModelCenterTransform());
     }
 
+    /// <summary>
+    /// Add listeners for OnPowerEvent and OnDepowerEvent
+    /// </summary>
     public void AddComponentListeners()
     {
         OnPowerEvent.AddListener(CurrentSource.TurnOn);
         OnDepowerEvent.AddListener(CurrentSource.TurnOff);
     }
 
+    /// <summary>
+    /// Remove listeners for OnPowerEvent and OnDepowerEvent
+    /// </summary>
     public void RemoveComponentListeners()
     {
         OnPowerEvent.RemoveListener(CurrentSource.TurnOn);
         OnDepowerEvent.RemoveListener(CurrentSource.TurnOff);
     }
 
+    /// <summary>
+    /// Click handler to be used for the event system
+    /// </summary>
+    /// <param name="baseEventData"></param>
     public void HandleClick(BaseEventData baseEventData)
     {
         EnergyModuleManager.Instance.SelectTile(baseEventData);

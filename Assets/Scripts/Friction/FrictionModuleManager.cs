@@ -8,6 +8,9 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+/// <summary>
+/// Main Handler for the Friction Module processes
+/// </summary>
 public class FrictionModuleManager : Singleton<FrictionModuleManager>
 {
     [SerializeField] GameObject objectContainer;
@@ -72,6 +75,8 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
 
     void FixedUpdate()
     {
+        // Manually set gravity to the downward direction of the object container
+        // Needed since Vuforia does not set rotation properly
         if (isTargetFound)
         {
             Vector3 transformUp = objectContainer.transform.up;
@@ -91,6 +96,10 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
         RaycastSelectable();
     }
 
+    /// <summary>
+    /// Uses event system and physics raycaster to set selected object to the one that was clicked
+    /// TODO: Merge with EnergyModuleManager RaycastSelectable
+    /// </summary>
     void RaycastSelectable()
     {
         // Override Event System
@@ -108,17 +117,30 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
         }
     }
 
+    /// <summary>
+    /// Wrapper for player shape toggle
+    /// </summary>
     void UpdatePlayerShape()
     {
         player.ToggleShape(isPlayerShapeCube);
     }
 
+    /// <summary>
+    /// Toggles the player shape
+    /// Public function for button usage
+    /// </summary>
+    /// <param name="isCube">True if cube, false if sphere</param>
     public void HandleShapeToggle(bool isCube)
     {
         isPlayerShapeCube = isCube;
         UpdatePlayerShape();
     }
 
+    /// <summary>
+    /// Called when target plane is found
+    /// Set player's initial state based on its position on start
+    /// Public function for Vuforia component listener
+    /// </summary>
     public void HandleTargetFound()
     {
         isTargetFound = true;
@@ -127,6 +149,11 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
         UpdatePlayerShape();
     }
 
+    /// <summary>
+    /// Called when target plane is lost.
+    /// Reset fields for player and push progress bar.
+    /// Public function for Vuforia component listener.
+    /// </summary>
     public void HandleTargetLost()
     {
         isTargetFound = false;
@@ -135,6 +162,10 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
         progressMask.GetComponent<Image>().fillAmount = pushProgress;
     }
 
+    /// <summary>
+    /// Invokes all functions listening to ResetActions event and resets fields
+    /// Public function for button usage
+    /// </summary>
     public void ResetLevel()
     {
         CanPush = true;
@@ -142,6 +173,11 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
 		ResetColor();
     }
 
+    /// <summary>
+    /// Pushes object if conditions are met
+    /// Called by event system when push button is released
+    /// </summary>
+    /// <param name="baseEventData"></param>
     public void OnPushButtonUp(BaseEventData baseEventData)
     {
         if (isPushButton && (isDebugMode || isTargetFound))
@@ -155,18 +191,29 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
         }
     }
 
+    /// <summary>
+    /// Sets isPushButton to true which increments the progress bar
+    /// </summary>
+    /// <param name="baseEventData"></param>
     public void OnPushButtonDown(BaseEventData baseEventData)
     {
         if ((isDebugMode || isTargetFound) && CanPush)
             isPushButton = true;
     }
 
+    /// <summary>
+    /// Resets push progress bar if touch leaves the button without releasing
+    /// </summary>
+    /// <param name="baseEventData"></param>
     public void OnPushButtonExit(BaseEventData baseEventData)
     {
         pushProgress = 0;
         progressMask.GetComponent<Image>().fillAmount = pushProgress;
     }
 
+    /// <summary>
+    /// Grays out buttons
+    /// </summary>
 	public void GrayOut()
 	{
 		for (int i = 0; i < bottomMenu.Count; i++)
@@ -175,7 +222,10 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
 			image.color = Color.gray;
 		}
 	}
-
+  
+    /// <summary>
+    /// Resets UI button colors
+    /// </summary>
 	public void ResetColor()
 	{
 		for (int i = 0; i < bottomMenu.Count; i++)
@@ -185,6 +235,12 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
 		}
 	}
 
+    /// <summary>
+    /// Toggles road state.
+    /// Calls either UnselectRoad or SelectRoad depending on initial state.
+    /// Called by FrictionStageManager when road object is clicked.
+    /// </summary>
+    /// <param name="baseEventData"></param>
     public void OnRoadClick(BaseEventData baseEventData)
     {
         GameObject selectedObject = baseEventData.selectedObject;
@@ -198,6 +254,11 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
         }
     }
 
+    /// <summary>
+    /// Adds selected object to selectedRoads list
+    /// Handles highlighting for when road is selected.
+    /// </summary>
+    /// <param name="obj">Selected road object</param>
     public void SelectRoad(GameObject obj)
     {
         selectedRoads.Add(obj);
@@ -208,6 +269,11 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
         objRenderer.SetPropertyBlock(materialPropertyBlock);
     }
 
+    /// <summary>
+    /// Removes selected object from selectedRoads list
+    /// Handles highlighting for when road is unselected.
+    /// </summary>
+    /// <param name="obj">Unselected road object</param>
     public void UnselectRoad(GameObject obj)
     {
         selectedRoads.Remove(obj);
@@ -215,6 +281,9 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
         objRenderer.SetPropertyBlock(null);
     }
 
+    /// <summary>
+    /// Unselects all selected roads
+    /// </summary>
     public void ClearSelectedRoads()
     {
         for (int i = selectedRoads.Count - 1; i >= 0; i--)
@@ -223,6 +292,10 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
         }
     }
 
+    /// <summary>
+    /// Calls ChangeMaterial and ChangePhysicMaterial to change the road material of selected roads.
+    /// </summary>
+    /// <param name="index">Index of road material and physics material to apply</param>
     public void ChangeRoad(int index)
     {
         if (selectedRoads.Count == 0)
@@ -232,7 +305,10 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
         ClearSelectedRoads();
     }
 
-    // Changes material of all selected roads
+    /// <summary>
+    /// Changes material of selected roads
+    /// </summary>
+    /// <param name="index">Index of road material to apply</param>
     void ChangeMaterial(int index)
     {
         foreach (GameObject road in selectedRoads)
@@ -241,8 +317,11 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
             mesh.material = materials[index];
         }
     }
-
-    // Changes physics material of all selected roads
+    
+    /// <summary>
+    /// Changes physics material of selected roads
+    /// </summary>
+    /// <param name="index">Index of physics material to apply</param>
     void ChangePhysicMaterial(int index)
     {
         foreach (GameObject road in selectedRoads)
@@ -251,7 +330,10 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
             collider.material = physicMaterials[index];
         }
     }
-
+    
+    /// <summary>
+    /// Handles level completion
+    /// </summary>
     public void FinishLevel()
     {
         isFinished = false;

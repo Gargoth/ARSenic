@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Serves as the container for data that persists for the entire session
+/// </summary>
 public class PersistentDataContainer : Singleton<PersistentDataContainer>
 {
     // Flags

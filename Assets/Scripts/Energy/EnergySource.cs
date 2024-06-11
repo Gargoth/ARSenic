@@ -7,6 +7,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
 
+/// <summary>
+/// Enum used for all energy sources
+/// </summary>
 public enum EnergySourceType
 {
     NoSource,
@@ -18,9 +21,18 @@ public enum EnergySourceType
     GeneratorSource,
 }
 
+/// <summary>
+/// Class used for all energy sources.
+/// Requires an EnergyTile component to attach to.
+/// Contains information on the models, the particle systems, and the energy type I/O
+/// </summary>
 [RequireComponent(typeof(EnergyTile))]
 public class EnergySource : MonoBehaviour
 {
+    /// <summary>
+    /// Handles color for each energy type
+    /// Only particles with whose key exists here will be created
+    /// </summary>
     static Dictionary<string, Color> _energyTypeColor = new Dictionary<string, Color>()
     {
         { "Light", Color.yellow },
@@ -33,12 +45,12 @@ public class EnergySource : MonoBehaviour
 
     public string Name { get; protected set; } // NOTE: Is this needed?
     [field: SerializeField] public EnergySourceType EnergySourceType { get; set; }
-    [field: SerializeField] protected GameObject EnergySourceModelPrefab { get; set; }
+    [Tooltip("Model of an energy source. Do not set manually")] [field: SerializeField] protected GameObject EnergySourceModelPrefab { get; set; }
     public bool IsGenerator { get; protected set; }
-    [field: SerializeField] public List<string> InEnergyType { get; private set; }
-    [field: SerializeField] public List<string> OutEnergyType { get; private set; }
-    public List<GameObject> currentParticleSystems;
-    public GameObject Model { get; private set; }
+    [Tooltip("List of all acceptable energy types. Do not set manually")] [field: SerializeField] public List<string> InEnergyType { get; private set; }
+    [Tooltip("List of all output energy types. Do not set manually")] [field: SerializeField] public List<string> OutEnergyType { get; private set; }
+    [Tooltip("List of all currently active particle systems. Do not set manually")] public List<GameObject> currentParticleSystems;
+    [Tooltip("Easy reference to the energy source model. Do not set manually")] public GameObject Model { get; private set; }
     Transform modelTransform;
 
     void Awake()
@@ -48,6 +60,7 @@ public class EnergySource : MonoBehaviour
 
     IEnumerator Start()
     {
+        // TODO: Docs
         Debug.Log(EnergySourceType.HumanSource.ToString());
         Debug.Log(name + " waiting for EnergySourceType != null");
         yield return new WaitUntil(() => EnergySourceType != null);
@@ -60,6 +73,10 @@ public class EnergySource : MonoBehaviour
         GetComponent<EnergyTile>().UpdatePower();
     }
 
+    /// <summary>
+    /// Returns a transform positioned at the center of the model
+    /// </summary>
+    /// <returns>Transform positioned at the center of the model</returns>
     public Transform ModelCenterTransform()
     {
         if (modelTransform == null)
@@ -68,6 +85,10 @@ public class EnergySource : MonoBehaviour
         return modelTransform;
     }
 
+    /// <summary>
+    /// Gets all colors of the output energy types
+    /// </summary>
+    /// <returns>List of energy colors</returns>
     List<Color> GetOutColors()
     {
         List<Color> outColors = new List<Color>();
@@ -80,6 +101,9 @@ public class EnergySource : MonoBehaviour
         return outColors;
     }
 
+    /// <summary>
+    /// Automatically sets the energy source fields based on the energy source type
+    /// </summary>
     void InitializeEnergySourceFields()
     {
         switch (EnergySourceType)
@@ -136,6 +160,11 @@ public class EnergySource : MonoBehaviour
         Destroy(Model);
     }
 
+    /// <summary>
+    /// Checks if any of the input energy types are in the list of acceptable input energy types
+    /// </summary>
+    /// <param name="inputEnergyTypes">List of all input energy types</param>
+    /// <returns>True if an input energy is valid, else false</returns>
     public virtual bool ReceiveEnergy(List<string> inputEnergyTypes)
     {
         if (InEnergyType != null)
@@ -143,6 +172,11 @@ public class EnergySource : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// Sets the destination of the particle systems
+    /// Usually the output of ModelCenterTransform
+    /// </summary>
+    /// <param name="target">Transform of the target</param>
     public virtual void SetParticleTarget(Transform target)
     {
         if (currentParticleSystems == null)
@@ -155,6 +189,10 @@ public class EnergySource : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Handles the creation of the particle systems
+    /// Called by listener
+    /// </summary>
     public virtual void TurnOn()
     {
         GameObject particleSystemPrefab = Resources.Load<GameObject>("Prefabs/Energy Sources/EnergySource Particles");
@@ -176,6 +214,10 @@ public class EnergySource : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Handles the teardown of the particle systems
+    /// Called by listener
+    /// </summary>
     public virtual void TurnOff()
     {
         if (currentParticleSystems == null || currentParticleSystems.Count == 0)

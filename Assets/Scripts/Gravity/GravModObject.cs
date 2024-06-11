@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Mostly handles the float force of the object
+/// </summary>
 public class GravModObject : MonoBehaviour
 {
     public float floatForce = 0;

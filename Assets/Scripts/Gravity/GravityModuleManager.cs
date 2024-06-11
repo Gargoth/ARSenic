@@ -6,6 +6,9 @@ using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+ /// <summary>
+ /// Handles Energy Module processes
+ /// </summary>
 public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
 {
     GameObject objectContainer;
@@ -18,6 +21,7 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
     {
         isAirResOn = true;
         
+        // Display tutorial dialog if not yet seen
         if (PersistentDataContainer.Instance.f_gravityDialogShown)
         {
             Destroy(GameObject.FindWithTag("Popup Canvas"));
@@ -32,6 +36,8 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
 
     void Update()
     {
+        // Handle touch input
+        // Fling the target up on touch
         if (Input.touchCount == 1)
         {
             var mainCam = Camera.main;
@@ -57,6 +63,11 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
         }
     }
 
+    /// <summary>
+    /// Update gravity based on the slider.
+    /// NOte that the slider value is a float between 0 and 1, but the resulting gravity force increases exponentially based on the min and max bounds.
+    /// </summary>
+    /// <param name="sliderValue"></param>
     public void UpdateGravity(Single sliderValue)
     {
         float x = 0;
@@ -69,6 +80,10 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
         Physics.gravity = Vector3.down * (gravityForce);
     }
 
+    /// <summary>
+    /// Update Air Resistance state based on parameter
+    /// </summary>
+    /// <param name="isEnabled">True if enabled, else false</param>
     public void UpdateAirResistance(bool isEnabled)
     {
         isAirResOn = isEnabled;
@@ -79,6 +94,9 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
         }
     }
 
+    /// <summary>
+    /// Destroy all gravity objects spawned by the player
+    /// </summary>
     public static void ClearItems()
     {
         GameObject[] items = GameObject.FindGameObjectsWithTag("GravObject");
@@ -88,6 +106,10 @@ public class GravityModuleManagerScript : Singleton<GravityModuleManagerScript>
         }
     }
 
+    /// <summary>
+    /// Handles gravity object spawning
+    /// </summary>
+    /// <param name="prefabNum">Index of the gravity object to spawn</param>
     public void SpawnPrefab(int prefabNum)
     {
         if (prefabNum < 0 || prefabNum >= spawnPrefabs.Count) return;

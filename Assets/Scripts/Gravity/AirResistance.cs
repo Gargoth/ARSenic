@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// NOTE: This script is from the following source
+// https://thearchitect4855.itch.io/unity-air-resistance
+// Placed in the Assets\Scripts\Gravity folder to be included in the assembly definition
+
 #pragma warning disable 414
 namespace AirResistance2
 {
