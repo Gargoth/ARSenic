@@ -56,6 +56,7 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
 
     /// <summary>
     /// Uses event system and physics raycaster to set selected object to the one that was clicked
+    /// TODO: Merge with FrictionModuleManager RaycastSelectable
     /// </summary>
     void RaycastSelectable()
     {

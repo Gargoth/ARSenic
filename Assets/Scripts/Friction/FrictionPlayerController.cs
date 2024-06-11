@@ -7,7 +7,7 @@ public class FrictionPlayerController : MonoBehaviour
 {
     [SerializeField] Mesh cubeMesh;
     [SerializeField] Mesh sphereMesh;
-    [SerializeField] float maxPushForce;
+    [Tooltip("Force exerted when push progress reaches maximum.")] [SerializeField] float maxPushForce;
     Vector3 initialPos;
     Quaternion initialRot;
     Transform directionObject;
@@ -29,12 +29,19 @@ public class FrictionPlayerController : MonoBehaviour
         SetInitialState();
     }
 
+    /// <summary>
+    /// Set fields relating to initial player state
+    /// </summary>
     public void SetInitialState()
     {
         initialPos = transform.localPosition;
         initialRot = transform.localRotation;
     }
 
+    /// <summary>
+    /// Use push coefficient and max push force to push player
+    /// </summary>
+    /// <param name="pushCoefficient">Multiplier to max push force for applied force. Range from 0 to 1.</param>
     public void PushPlayer(float pushCoefficient)
     {
         rb.isKinematic = false;
@@ -43,6 +50,9 @@ public class FrictionPlayerController : MonoBehaviour
         rb.AddForce(pushForce * directionUnit);
     }
 
+    /// <summary>
+    /// Set player back to initial state
+    /// </summary>
     void ResetPlayer()
     {
         Debug.Log("Resetting player");
@@ -51,6 +61,10 @@ public class FrictionPlayerController : MonoBehaviour
         transform.localRotation = initialRot;
     }
 
+    /// <summary>
+    /// Handles mesh and collider switching based on desired player shape
+    /// </summary>
+    /// <param name="isCube">True if cube, false if sphere</param>
     public void ToggleShape(bool isCube)
     {
         if (isCube)

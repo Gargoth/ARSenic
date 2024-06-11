@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// Shows the appropriate popupcanvas on failed level
+/// </summary>
 [RequireComponent(typeof(DelayedTrigger))]
 public class FailedLevel : MonoBehaviour
 {
-    [Tooltip("Put text to display here!")] [SerializeField]
+    [Tooltip("Text to display on failed level")] [SerializeField]
     string popupText;
 
     GameObject failedLevelPrefab;
