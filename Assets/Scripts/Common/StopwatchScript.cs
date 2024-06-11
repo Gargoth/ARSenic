@@ -4,17 +4,28 @@ using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 
+/// <summary>
+/// Handles the stopwatch timer that is displayed in the UI for the levels
+/// </summary>
 public class StopwatchScript : Singleton<StopwatchScript>
 {
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] float currentTime;
     bool isStopwatchRunning = false;
 
+    /// <summary>
+    /// Getter function for the current time
+    /// </summary>
+    /// <returns>Current time</returns>
     public float GetTime()
     {
         return currentTime;
     }
 
+    /// <summary>
+    /// Toggles the stopwatch state.
+    /// </summary>
+    /// <param name="isRunning">True if on, False if off</param>
     public void ToggleStopwatch(bool isRunning)
     {
         isStopwatchRunning = isRunning;

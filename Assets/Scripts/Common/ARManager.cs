@@ -7,6 +7,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 using Vuforia;
 
+/// <summary>
+/// Contains functions that handles the Vuforia AR Components
+/// </summary>
 public class ARManager : Singleton<ARManager>
 {
     [SerializeField] public GameObject objectContainer;
@@ -22,6 +25,7 @@ public class ARManager : Singleton<ARManager>
     GameObject debugCamera;
 
     #endregion
+
 
     void Start()
     {
@@ -41,9 +45,13 @@ public class ARManager : Singleton<ARManager>
 
     void Update()
     {
-        HandleDebugMode();
+        if (debugMode)
+            HandleDebugMode();
     }
 
+    /// <summary>
+    /// Updates the position and rotation of the debug camera
+    /// </summary>
     void HandleDebugMode()
     {
         debugCamera.transform.localPosition = Vector3.zero + offset.normalized * distance;
@@ -72,6 +80,9 @@ public class ARManager : Singleton<ARManager>
         objectContainer.SetActive(value);
     }
 
+    /// <summary>
+    /// Replaces the AR camera with the debug camera as the scene's main camera
+    /// </summary>
     IEnumerator InitializeDebugMode()
     {
         Debug.Log("Initializing Debug Mode");
@@ -85,6 +96,10 @@ public class ARManager : Singleton<ARManager>
         objectContainer.SetActive(true);
     }
 
+    /// <summary>
+    /// Creates a debug camera in the scene and returns it
+    /// </summary>
+    /// <returns>GameObject debugCamera</returns>
     GameObject InitializeDebugCamera()
     {
         Debug.Log("Initializing Debug Camera");

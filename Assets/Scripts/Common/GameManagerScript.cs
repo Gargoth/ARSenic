@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// Contains functions that change the entire game's state (i.e. changing the scene)
+/// </summary>
 public class GameManagerScript : Singleton<GameManagerScript>
 {
     public GameObject ObjectContainer { get; private set; }
@@ -40,21 +43,32 @@ public class GameManagerScript : Singleton<GameManagerScript>
         PersistentDataContainer.Instance.selectedLevel = num;
     }
 
+    /// <summary>
+    /// Spawns a popup dialog with the specified message.
+    /// </summary>
+    /// <param name="message">The message to display in the popup dialog.</param>
     public void SpawnPopupDialog(string message)
     {
-        // TO DO: don't spawn when the dialogue is already active
+        // TODO: Don't spawn when the dialogue is already active
         string topicName = SceneManager.GetActiveScene().name;
-		currentIndex = 0;
-        
+        currentIndex = 0;
+
         if (!PersistentDataContainer.Instance.popupCanvasPrefab)
         {
             PersistentDataContainer.Instance.popupCanvasPrefab = Resources.Load<GameObject>("Prefabs/Popup Canvas");
         }
-        
+
         GameObject newPopup = Instantiate(PersistentDataContainer.Instance.popupCanvasPrefab, Vector3.zero, Quaternion.identity);
         TextMeshProUGUI textUI = newPopup.transform.Find("Popup Text").GetComponent<TextMeshProUGUI>();
         textUI.text = PersistentDataContainer.Instance.TopicTutorial[topicName][currentIndex];
     }
+    
+    
+    /// <summary>
+    /// Updates the text of the displayText parameter with the next topic tutorial message for the current scene.
+    /// If there are no more topic tutorial messages, the currentIndex is wrapped around to the start.
+    /// </summary>
+    /// <param name="displayText">The TextMeshProUGUI component to update with the next topic tutorial message.</param>
     public void TextChanger(TextMeshProUGUI displayText)
     {
         string topicName = SceneManager.GetActiveScene().name;
@@ -68,5 +82,4 @@ public class GameManagerScript : Singleton<GameManagerScript>
             popUps[currentIndex].SetActive(true);
         }
     }
-    
 }
