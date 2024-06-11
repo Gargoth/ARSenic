@@ -2,21 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Generic function for toggling a GameObject's state on or off.
+/// TODO: Make this more generic
+/// </summary>
 public class InventoryManager : MonoBehaviour
 {
     public GameObject popUpCanvas;
-    
-    // Start is called before the first frame update
-    // void Start()
-    // {
-    //
-    // }
-    
-    // Update is called once per frame
-    // void Update()
-    // {
-    //
-    // }
 
     public void OpenInventory()
     {
