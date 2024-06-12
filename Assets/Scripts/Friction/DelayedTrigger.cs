@@ -31,8 +31,13 @@ public class DelayedTrigger : MonoBehaviour
             !FrictionModuleManager.Instance.CanPush)
         {
             Debug.Log("Player trigger enter" + name);
-            triggerCoroutine = StartCoroutine(TriggerIEnumerator(targetDuration));
+            StartTriggerCoroutine(targetDuration);
         }
+    }
+
+    public void StartTriggerCoroutine(float duration)
+    {
+        triggerCoroutine = StartCoroutine(TriggerIEnumerator(duration));
     }
 
     void OnTriggerExit(Collider other)
@@ -63,7 +68,7 @@ public class DelayedTrigger : MonoBehaviour
     ///  Coroutine responsible for triggering the event
     /// </summary>
     /// <param name="duration">Amount of time to wait before triggering the event</param>
-    IEnumerator TriggerIEnumerator(float duration)
+    public IEnumerator TriggerIEnumerator(float duration)
     {
         Debug.Log("Starting Finishing Level Coroutine with duration " + duration);
         yield return new WaitForSeconds(duration);

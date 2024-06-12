@@ -13,12 +13,12 @@ using UnityEngine.UI;
 /// </summary>
 public class FrictionModuleManager : Singleton<FrictionModuleManager>
 {
-    [SerializeField] GameObject objectContainer;
+    [SerializeField] public GameObject objectContainer;
     
 	[Header("ROAD MATERIALS")]
     [SerializeField] List<Material> materials;
     [SerializeField] List<PhysicMaterial> physicMaterials;
-    [SerializeField] List<GameObject> levelPrefabs;
+    [SerializeField] public List<GameObject> levelPrefabs;
     [SerializeField] Color emissionColor;
 
 	[Header("PUSH")]
