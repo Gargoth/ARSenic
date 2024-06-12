@@ -14,7 +14,7 @@ using UnityEngine.EventSystems;
 /// </summary>
 public class EnergyTile : MonoBehaviour
 {
-    [field: SerializeField] public EnergyTile PreviousTile { get; private set; }
+    [field: SerializeField] public EnergyTile PreviousTile { get; set; }
     [field: SerializeField] public bool IsSelectable { get; private set; }
     public bool IsSelected { get; set; } = false;
     [field: SerializeField] [CanBeNull] public EnergySourceType StartWithSource { get; set; }
@@ -103,7 +103,7 @@ public class EnergyTile : MonoBehaviour
         if (PreviousTile != null)
             yield return new WaitUntil(() => PreviousTile.CurrentSource != null);
             yield return new WaitUntil(() => CurrentSource.Model!= null);
-            PreviousTile.CurrentSource.SetParticleTarget(CurrentSource.ModelCenterTransform());
+            PreviousTile?.CurrentSource?.SetParticleTarget(CurrentSource?.ModelCenterTransform());
     }
 
     /// <summary>
@@ -116,7 +116,7 @@ public class EnergyTile : MonoBehaviour
         OnDepowerEvent.Invoke();
         if (PreviousTile != null)
             yield return new WaitUntil(() => PreviousTile.CurrentSource!= null);
-            yield return new WaitUntil(() => PreviousTile.CurrentSource.Model!= null);
+            yield return new WaitUntil(() => PreviousTile?.CurrentSource?.Model!= null);
             PreviousTile.CurrentSource.SetParticleTarget(PreviousTile.CurrentSource.ModelCenterTransform());
     }
 

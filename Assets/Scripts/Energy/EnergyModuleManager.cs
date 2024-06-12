@@ -11,10 +11,10 @@ using UnityEngine.EventSystems;
 public class EnergyModuleManager : Singleton<EnergyModuleManager>
 {
     [SerializeField] Color selectedTileColor;
-    [SerializeField] List<GameObject> levelPrefabs;
-    GameObject objectContainer;
+    [SerializeField] public List<GameObject> levelPrefabs;
+    [NonSerialized] public GameObject objectContainer;
     EventSystem eventSystem;
-    GameObject selectedTile;
+    [NonSerialized] public GameObject selectedTile;
     GameObject[] energyTiles;
 
     IEnumerator Start()
@@ -120,7 +120,7 @@ public class EnergyModuleManager : Singleton<EnergyModuleManager>
     /// Handles highlighting with Highlight.cs
     /// </summary>
     /// <param name="baseEventData">Event data received from event system</param>
-    void UnselectTile()
+    public void UnselectTile()
     {
         if (selectedTile == null)
             return;
