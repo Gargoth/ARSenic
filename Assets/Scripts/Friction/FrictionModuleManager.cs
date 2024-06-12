@@ -22,9 +22,9 @@ public class FrictionModuleManager : Singleton<FrictionModuleManager>
     [SerializeField] Color emissionColor;
 
 	[Header("PUSH")]
-    [SerializeField] GameObject progressMask;
+    [SerializeField] public GameObject progressMask;
 	[SerializeField] float pushProgressRate;
-	[SerializeField] List<GameObject> bottomMenu;
+	[SerializeField] public List<GameObject> bottomMenu;
     
     [Header("DEBUG")]
     [SerializeField] bool isTargetFound = false;

@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.TestTools;
+using UnityEngine.UI;
 
 public class FrictionModuleManagerTests
 {
@@ -87,5 +89,28 @@ public class FrictionModuleManagerTests
         trigger.StartTriggerCoroutine(0.2f);
         yield return new WaitForSeconds(0.3f);
         Assert.AreEqual(testNum, 1);
+    }
+
+    [UnityTest]
+    public IEnumerator FrictionModule_Push()
+    {
+        // ARRANGE
+        GameObject progressMask = new GameObject();
+        newObjects.Add(progressMask);
+        progressMask.AddComponent<Image>();
+        List<GameObject> bottomMenu = new List<GameObject>();
+        FrictionModuleManager frictionMod = frictionObj.GetComponent<FrictionModuleManager>();
+        frictionMod.progressMask = progressMask;
+        frictionMod.bottomMenu = bottomMenu;
+        Rigidbody playerRb = GameObject.FindWithTag("Player").GetComponent<Rigidbody>();
+        Assert.IsTrue(playerRb != null, "Player not found");
+        
+        // ACT
+        frictionMod.OnPushButtonDown(new BaseEventData(EventSystem.current));
+        yield return new WaitForSeconds(1f);
+        frictionMod.OnPushButtonUp(new BaseEventData(EventSystem.current));
+        yield return new WaitForFixedUpdate();
+        
+        Assert.GreaterOrEqual(playerRb.velocity.magnitude, 0.1f, "Player did not get pushed");
     }
 }
