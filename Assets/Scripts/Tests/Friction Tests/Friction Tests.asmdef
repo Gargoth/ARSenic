@@ -1,11 +1,12 @@
 {
-    "name": "Commons.Tests",
+    "name": "FrictionModule.Tests",
     "rootNamespace": "",
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "Common",
-        "Inheritable"
+        "Inheritable",
+        "FrictionModule",
+        "Common"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

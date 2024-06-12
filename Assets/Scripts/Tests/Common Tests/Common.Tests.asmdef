@@ -1,13 +1,11 @@
 {
-    "name": "GravityModule.Tests",
+    "name": "Common.Tests",
     "rootNamespace": "",
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "GravityModule",
-        "Inheritable",
         "Common",
-        "Unity.Mathematics"
+        "Inheritable"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
