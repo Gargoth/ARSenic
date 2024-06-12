@@ -162,4 +162,48 @@ public class GravityModuleManagerTests
         GameObject.Destroy(arObj);
         GameObject.Destroy(gravObj);
     }
+    
+    [UnityTest]
+    public IEnumerator GravityModuleManager_GravityValue()
+    {
+        // ARRANGE
+        GameObject objectContainer = new GameObject();
+        objectContainer.tag = "Object Container";
+        GameObject mainCamera = new GameObject();
+        Camera mainCam = mainCamera.AddComponent<Camera>();
+        mainCamera.tag = "MainCamera";
+        yield return null;
+        GameObject gameObj = new GameObject();
+        GameManagerScript gameManager = gameObj.AddComponent<GameManagerScript>();
+        // ARManager Prerequisites
+        GameObject arObj = new GameObject();
+        ARManager arManager = arObj.AddComponent<ARManager>();
+        arManager.debugMode = true;
+        yield return null;
+        // Gravity Module Manager
+        GameObject gravObj = new GameObject();
+        GravityModuleManagerScript gravMod = gravObj.AddComponent<GravityModuleManagerScript>();
+        yield return null;
+        yield return null;
+
+        Vector3 initialGravity = Physics.gravity;
+        gravMod.UpdateGravity(0);
+        Assert.IsTrue(Physics.gravity == Vector3.down * 0, "Gravity not set to correct amount. Should be 0 when slider is 0.");
+        gravMod.UpdateGravity(0.5f);
+        Assert.IsTrue(Physics.gravity == Vector3.down * 9.81f, "Gravity not set to correct amount. Should be 9.81 when slider is 0.5.");
+        gravMod.UpdateGravity(1);
+        Assert.IsTrue(Physics.gravity == Vector3.down * 14, "Gravity not set to correct amount. Should be 14 when slider is 1.");
+        
+        
+        Assert.AreSame(gameManager.ObjectContainer, arManager.objectContainer, "ARManager object container not equal to Game Manager object container");
+        Assert.AreSame(gravMod.ObjectContainer, arManager.objectContainer, "Gravity Module Manager object container reference not set");
+
+        // TEARDOWN
+        GameObject.Destroy(objectContainer);
+        GameObject.Destroy(mainCamera);
+        GameObject.Destroy(gameObj);
+        GameObject.Destroy(arObj);
+        GameObject.Destroy(gravObj);
+        Physics.gravity = initialGravity;
+    }
 }
